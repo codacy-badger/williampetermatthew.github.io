@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      STL的一些总结 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>STL的一些总结</h2>
+  <p class="post-date">2018-09-18</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><h1 id="stdC-STL-C-标准STL"><a href="#stdC-STL-C-标准STL" class="headerlink" title="stdC++ STL|C++标准STL"></a>stdC++ STL|C++标准STL</h1><h2 id="Containers-容器"><a href="#Containers-容器" class="headerlink" title="Containers|容器"></a>Containers|容器</h2><h3 id="简单容器"><a href="#简单容器" class="headerlink" title="简单容器"></a>简单容器</h3><h4 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h4><p>定义于&lt;stl_pair.h&gt;中，需要使用命名空间std。</p>
+<p>pair是一个 对 ，用于存储一对类型可能不同的量。</p>
+<p><strong>使用方法</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="keyword">typename</span> A,<span class="keyword">typename</span> B&gt;p;<span class="comment">//即定义了一个拥有两个可以不同类型的对</span></span><br></pre></td></tr></table></figure>
+
+<p>相当于定义了一个p[2]，其中p[0]的类型为A，p[1]的类型为B。</p>
+<p><strong>访问方式</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p.first p.second</span><br></pre></td></tr></table></figure>
+
+<p>p.first相当于p[0]，p.second相当于p[1]。</p>
+<p><strong>赋值方式</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="keyword">typename</span> A,<span class="keyword">typename</span> B&gt;p(a,b);</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">p=make_pair(a,b);</span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">p.first=a;</span><br><span class="line">p.second=b;</span><br></pre></td></tr></table></figure>
+
+<p>这样就相当于把一个类型为A的量a赋值到p.first，把一个类型为B的量b复制到p.second。</p>
+<p><strong>其他</strong></p>
+<p>pair间支持逻辑运算符（两个pair的A、B类型必须对应相同）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!= &lt; &lt;= == &gt; &gt;=</span><br></pre></td></tr></table></figure>
+
+<p>支持函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> swap</span><br></pre></td></tr></table></figure>
+
+<p>swap可以交换两个pair（两个pair的A、B类型必须对应相同），是将两个pair中的first互换，second互换。</p>
+<p>写到其他的类型里（不过此时要注意两个’&gt;’不要挨着否则会被判CE），例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; &gt;v;</span><br><span class="line"><span class="built_in">queue</span>&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt;q;</span><br></pre></td></tr></table></figure>
+
+<p>而且，pair也支持写到pair的类型A、B里，例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="keyword">int</span>,pair&lt;pair&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;,<span class="keyword">int</span>&gt;,<span class="keyword">int</span>&gt; &gt;p;</span><br></pre></td></tr></table></figure>
+
+<h3 id="序列式容器"><a href="#序列式容器" class="headerlink" title="序列式容器"></a>序列式容器</h3><h4 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h4><p>定义于&lt;stl_vector.h&gt;中，需要使用命名空间std。</p>
+<p>vector的实质就是一个数组，下标从0开始，只不过这个数组是一个空间动态的数组，一个空的vector当插入第一个数时空间为1，插入第二个数时空间为2，插入第三个数时空间为4，插入第四个数时空间为4，插入第五个数时空间为8……其空间每次需要开新的空间时倍增，所以不能直接访问无空间缓存的下标，但是可以通过初始化直接开对应大小，向后插入需要新空间时倍增。</p>
+<p><strong>使用方法</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span> A&gt;v;</span><br><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span> A&gt;v();</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span> A&gt;v(size);<span class="comment">//定义了一个大小为size，存储类型为A的vector（相当于v[size]）</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span> A&gt;v(size,a);<span class="comment">//定义了一个大小为size，存储类型为A，初始值为a的vector（相当于v[size]并且fill了）</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span> A&gt;v(_v);<span class="comment">//是将_v这个vector复制到v里（A必须统一）</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span> A&gt;v(begin,end);<span class="comment">//是将_v中的[begin,end)区间复制到v里，注意不是(begin,end]，begin和end都是iterator</span></span><br></pre></td></tr></table></figure>
+
+<p>首先的一个是定义了一个存储类型为A的空vector。</p>
+<p><strong>访问方式</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v[i]</span><br></pre></td></tr></table></figure>
+
+<p>对，就是这样，不是说了就是一个数组么。。。</p>
+<p><strong>插值方式</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">v.push_back(a);<span class="comment">//向数组末尾插入一个a</span></span><br><span class="line">v.insert(it,a);<span class="comment">//向数组it位置前插入一个a</span></span><br><span class="line">v.insert(it,n,a);<span class="comment">//向数组it位置前插入n个a</span></span><br><span class="line">v.insert(it,begin,end);<span class="comment">//向数组it位置前插入[begin,end)区间的值</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>删值方式</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">v.pop_back();<span class="comment">//将数组末尾数删除</span></span><br><span class="line">v.clear();<span class="comment">//将数组清空</span></span><br><span class="line">v.erase(it);<span class="comment">//将数组it位置的数删除</span></span><br><span class="line">v.erase(begin,end);<span class="comment">//将数组[begin,end)区间的数删除</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>遍历方式</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">v.at(pos);<span class="comment">//返回pos位置的数</span></span><br><span class="line">v.front();<span class="comment">//返回首位数</span></span><br><span class="line">v.back();<span class="comment">//返回末尾数</span></span><br><span class="line">v.begin();<span class="comment">//返回首位位置</span></span><br><span class="line">v.end();<span class="comment">//返回末尾位置</span></span><br><span class="line">v.rbegin();<span class="comment">//反向迭代器，相当于返回末尾位置</span></span><br><span class="line">v.rend();<span class="comment">//反向迭代器，相当于返回首位位置</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>其他</strong></p>
+<p>如何判断一个vector是否为空？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v.empty();<span class="comment">//空则返回true，非空则返回false</span></span><br></pre></td></tr></table></figure>
+
+<p>vector的大小？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v.size();<span class="comment">//返回已有元素个数</span></span><br><span class="line">v.capacity();<span class="comment">//当前vector的最大元素值</span></span><br><span class="line">v.max_size();<span class="comment">//返回最大容量</span></span><br></pre></td></tr></table></figure>
+
+<p>另：重新分配函数：（Cr.<a href="https://blog.csdn.net/q_l_s/article/details/52946769" target="_blank" rel="noopener">剑西楼</a>）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v.resize(n);</span><br><span class="line">v.resize(n,a);</span><br><span class="line">v.reserve(n);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>resize重新分配大小，改变容器大小，并且创建对象。<br>当n小于当前size()值时候，vector首先会减少size()值 保存前n个元素，然后将超出n的元素删除(remove and destroy)。<br>当n大于当前size()值时候，vector会插入相应数量的元素，使得size()值达到n，并对这些元素进行初始化，如果调用上面的第二个resize函数，指定a，vector会用a来初始化这些新插入的元素。<br>当n大于capacity()值的时候，会自动分配重新分配内存存储空间。</p>
+<p>reserver函数用来给vector预分配存储区大小，即capacity的值，但是没有&gt; 给这段内存进行初始化。reserve的参数n是推荐预分配内存的大小，实际分&gt; 配的可能等于或大于这个值，即n大于capacity的值，就会reallocate内存 capacity的值会大于或者等于n。这样，当ector调用push_back函数使得size 超过原来的默认分配的capacity值时 避免了内存重分配开销。<br>需要注意的是：reserve 函数分配出来的内存空间，只是表示vector可以利用这部分内存，但vector不能有效地访问这些内存空间，访问的时候就会出现越界现象，导致程序崩溃。</p>
+</blockquote>
+<p>vector间支持逻辑运算符（两个vector的A类型必须对应相同）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!= &lt; &lt;= == &gt; &gt;=</span><br></pre></td></tr></table></figure>
+
+<p>支持函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> swap</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span><span class="params">(n,a)</span><span class="comment">//设置vector中第n个元素的值为a</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span><span class="params">(begin,end)</span><span class="comment">//将vector中[begin,end)中元素设置成当前vector元素</span></span></span><br></pre></td></tr></table></figure>
+
+<p>swap可以交换两个vector（两个vector的A类型必须对应相同），是将两个vector所有数互换。</p>
+<p>二维或更多维</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;v(r,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(c,<span class="number">0</span>));</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;v;</span><br><span class="line">v.resize(r);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;r;k++)</span><br><span class="line">	v[k].resize(c);</span><br></pre></td></tr></table></figure>
+
+<p>这便定义了一个r行$\times$c列大小的v数组。</p>
+<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><p>定义于&lt;stl_list.h&gt;中，需要使用命名空间std。</p>
+<p><strong>使用方法</strong>是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>&lt;<span class="keyword">typename</span> A&gt;l;</span><br><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="built_in">list</span>&lt;<span class="keyword">typename</span> A&gt;l(size);<span class="comment">//定义了一个大小为size，存储类型为A的list（相当于l[size]）</span></span><br><span class="line"><span class="built_in">list</span>&lt;<span class="keyword">typename</span> A&gt;l(size,a);<span class="comment">//定义了一个大小为size，存储类型为A，初始值为a的list（相当于l[size]并且fill了）</span></span><br><span class="line"><span class="built_in">list</span>&lt;<span class="keyword">typename</span> A&gt;l(_l);<span class="comment">//是将_l这个list复制到l里（A必须统一）</span></span><br><span class="line"><span class="built_in">list</span>&lt;<span class="keyword">typename</span> A&gt;l(begin,end);<span class="comment">//是将_l中的[begin,end)区间复制到l里，注意不是(begin,end]，begin和end都是iterator</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>其他</strong></p>
+<p>list间支持逻辑运算符（两个list的A类型必须相同）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!= &lt; &lt;= == &gt; &gt;=</span><br></pre></td></tr></table></figure>
+
+<p>list的iterator（迭代器）间支持逻辑运算符（两个list的A类型必须相同）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!= ==</span><br></pre></td></tr></table></figure>
+
+<p>支持函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> swap</span><br></pre></td></tr></table></figure>
+
+<p>swap可以交换两个list（两个list的A类型必须相同），是将两个list互换。</p>
+<h4 id="slist"><a href="#slist" class="headerlink" title="slist"></a>slist</h4><h4 id="deque-double-ended-queue"><a href="#deque-double-ended-queue" class="headerlink" title="deque(double-ended queue)"></a>deque(double-ended queue)</h4><h3 id="适配器容器"><a href="#适配器容器" class="headerlink" title="适配器容器"></a>适配器容器</h3><h4 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h4><h4 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h4><h4 id="priority-queue"><a href="#priority-queue" class="headerlink" title="priority_queue"></a>priority_queue</h4><h3 id="关联式容器"><a href="#关联式容器" class="headerlink" title="关联式容器"></a>关联式容器</h3><h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><h4 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h4><h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><h4 id="multimap"><a href="#multimap" class="headerlink" title="multimap"></a>multimap</h4><h4 id="hash-set"><a href="#hash-set" class="headerlink" title="hash_set"></a>hash_set</h4><h4 id="hash-multiset"><a href="#hash-multiset" class="headerlink" title="hash_multiset"></a>hash_multiset</h4><h4 id="hash-map"><a href="#hash-map" class="headerlink" title="hash_map"></a>hash_map</h4><h4 id="hash-multimap"><a href="#hash-multimap" class="headerlink" title="hash_multimap"></a>hash_multimap</h4><h3 id="其他类型容器"><a href="#其他类型容器" class="headerlink" title="其他类型容器"></a>其他类型容器</h3><h4 id="bitset"><a href="#bitset" class="headerlink" title="bitset"></a>bitset</h4><h4 id="valarray"><a href="#valarray" class="headerlink" title="valarray"></a>valarray</h4><h2 id="Iterators-迭代器"><a href="#Iterators-迭代器" class="headerlink" title="Iterators|迭代器"></a>Iterators|迭代器</h2><h3 id="utility"><a href="#utility" class="headerlink" title="utility"></a>utility</h3><h3 id="iterator"><a href="#iterator" class="headerlink" title="iterator"></a>iterator</h3><h3 id="memory"><a href="#memory" class="headerlink" title="memory"></a>memory</h3><h2 id="Allocator-空间配置器"><a href="#Allocator-空间配置器" class="headerlink" title="Allocator|空间配置器"></a>Allocator|空间配置器</h2><h2 id="Adapters-配接器"><a href="#Adapters-配接器" class="headerlink" title="Adapters|配接器"></a>Adapters|配接器</h2><h2 id="Algorithms-算法"><a href="#Algorithms-算法" class="headerlink" title="Algorithms|算法"></a>Algorithms|算法</h2><h3 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h3><h3 id="numeric"><a href="#numeric" class="headerlink" title="numeric"></a>numeric</h3><h3 id="functional"><a href="#functional" class="headerlink" title="functional"></a>functional</h3><h2 id="Functors-仿函数"><a href="#Functors-仿函数" class="headerlink" title="Functors|仿函数"></a>Functors|仿函数</h2><h1 id="extC-STL-C-扩展STL"><a href="#extC-STL-C-扩展STL" class="headerlink" title="extC++ STL|C++扩展STL"></a>extC++ STL|C++扩展STL</h1><hr>
+<blockquote>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_80x15.png" alt="知识共享许可协议"></a></p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_88x31.png" alt="知识共享许可协议"></a></p>
+<p>本作品采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>
+</blockquote>
+</section>
+    
+    <span id="/blog/Standard-Template-Library/" class="leancloud_visitors" data-flag-title="STL的一些总结">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#科技" >
+    <span class="tag-code">科技</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/cena-or-lemon-ac-automation/">
+        <span class="nav-arrow">← </span>
+        
+          Cena和Lemon下的AC自动机
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/high-precision-no/">
+        
+          高精度无符号整数算法
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#stdC-STL-C-标准STL"><span class="toc-nav-text">stdC++ STL|C++标准STL</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Containers-容器"><span class="toc-nav-text">Containers|容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#简单容器"><span class="toc-nav-text">简单容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#pair"><span class="toc-nav-text">pair</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#序列式容器"><span class="toc-nav-text">序列式容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#vector"><span class="toc-nav-text">vector</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#list"><span class="toc-nav-text">list</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#slist"><span class="toc-nav-text">slist</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#deque-double-ended-queue"><span class="toc-nav-text">deque(double-ended queue)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#适配器容器"><span class="toc-nav-text">适配器容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#stack"><span class="toc-nav-text">stack</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#queue"><span class="toc-nav-text">queue</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#priority-queue"><span class="toc-nav-text">priority_queue</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#关联式容器"><span class="toc-nav-text">关联式容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#set"><span class="toc-nav-text">set</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#multiset"><span class="toc-nav-text">multiset</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#map"><span class="toc-nav-text">map</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#multimap"><span class="toc-nav-text">multimap</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hash-set"><span class="toc-nav-text">hash_set</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hash-multiset"><span class="toc-nav-text">hash_multiset</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hash-map"><span class="toc-nav-text">hash_map</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hash-multimap"><span class="toc-nav-text">hash_multimap</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#其他类型容器"><span class="toc-nav-text">其他类型容器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#bitset"><span class="toc-nav-text">bitset</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#valarray"><span class="toc-nav-text">valarray</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Iterators-迭代器"><span class="toc-nav-text">Iterators|迭代器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#utility"><span class="toc-nav-text">utility</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#iterator"><span class="toc-nav-text">iterator</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#memory"><span class="toc-nav-text">memory</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Allocator-空间配置器"><span class="toc-nav-text">Allocator|空间配置器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Adapters-配接器"><span class="toc-nav-text">Adapters|配接器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Algorithms-算法"><span class="toc-nav-text">Algorithms|算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#algorithm"><span class="toc-nav-text">algorithm</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#numeric"><span class="toc-nav-text">numeric</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#functional"><span class="toc-nav-text">functional</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Functors-仿函数"><span class="toc-nav-text">Functors|仿函数</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#extC-STL-C-扩展STL"><span class="toc-nav-text">extC++ STL|C++扩展STL</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/Standard-Template-Library/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "STL的一些总结",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/Standard-Template-Library/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

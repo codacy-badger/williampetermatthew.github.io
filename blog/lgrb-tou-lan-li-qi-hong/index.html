@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      【转载】C++中偷懒利器——宏 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>【转载】C++中偷懒利器——宏</h2>
+  <p class="post-date">2018-09-12</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><hr>
+<h1 id="OI中可以用到的Linux基础教程"><a href="#OI中可以用到的Linux基础教程" class="headerlink" title="OI中可以用到的Linux基础教程"></a>OI中可以用到的Linux基础教程</h1><hr>
+<blockquote>
+<p>声明：本文为转载文章，转载自<a href="https://www.luogu.org/blog/two-three-three/tou-lan-li-qi-hong" target="_blank" rel="noopener">洛谷日报#NAN</a>，原作者为木木小胖。</p>
+</blockquote>
+<hr>
+<p>提到C++宏，大多数人想到的就是宏函数和宏常量，如<figure class="highlight plain"><figcaption><span>MAXN 500```和```#define max(a,b) ((a)>(b)?(a):(b))```这种宏应用。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">其实宏还有很多很多更能发挥它威力的应用。宏的用途可不仅限于```constexpr```。几乎任何有重复代码的地方都能用宏大幅度简化，从而节省工作量。</span><br><span class="line"></span><br><span class="line">在继续学习之前，先了解一下C++的宏机制。</span><br><span class="line"></span><br><span class="line">## C++的宏机制</span><br><span class="line"></span><br><span class="line">![C++编译流程 图片来源于网络，侵权删。](https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1534684146526&amp;di=a6171b22cb2f4d3370d965160b7c582f&amp;imgtype=0&amp;src=http%3A%2F%2Ftxt25-2.book118.com%2F2017%2F0905%2Fbook132081%2F132080656.jpg)。</span><br><span class="line"></span><br><span class="line">众所周知，C++的编译流程主要分为预处理、编译、汇编、链接等步骤，其中宏展开在预处理步骤中进行。预处理步骤主要处理预处理指令。（如宏所用的```#define```以及头文件用的```#include```）</span><br><span class="line"></span><br><span class="line">因此，宏在预处理过程中就全部展开，这时候预处理器执行的只是简单的字符串替换。</span><br><span class="line"></span><br><span class="line">具体到每个宏，预处理器若识别出一个符号为宏名，就执行宏展开。对于每一个宏名后面的括号里的内容，预处理器根据且只根据逗号分割参数(但是有一个例外，括号内的逗号不会被当作分割符)，也就是说你能写出这样的宏调用：```bxy(q.push, n, ;)```。</span><br><span class="line"></span><br><span class="line">如果参数中含有宏，编译器不会在传入宏之前进行宏展开。如果展开式中含有宏，编译器会展开它。但是，如果展开式中含有宏调用且参数中含有宏，编译器会先展开参数中的宏。</span><br><span class="line"></span><br><span class="line">上面一段文字太抽象，我就写一个样例示范一下。</span><br><span class="line">```cpp</span><br><span class="line">#define macro(x) (1+mmacro(x)) //由于这里专门讲宏所以就不把宏名全大写了</span><br><span class="line">#define mmacro(x) (2+x)</span><br><span class="line"></span><br><span class="line">#define macroexpand(x) x</span><br><span class="line">#define expand(x) macroexpand(x)</span><br><span class="line"></span><br><span class="line">expand(macro(1)) //macroexpand的参数将是(1+(2+1))</span><br><span class="line">//展开过程如下：</span><br><span class="line">//expand(macro(1))</span><br><span class="line">//macroexpand(macro(1))</span><br><span class="line">//macroexpand((1+mmacro(1)))</span><br><span class="line">//macroexpand((1+(2+1)))</span><br><span class="line">//(1+(2+1))</span><br></pre></td></tr></table></figure></p>
+<h2 id="宏中的特殊符号"><a href="#宏中的特殊符号" class="headerlink" title="宏中的特殊符号"></a>宏中的特殊符号</h2><p>这些符号是宏独有的功能，其作用相当于直接沟通神灵。【能改变编译器看到的东西</p>
+<h3 id="井号（-）"><a href="#井号（-）" class="headerlink" title="井号（#）"></a>井号（#）</h3><p>单个井号表示将该参数左右加上双引号。</p>
+<p>宏被人们所诟病的理由之一就是不能看到宏的展开式进行调试。实际上，只利用我们现在所学的知识，我们是能够看到宏的展开式的。</p>
+<p>以下便是一个输出宏展开式的例子</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> macroexpand(x) #x</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> expand(x) macroexpand(x)</span></span><br><span class="line"><span class="comment">//expand函数接受一个宏，返回一个字符串，字符串内容即其展开式</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> expand_andprint(x) printf(<span class="meta-string">"%s\n"</span>,macroexpand(x))</span></span><br><span class="line"><span class="comment">//expand_andprint函数接受一个宏，将其展开式输出</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="双井号（-）"><a href="#双井号（-）" class="headerlink" title="双井号（##）"></a>双井号（##）</h3><p>双井号表示拼接左右两边的内容生成新的<strong>合法字面常量或标识符</strong></p>
+<p>比如说，我们可以用双井号生成标识符（即变量名）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> connect(x,y) x##y</span></span><br><span class="line">expand_andprint(connect(a,b))</span><br><span class="line"><span class="comment">//输出 ab</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">connect</span><span class="params">(a,b)</span></span>=<span class="number">3</span>; <span class="comment">//真的能过系列，展开为int ab=3</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,connect(a,b)); <span class="comment">//输出3</span></span><br></pre></td></tr></table></figure>
+
+<p>但是这个看起来十分厉害的功能却没有多少实际应用。因为宏在预处理期就已经展开，宏所能执行的功能只是简单的字符串拼接，于是在大多数情况下，这个功能只是一种语法糖。</p>
+<p>双井号还能连接生成数字常量</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> oct(x) 0##x</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> hex(y) 0x##y</span></span><br><span class="line"></span><br><span class="line">hex(<span class="number">7f</span>7f7f7f) <span class="comment">//真的能过系列，展开为0x7f7f7f7f</span></span><br></pre></td></tr></table></figure>
+
+<p>这个就更没用了【逃</p>
+<h3 id="井号-at号（-）"><a href="#井号-at号（-）" class="headerlink" title="井号-at号（#@）"></a>井号-at号（#@）</h3><p>#@表示将参数加上单引号</p>
+<p>与单井号类似，就不多说了</p>
+<p>注意，这是微软家编译器（VS）专用的符号，不是语言标准内容，在其他编译器上会报错</p>
+<p>如果想用字符，可以使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 应用</span><br><span class="line"></span><br><span class="line">### 例1：switch-case</span><br><span class="line"></span><br><span class="line">原代码：</span><br><span class="line">```cpp</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    char c;</span><br><span class="line">    int a,b;</span><br><span class="line">    scanf(&quot;%d%c%d&quot;,&amp;a,&amp;c,&amp;b);</span><br><span class="line">    switch(c)</span><br><span class="line">    &#123;</span><br><span class="line">        case &apos;+&apos;:</span><br><span class="line">            printf(&quot;%d\n&quot;,a+b);</span><br><span class="line">            return 0;</span><br><span class="line">        case &apos;-&apos;:</span><br><span class="line">            printf(&quot;%d\n&quot;,a-b);</span><br><span class="line">            return 0;</span><br><span class="line">        case &apos;*&apos;:</span><br><span class="line">            printf(&quot;%d\n&quot;,a*b);</span><br><span class="line">            return 0;</span><br><span class="line">        case &apos;/&apos;:</span><br><span class="line">            printf(&quot;%d\n&quot;,a/b);</span><br><span class="line">            return 0; </span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>加入宏之后</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> charcase(ch,x) case ch: printf(<span class="meta-string">"%d\n"</span>, a x b); return 0;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> a,b;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%c%d"</span>,&amp;a,&amp;c,&amp;b);</span><br><span class="line">    <span class="keyword">switch</span>(c)</span><br><span class="line">    &#123;</span><br><span class="line">        charcase(<span class="string">'+'</span>,+);</span><br><span class="line">        charcase(<span class="string">'-'</span>,-);</span><br><span class="line">        charcase(<span class="string">'*'</span>,*);</span><br><span class="line">        charcase(<span class="string">'/'</span>,/);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="例2：双井号的使用"><a href="#例2：双井号的使用" class="headerlink" title="例2：双井号的使用"></a>例2：双井号的使用</h3><p>在BFS走迷宫的时候，经常遇到同样的代码片段出现两次，一次针对x一次针对y。那么有没有办法只写一次呢</p>
+<p>原代码（代码片段）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; xq;</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; yq;</span><br><span class="line"></span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">q.push(xb);</span><br><span class="line">q.push(yb);</span><br></pre></td></tr></table></figure>
+
+<p>加入宏之后（等效代码片段）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> xy(a,sy,b) a x##sy b a y##sy b</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> bxy(a,sy,b) a ( x##sy ) b a ( y##sy ) b</span></span><br><span class="line"></span><br><span class="line">xy(<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;, q, ;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">bxy(q.push, b, ;)</span><br></pre></td></tr></table></figure>
+
+<p>宏xy将参数中三部分连接在一起并重复两遍，第一遍中间一个参数前面连接上x，第二遍则连接上y。</p>
+<p>宏bxy在中间参数左右加上括号。</p>
+<h2 id="拓展：宏和lambda表达式"><a href="#拓展：宏和lambda表达式" class="headerlink" title="拓展：宏和lambda表达式"></a>拓展：宏和lambda表达式</h2><p>观看本节前，建议阅读参考文献中的《编程利器-lambda表达式》。</p>
+<p>lambda表达式是闭包的基础，同时也是函数式编程的基础。来个最贴近生活的应用。<del>（来源于《编程利器-lambda表达式》）</del></p>
+<p>假设有一道毒瘤题，让你定义一个结构体people，然后先根据age字段排序，然后再根据chengji字段排序，最后根据RP字段排序。使用lambda表达式，我们可以免于写cmp1、cmp2、cmp3，可以写成这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//input</span></span><br><span class="line">sort(peoples,peoples+n,[](people a,people b)&#123;<span class="keyword">return</span> a.age&gt;b.age;&#125;);</span><br><span class="line"><span class="comment">//do something</span></span><br><span class="line">sort(peoples,peoples+n,[](people a,people b)&#123;<span class="keyword">return</span> a.chengji&gt;b.chengji;&#125;);</span><br><span class="line"><span class="comment">//do something</span></span><br><span class="line">sort(peoples,peoples+n,[](people a,people b)&#123;<span class="keyword">return</span> a.RP&gt;b.RP;&#125;);</span><br><span class="line"><span class="comment">//do something</span></span><br></pre></td></tr></table></figure>
+
+<p>我们发现这三行重复特多，打起来特烦，但是没有多少不同的地方。于是，我们就可以利用宏做到打一遍抵三遍的效果。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> arrsort(arr,len,pre) sort(arr,arr+(len),pre)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> stru_op_pre(stru,fie,oper) [](stru a,stru b)&#123;return a.fie oper b.fie;&#125;</span></span><br><span class="line"><span class="comment">//将stru的fie字段按op排序的lambda表达式</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sortp(fie) arrsort(peoples,n,stru_op_pre(people,fie,&gt;))</span></span><br><span class="line"></span><br><span class="line">sortp(age);</span><br><span class="line">sortp(chengji);</span><br><span class="line">sortp(RP);</span><br></pre></td></tr></table></figure>
+
+<h2 id="结论：宏可以和lambda表达式结合起来食用，并且更美味。"><a href="#结论：宏可以和lambda表达式结合起来食用，并且更美味。" class="headerlink" title="结论：宏可以和lambda表达式结合起来食用，并且更美味。"></a>结论：宏可以和lambda表达式结合起来食用，并且更美味。</h2><p>以下是更多相似的宏：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> op_pre(type,oper) [](type a,type b)&#123;return a oper b;&#125;</span></span><br><span class="line"><span class="comment">//返回接受两个类型为type的参数，根据oper排序的lambda函数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> stru_op_pre(stru,fie,oper) [](stru a,stru b)&#123;return a.fie oper b.fie;&#125;</span></span><br><span class="line"><span class="comment">//返回用stru的fie字段根据oper排序的lambda函数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int_op_pre(oper) op_pre(int,oper)</span></span><br><span class="line"><span class="comment">//返回接受两个类型为int的参数，根据oper排序的lambda函数</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="拓展：Lisp中的宏"><a href="#拓展：Lisp中的宏" class="headerlink" title="拓展：Lisp中的宏"></a>拓展：Lisp中的宏</h2><p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534680673556&di=f91835f22e409a077bda599de1eb8614&imgtype=0&src=http%3A%2F%2Fimg1.ph.126.net%2FoqDn20qmITe937LN4heWsQ%3D%3D%2F6597278673866412250.png" alt="Lisp编译流程。图片来源于网络，侵权删。"></p>
+<p>C++的宏都是简单的字符串拼接，导致它们只能实现一些很基础的功能。</p>
+<p>但是如果C++的宏是C++代码呢？</p>
+<p>Lisp的宏就是Lisp在编译时运行的程序，能将表达式变形成Lisp编译器能够接受的形式。</p>
+<p>利用宏，我们甚至可以做出内嵌语言，将Lisp改造成一个完全不同的形式。比如，在Lisp里面使用指针，或者使用Brainf**k的语法写程序。</p>
+<p>由于Lisp宏的强大一大部分来源于Lisp语法结构（S-expression）的古怪，因此即使是用伪代码，我也很难在C++上将Lisp的宏的强大展示给读者。参考文献中《Lisp的本质》一文对此有通俗易懂的论述，有兴趣的读者可以去看看。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>感谢以下作者辛勤的劳作</p>
+<ul>
+<li><a href="https://www.cnblogs.com/dongdongweiwu/p/4743709.html" target="_blank" rel="noopener">C++编译过程简介-from 云东</a></li>
+<li><a href="http://blog.chinaunix.net/uid-21372424-id-119797.html" target="_blank" rel="noopener">C++宏定义详解-from dongfs_love</a></li>
+<li><a href="https://www.luogu.org/blog/64456/bian-cheng-li-qi-lambda-biao-da-shi" target="_blank" rel="noopener">编程利器——lambda表达式-from colazcy</a></li>
+<li><a href="https://blog.csdn.net/d603010999/article/details/48155837" target="_blank" rel="noopener">Lisp的本质-from Slava Akhmechet，译者Alec Jang</a></li>
+</ul>
+<h2 id="版权信息"><a href="#版权信息" class="headerlink" title="版权信息"></a>版权信息</h2><p>本文可任意转载或改编，但须署原作者姓名及原文地址，并且应携带此版权信息。由此改编的文章也应携带此版权信息，以及原文作者姓名及地址。</p>
+</section>
+    
+    <span id="/blog/lgrb-tou-lan-li-qi-hong/" class="leancloud_visitors" data-flag-title="【转载】C++中偷懒利器——宏">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#洛谷日报" >
+    <span class="tag-code">洛谷日报</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/data-construction-and-beat-program/">
+        <span class="nav-arrow">← </span>
+        
+          数据构造与对拍程序
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/cena-or-lemon-ac-automation/">
+        
+          Cena和Lemon下的AC自动机
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#OI中可以用到的Linux基础教程"><span class="toc-nav-text">OI中可以用到的Linux基础教程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#宏中的特殊符号"><span class="toc-nav-text">宏中的特殊符号</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#井号（-）"><span class="toc-nav-text">井号（#）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#双井号（-）"><span class="toc-nav-text">双井号（##）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#井号-at号（-）"><span class="toc-nav-text">井号-at号（#@）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#例2：双井号的使用"><span class="toc-nav-text">例2：双井号的使用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#拓展：宏和lambda表达式"><span class="toc-nav-text">拓展：宏和lambda表达式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#结论：宏可以和lambda表达式结合起来食用，并且更美味。"><span class="toc-nav-text">结论：宏可以和lambda表达式结合起来食用，并且更美味。</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#拓展：Lisp中的宏"><span class="toc-nav-text">拓展：Lisp中的宏</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#参考文献"><span class="toc-nav-text">参考文献</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#版权信息"><span class="toc-nav-text">版权信息</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/lgrb-tou-lan-li-qi-hong/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "【转载】C++中偷懒利器——宏",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/lgrb-tou-lan-li-qi-hong/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

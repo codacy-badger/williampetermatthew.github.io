@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      【转载】C++ 迭代器，了解一下？ | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>【转载】C++ 迭代器，了解一下？</h2>
+  <p class="post-date">2018-08-27</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><hr>
+<h1 id="C-迭代器，了解一下？"><a href="#C-迭代器，了解一下？" class="headerlink" title="C++ 迭代器，了解一下？"></a>C++ 迭代器，了解一下？</h1><hr>
+<blockquote>
+<p>声明：本文为转载文章，转载自<a href="https://poi.blog.luogu.org/cpp-iterator" target="_blank" rel="noopener">洛谷日报#34</a>，原作者为Xeonacid。</p>
+</blockquote>
+<hr>
+<p>由于作者是个C++鶸，如果本文有任何错误，烦请不吝指出。（有的地方已知描述是不完整的，但是与指针行为一致，或鉴于多数看这篇文章的都是算法竞赛选手，抑或考虑实际，刻意忽略掉辣）</p>
+<h2 id="迭代器是个啥？"><a href="#迭代器是个啥？" class="headerlink" title="迭代器是个啥？"></a>迭代器是个啥？</h2><p>迭代器(Iterator)：一种“能够迭代某序列内所有元素”的对象</p>
+<p><img src="https://i.loli.net/2018/08/11/5b6ea9ab74ecb.jpg" alt=""></p>
+<p>指针都知道吧？不知道的先出门左转了解一下</p>
+<p>迭代器：指针的抽象，指针是迭代器的子集</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代器能干啥？"><a href="#迭代器能干啥？" class="headerlink" title="迭代器能干啥？"></a>迭代器能干啥？</h2><p>所有迭代器都能做的操作：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * suppose:</span></span><br><span class="line"><span class="comment">    * T t;</span></span><br><span class="line"><span class="comment">    * container&lt;T&gt; v1&#123;t&#125;, v2;</span></span><br><span class="line"><span class="comment">    * container&lt;T&gt;::iterator</span></span><br><span class="line"><span class="comment">    * container&lt;T&gt;::begin()</span></span><br><span class="line"><span class="comment">    * container&lt;T&gt;::end()</span></span><br><span class="line"><span class="comment">    * have been defined here</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    container&lt;T&gt;::iterator ita = v1.begin(), itb = v2.begin();</span><br><span class="line">    *ita;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::swap;</span><br><span class="line">    swap(ita, itb);</span><br><span class="line">    ++ita;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>emmmm…这些跟指针没什么差别对吧。</p>
+<p><img src="http://img.uoj.ac/utility/bear-thinking.gif" alt="思考熊">真的没差别吗？</p>
+<p>其实是有的…</p>
+<p>指针不可能随便解引用或者交换一下，甚至你什么都没做，就非法化了对吧。但是就“迭代器”本身，不加任何限制的情况下，其只是一个可以做上述操作的类而已啦，随时有可能被非法化。</p>
+<figure class="highlight plain"><figcaption><span>三去~~法，意味着在这里你可能什么也做不了2333333</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@[捂脸熊](http://img.uoj.ac/utility/bear-facepalm.jpg)那我~~咬着~~要这迭代器有何用？</span><br><span class="line"></span><br><span class="line">别急别急，迭代器还是有几个定义好的分类的，标准库内的迭代器何时会非法化也有严格限制。</span><br><span class="line"></span><br><span class="line">在说这个之前，先提一嘴迭代器的一个辅助类型```std::iterator_traits```，其一般化定义是长这个样子滴：</span><br><span class="line">```cpp</span><br><span class="line">template&lt; class Iterator &gt;</span><br><span class="line">struct iterator_traits &#123;</span><br><span class="line">    typedef typename Iterator::difference_type difference_type;</span><br><span class="line">    typedef typename Iterator::value_type value_type;</span><br><span class="line">    typedef typename Iterator::pointer pointer;</span><br><span class="line">    typedef typename Iterator::reference reference;</span><br><span class="line">    typedef typename Iterator::iterator_category iterator_category;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>很简单对吧，直接从迭代器类型本身拿来了这几个成员，标准库提供了对于指针的特化，毕竟指针没有这些成员。</p>
+<p>只有使<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">什么？你问我这五个鬼东西干啥用的？~~把他们翻译成中文就好了~~ ←真的如此，STL的命名还是挺清楚的哇</span><br><span class="line"></span><br><span class="line">其中标准库自带了五个用于```iterator_category```的空类型，分别对应下方的前五种迭代器：</span><br><span class="line">```cpp</span><br><span class="line">struct output_iterator_tag &#123; &#125;;</span><br><span class="line">struct input_iterator_tag &#123; &#125;;</span><br><span class="line">struct forward_iterator_tag : public input_iterator_tag &#123; &#125;;</span><br><span class="line">struct bidirectional_iterator_tag : public forward_iterator_tag &#123; &#125;;</span><br><span class="line">struct random_access_iterator_tag : public bidirectional_iterator_tag &#123; &#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="迭代器分类"><a href="#迭代器分类" class="headerlink" title="迭代器分类"></a>迭代器分类</h2><ul>
+<li>输出迭代器(OutputIterator)</li>
+<li>输入迭代器(InputIterator)</li>
+<li>向前迭代器(ForwardIterator)</li>
+<li>双向迭代器(BidirectionalIterator)</li>
+<li>随机访问迭代器(RandomAccessIterator)</li>
+<li>相接迭代器(ContiguousIterator)</li>
+<li>可变迭代器(MutableIterator)</li>
+</ul>
+<p>迭代器分类的依据是其可以进行的操作</p>
+<p><img src="http://img.uoj.ac/utility/bear-applaud.gif" alt="鼓掌熊">由上至下越来越像指针，<del>越来越正常</del></p>
+<h2 id="输出迭代器"><a href="#输出迭代器" class="headerlink" title="输出迭代器"></a>输出迭代器</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> output_iterator_tag iterator_category;</span><br></pre></td></tr></table></figure>
+
+<p>可自增（前置/后置、无操作）</p>
+<p>可<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">返回的还是这个迭代器本身，所以不要做出```a = *it```这种操作，~~伦家明明是输出迭代器不要把窝搞成输入嘛~~~</span><br><span class="line"></span><br><span class="line">实际上这个不是输出迭代器标准定义，但是STL中输出迭代器的实例就是这样的</span><br><span class="line"></span><br><span class="line">仅资瓷单趟算法</span><br><span class="line"></span><br><span class="line">啥是单趟算法？只需要遍历这个序列一次的算法，不需要把当前位置迭代器记存一个副本，等以后再使用。</span><br><span class="line"></span><br><span class="line">因为该序列上同一时间可能只有一个位置的迭代器是合法的</span><br><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg)输出迭代器这个名字看起来就是用于输出内容的，STL有两个小玩意叫做```std::ostream_iterator```和```std::ostreambuf_iterator```，把输出流包装了一下</span><br><span class="line">```cpp</span><br><span class="line">// 构造一个输出T类型的输出迭代器</span><br><span class="line">// 第一个参数为绑定到的流</span><br><span class="line">// 第二个参数为每次输出后输出的字符串，可省</span><br><span class="line">std::ostream_iterator&lt;T&gt; it(std::cout, &quot; &quot;);</span><br><span class="line">T t;</span><br><span class="line">it = t; //这些都等同于 std::cout &lt;&lt; t &lt;&lt; &quot; &quot;</span><br><span class="line">*it = t;</span><br><span class="line">it++ = t;</span><br><span class="line">++it = t;</span><br><span class="line">*it++ = t;</span><br><span class="line"></span><br><span class="line">// 跟上面那个一样，不过变成输出字符类型，也没有第二个参数了</span><br><span class="line">std::ostreambuf_iterator&lt;char&gt; it(std::cout);</span><br><span class="line"></span><br><span class="line">it = &apos;A&apos;; // 等同于 std::cout &lt;&lt; &apos;A&apos;</span><br><span class="line">*it = &apos;A&apos;;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>STL还有几个用于插入序列的迭代器适配器，以及配套的为了方便的函数模板</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::back_insert_iterator&lt; <span class="built_in">std</span>::<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; &gt; it1(q);</span><br><span class="line"><span class="comment">// 等同于 auto it1 = std::back_inserter(q);</span></span><br><span class="line">it1 = <span class="number">1</span>; <span class="comment">// 等同于 q.push_back(1)</span></span><br><span class="line">*it1 = <span class="number">1</span>;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::front_insert_iterator&lt; <span class="built_in">std</span>::<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; &gt; it2(q);</span><br><span class="line"><span class="comment">// 等同于 auto it2 = std::front_inserter(q);</span></span><br><span class="line">it2 = <span class="number">1</span>; <span class="comment">// 等同于 q.push_front(1)</span></span><br><span class="line">*it2 = <span class="number">1</span>;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::insert_iterator&lt; <span class="built_in">std</span>::<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; &gt; it3(q, q.begin());</span><br><span class="line"><span class="comment">// 等同于 auto it3 = std::inserter(q);</span></span><br><span class="line">it3 = <span class="number">1</span>; <span class="comment">// 等同于 q.insert(q.begin(), 1)</span></span><br><span class="line">*it3 = <span class="number">1</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>输入迭代器</p>
+<p><del>这玩意从名字看上去就与上面那个有许多相似之处，实际上也是</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> input_iterator_tag iterator_category;</span><br></pre></td></tr></table></figure>
+
+<p>可后置自增</p>
+<p>可默认构造</p>
+<p>实际上输入迭代器标准定义不可默认构造，向前迭代器才可以，但是STL中输入迭代器的实例都是可以的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以读取啦，但是不一定可以写入，因为返回的引用可能是```const```的（下面的输入流迭代器就如此）</span><br><span class="line"></span><br><span class="line">为什么是“可转换为```value_type```的引用”呢？</span><br><span class="line"></span><br><span class="line">~[](https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg)```std::vector&lt;bool&gt;```为了节约空间，每一个 0101 位占一个bit而非一个byte，但是没有办法返回一个bit的对象，只能返回一个包装好的代理类辣，所以```std::vector&lt;bool&gt;::iterator::reference```是代理类的引用而非位引用或```bool&amp;</span><br></pre></td></tr></table></figure>
+
+<p>PS:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~~C++真是一门难学的语言~~![](https://i.loli.net/2018/08/11/5b6eca17075cd.jpg)</span><br><span class="line"></span><br><span class="line">可比较相等和不等</span><br><span class="line"></span><br><span class="line">```operator*```返回当前元素</span><br><span class="line"></span><br><span class="line">可使用```operator-&gt;```访问成员</span><br><span class="line"></span><br><span class="line">仅资瓷单趟算法</span><br><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg)把输出迭代器的栗子的输出改成输入就好了</span><br><span class="line"></span><br><span class="line">emmmmm...等等，那EOF咋判断？![思考熊](http://img.uoj.ac/utility/bear-thinking.gif)</span><br><span class="line"></span><br><span class="line">默认构造的输入流迭代器就代表EOF，判一下相等/不等就好了</span><br><span class="line">```cpp</span><br><span class="line">std::vector&lt;int&gt; v;</span><br><span class="line">std::istream_iterator&lt;int&gt; i1(std::cin), i2;</span><br><span class="line">while(i1 != i2) v.push_back(*i1++);</span><br></pre></td></tr></table></figure></p>
+<p>同一个位置的元素可以读多次，不过不能倒回来读</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::istream_iterator&lt;<span class="keyword">int</span>&gt; i1(<span class="built_in">std</span>::<span class="built_in">cin</span>);</span><br><span class="line"><span class="keyword">int</span> a = *i1, b = *i1, c = *++i1, d = *i1++; <span class="comment">// 前提未EOF</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/12/5b6fc6e27d42a.jpg)那这个输入/输出迭代器比直接用```std::cin/cout```还麻烦啊！！！有啥用啊！！！</span><br><span class="line"></span><br><span class="line">别急着骂我，主要是配合各种STL函数食用的</span><br><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg)众所周知，```std::vector```有这样一个构造函数，接收一对迭代器，将 ```[begin,end)``` 范围内元素拷贝入容器（```std::vector&lt;&gt;::assign()```也是）</span><br><span class="line"></span><br><span class="line">所以上面的代码可以改写成这样</span><br><span class="line">```cpp</span><br><span class="line">std::vector&lt;int&gt; v(std::istream_iterator&lt;int&gt;(std::cin), std::istream_iterator&lt;int&gt;());</span><br></pre></td></tr></table></figure>
+
+<p>一行结束，简单多了对吧。输出的也同理</p>
+<p><del>别问我这个在算法竞赛中的应用是什么，我知道你们都不会在比赛中用流式输入输出的</del>，但是这些都是C++这门语言的重要组成部分，毕竟C++不是只用来算法竞赛的对吧</p>
+<h2 id="向前迭代器"><a href="#向前迭代器" class="headerlink" title="向前迭代器"></a>向前迭代器</h2><p><del>终于到比较正常的</del>用的比较多的了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> forward_iterator_tag iterator_category;</span><br></pre></td></tr></table></figure>
+
+<p>是输入迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">提供多趟保证</span><br><span class="line"></span><br><span class="line">可以放心地把迭代器存起来辣</span><br><span class="line"></span><br><span class="line">不会因为解引用并赋值导致迭代器非法化</span><br><span class="line"></span><br><span class="line">自增```it```的副本不改变解引用```it```得到的值</span><br><span class="line"></span><br><span class="line">保证若```ita == itb```则</span><br><span class="line"></span><br><span class="line">- 要么二者都不可解引用，要么指向同一对象</span><br><span class="line">- ```++ita == ++itb</span><br></pre></td></tr></table></figure>
+
+<p>可以看成不可自减和随机访问的指针</p>
+<p><img src="https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 双向迭代器</span><br><span class="line">```cpp</span><br><span class="line">typedef bidirectional_iterator_tag iterator_category;</span><br></pre></td></tr></table></figure></p>
+<p>是向前迭代器</p>
+<p>可自减</p>
+<p>行为与自增都类似</p>
+<p>可以看成不可随机访问的指针</p>
+<p><img src="https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 随机访问迭代器</span><br><span class="line">```cpp</span><br><span class="line">typedef random_access_iterator_tag iterator_category;</span><br></pre></td></tr></table></figure></p>
+<p>是向前迭代器</p>
+<p>可以在常量时间内移动任意位置</p>
+<p>可以做加减法</p>
+<p>可以比较大小</p>
+<p>可以使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">指向数组元素的指针会用吧？一样的</span><br><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg)```std::vector, std::array, std::deque, std::string```的```iterator```、指向数组元素的指针</span><br><span class="line"></span><br><span class="line">## 相接迭代器</span><br><span class="line"></span><br><span class="line">是迭代器</span><br><span class="line"></span><br><span class="line">其所指向的逻辑相邻元素也在内存中物理上相邻</span><br><span class="line"></span><br><span class="line">任意合法的```*(a + n)```等价于```*(std::addressof(*a) + n)</span><br></pre></td></tr></table></figure></p>
+<p>顺便提一句，为什么是<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">因为```operator&amp;```是可以重载的...它可以返回任何奇怪的东西</span><br><span class="line"></span><br><span class="line">所以C++11引入了```std::addressof```函数，专门用于返回一个对象的地址，其实现用了一些小trick，C++11及之后所有的标准库实现取地址用的都是这个函数而不是```operator&amp;</span><br></pre></td></tr></table></figure></p>
+<p>那么问题来了，如何在C++11之前将一个重载了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/12/5b6fd12ac0062.jpg)</span><br><span class="line"></span><br><span class="line">~~C++真是一门难学的语言~~![](https://i.loli.net/2018/08/11/5b6eca17075cd.jpg)</span><br><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg)```std::vector, std::array, std::basic_string_view```的```iterator```、指向数组元素的指针</span><br><span class="line"></span><br><span class="line">## 可变迭代器</span><br><span class="line"></span><br><span class="line">是输入迭代器</span><br><span class="line"></span><br><span class="line">是输出迭代器</span><br><span class="line"></span><br><span class="line">也就是可以读也可以写的</span><br><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg)所有STL容器的```iterator```（```const_iterator```除外）、指针（常量指针除外）</span><br><span class="line"></span><br><span class="line">## 类型总结</span><br><span class="line"></span><br><span class="line">![](https://i.loli.net/2018/08/11/5b6edd403bc5f.png)</span><br><span class="line"></span><br><span class="line">来源cppreference</span><br><span class="line"></span><br><span class="line">## 相对用的比较多的迭代器适配器</span><br><span class="line"></span><br><span class="line">```std::reverse_iterator</span><br></pre></td></tr></table></figure></p>
+<p>反向迭代器，原迭代器+变-、-变+，提供原迭代器提供的所有功能</p>
+<p><img src="https://i.loli.net/2018/08/11/5b6ecf17aea62.jpg" alt="">STL容器的<figure class="highlight plain"><figcaption><span>rend()```返回的就是这个</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```std::move_iterator</span><br></pre></td></tr></table></figure></p>
+<p>原迭代器需至少为输入迭代器，其<code>reference</code>为右值引用</p>
+<p>关于<code>std::move</code>和右值引用…那应该是另一篇文章的内容了</p>
+<p>迭代器非法化</p>
+<p>See <a href="https://zh.cppreference.com/w/cpp/container#.E8.BF.AD.E4.BB.A3.E5.99.A8.E9.9D.9E.E6.B3.95.E5.8C.96" target="_blank" rel="noopener">https://zh.cppreference.com/w/cpp/container#.E8.BF.AD.E4.BB.A3.E5.99.A8.E9.9D.9E.E6.B3.95.E5.8C.96</a></p>
+<p>适配器均取决于其底层容器</p>
+<p>（溜了溜了）</p>
+<p>emmmm…还是说几个常见的吧</p>
+<p>所有只读操作无</p>
+<p><code>std::vector</code>扩大重分配、<code>std::deque</code>插入+扩大重分配+非首尾擦除：全部</p>
+<p><code>std::vector</code>插入/擦除（无重分配）：插入位置及其后</p>
+<p><code>std::deque</code>首尾擦除（无重分配）：首尾</p>
+<p>链表+有序关联容器：插入无，擦除仅被擦除元素</p>
+<p>（毕竟它们是节点形式出现的）</p>
+<p>哈希容器：</p>
+<p>插入导致重哈希：全部</p>
+<p>插入未导致重哈希：无</p>
+<p>擦除：仅被擦除元素</p>
+<h2 id="一点废话"><a href="#一点废话" class="headerlink" title="一点废话"></a>一点废话</h2><p>在不需要返回值的情况下尽可能使用前置递增/递减，而非后置</p>
+<blockquote>
+<p>　后置比前置慢</p>
+</blockquote>
+<p>这个对于内置类型是假的，开不开优化都一样</p>
+<p><img src="http://img.uoj.ac/utility/emoticon-1.jpg" alt="">但是对于非内置类型就不一定了</p>
+<p>像迭代器这种实现相对比较简单的类（绝大部分容器的迭代器底层都只是一个或几个指针），开了优化可能会被优化成一样</p>
+<p>但是如果是复杂一点的就不一定了2333333</p>
+<p>小建议：（求不喜勿喷）干脆全改成前置好了，反正不会慢对吧，要不然写的时候还要想一下是不是内置类型，也挺麻烦的<img src="http://static.tieba.baidu.com/tb/editor/images/client/image_emoticon25.png" alt=""></p>
+<p>使用<code>std::array</code>而非原生数组</p>
+<p>窝个人觉得，OOP的封装性的优势在这体现地淋漓尽致，不用管底层怎么搞的，用就好辣</p>
+<p>其成员函数什么的都是STL的命名格式，会用一个STL容器就会用其他的<em>(:з」∠)</em></p>
+<p>一维数组还好办，二维及以上的话指针、<code>sizeof</code>什么的比封装好的麻烦多了（表喷窝TAT，再熟练也改变不了它麻烦的事实呀）</p>
+<p>常数这个无需担心，<code>std::array</code>只是把原生数组封装了一下，效率没有任何差别，成员函数都是内联的<img src="http://img.uoj.ac/utility/bear-applaud.gif" alt="鼓掌熊"></p>
+<p>然鹅…这个东西是C++11才有的，C++98的话也可以自己封装一下嘛，几分钟就写完了（逃）</p>
+<p>参考资料</p>
+<p><a href="https://www.iso.org/standard/68564.html" target="_blank" rel="noopener">ISO/IEC 14882:2017 Programming languages – C++</a>:952-986.</p>
+<p><a href="https://en.cppreference.com/w/" target="_blank" rel="noopener">cppreference.com</a>.</p>
+<p>（德）约祖蒂斯（Josuttis,N.M.）著；侯捷译.C++标准库：第2版[M].北京：电子工业出版社，2015.6：433-474.</p>
+</section>
+    
+    <span id="/blog/lgrb-cpp-iterator/" class="leancloud_visitors" data-flag-title="【转载】C++ 迭代器，了解一下？">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#洛谷日报" >
+    <span class="tag-code">洛谷日报</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/lgrb-Linux/">
+        <span class="nav-arrow">← </span>
+        
+          【转载】OI中可以用到的Linux基础教程
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/lgrb-gnu-pbds/">
+        
+          【转载】比STL还STL？——平板电视
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-迭代器，了解一下？"><span class="toc-nav-text">C++ 迭代器，了解一下？</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#迭代器是个啥？"><span class="toc-nav-text">迭代器是个啥？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#迭代器能干啥？"><span class="toc-nav-text">迭代器能干啥？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#迭代器分类"><span class="toc-nav-text">迭代器分类</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#输出迭代器"><span class="toc-nav-text">输出迭代器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#向前迭代器"><span class="toc-nav-text">向前迭代器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一点废话"><span class="toc-nav-text">一点废话</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/lgrb-cpp-iterator/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "【转载】C++ 迭代器，了解一下？",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/lgrb-cpp-iterator/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

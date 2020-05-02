@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      【转载】OI中可以用到的Linux基础教程 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>【转载】OI中可以用到的Linux基础教程</h2>
+  <p class="post-date">2018-08-27</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><hr>
+<h1 id="OI中可以用到的Linux基础教程"><a href="#OI中可以用到的Linux基础教程" class="headerlink" title="OI中可以用到的Linux基础教程"></a>OI中可以用到的Linux基础教程</h1><hr>
+<blockquote>
+<p>声明：本文为转载文章，转载自<a href="https://www.luogu.org/blog/Chanis/Linux" target="_blank" rel="noopener">洛谷日报#29</a>，原作者为Chanis。</p>
+</blockquote>
+<hr>
+<h2 id="Linux基础教程"><a href="#Linux基础教程" class="headerlink" title="Linux基础教程"></a>Linux基础教程</h2><p>●前置系统：任意Linux(不用NOI Linux也没问题，我用的是deepin），如果没有装，而且你用的是win10，请看往期的洛谷日报：<a href="https://www.luogu.org/blog/asfr/Run-Ubuntu-On-Windows10" target="_blank" rel="noopener">练习Linux？其实你的Win10自带一个Ubuntu</a>。如果你用的不是win10，你可以装双系统或是虚拟机，这里直接给地址，不再赘述（mac os的操作类似linux，仅提供win教程）:<a href="https://jingyan.baidu.com/article/86112f135e584a273697876b.html" target="_blank" rel="noopener">虚拟机</a> <a href="https://jingyan.baidu.com/article/60ccbceb18624464cab197ea.html" target="_blank" rel="noopener">双系统</a> <a href="http://www.noi.cn/newsview.html?id=267&hash=BDBDBE&type=1" target="_blank" rel="noopener">NOI Linux下载地址</a></p>
+<p>●QQ826755370</p>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>众所周知，NOIP复赛使用的操作系统将逐渐变为NOI Linux，湖南已经取消了windows机房，我所在的江苏今年似乎也要将win7+NOI Linux虚拟机换成NOI Linux，所以我们需要适应Linux系统，从而就有了这篇教程。</p>
+<h3 id="Linux基本操作"><a href="#Linux基本操作" class="headerlink" title="Linux基本操作"></a>Linux基本操作</h3><p><img src="https://s1.ax1x.com/2018/08/01/Pw42Yn.png" alt="终端"></p>
+<p>1.打开终端：直接用快捷键Ctrl+Alt+T即可。</p>
+<p>2.用root（类似windows的administrator）权限运行命令：在命令的最前面加上sudo，输入完命令后输入此时登录的账号的密码，注意，输入进去的密码是隐藏的，不会显示明文或“*”，不要以为是电脑坏了。</p>
+<p>3.终端内打开自己用户的文件夹（类似windows里你的用户文件夹）：cd ~</p>
+<p>4.终端里打开某个文件夹：cd 路径</p>
+<p>5.终端里返回上一级文件夹：cd ..</p>
+<p>6.<del>与/的区别：“</del>”放在路径开头表示的是自己的文件夹目录，“/”放在路径开头表示的是根目录，放在中间表示就和普通的“/”意义相同，如果路径的开头没有这两个符号，那么表示将从你当前所在的文件夹开始查找目标文件（夹）。</p>
+<p>7.安装软件：</p>
+<p>(1)debian系（如debian，ubuntu，NOI Linux(这玩意儿能叫一个系统？)，deepin，elementary OS):sudo apt-get install 软件名</p>
+<p>(2)arch系（如arch Linux，manjaro）：sudo pacman -S 软件名</p>
+<p>(3)Redhat系（如Redhat，centos）：sudo yum install 软件名</p>
+<p>8.删除文件：rm -rf 路径（这个指令爽歪歪，手动滑稽：rm -rf /）</p>
+<p>9.以上就是我最常用的，其他的都不常用啊…因为Linux本身也有图形界面，所以复制粘贴，新建文件（夹），重命名之类的操作就不讲了。我讲路径和cd是因为编译时要用到，讲安装软件那是必须的，讲rm是为了某个好玩的指令，如果觉得有什么需要添加的请指出。</p>
+<h3 id="使用Linux编写c-程序"><a href="#使用Linux编写c-程序" class="headerlink" title="使用Linux编写c++程序"></a>使用Linux编写c++程序</h3><p>IDE</p>
+<p>(1)北航的鸡肋guide：这个NOI官网上有详细的教程<a href="http://download.noi.cn/T/noi/GUIDE_v1.1.pdf" target="_blank" rel="noopener">NOI的教程</a>，但是我不喜欢用这个弱智IDE。</p>
+<p>(2)我认为比较好用的anjuta：</p>
+<p>①打开之后先选择“create a new project”。</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26176.png" alt="anjuta1"></p>
+<p>②之后弹出一个窗口，上方选择“c++”，里面选“通用c++”，之后弹出的窗口全部点击“确定”或“应用”。</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26178.png" alt="anjuta2"></p>
+<p>③然后我们来到下图的页面，左侧按照我的目录树，打开main.cc，记得把拓展名改成“.cpp”，NOIP的c++源文件的拓展名必须是cpp。现在我们看到了hello,world的代码，直接在里面修改即可，写完之后按F9编译，F3运行。</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26179.png" alt="anjuta3"></p>
+<p>④调试的方法与dev-c++类似，上方有个“调试”菜单，这里不再讲，后面会讲终端中使用gdb调试。</p>
+<p>(3)NOI Linux不自带的Geany、Code::Blocks等：因为不自带，考试用不了，所以我也不做使用讲解。</p>
+<p>文本编辑器</p>
+<p>无论你是用什么编辑器（vim除外），我都建议你在目录下新建一个cpp文件。</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26182.png" alt="新建"></p>
+<p>(1)gedit（类似windows系统的记事本，但是比记事本强大多了）</p>
+<p>双击该文件，默认使用gedit打开的，写完代码后，你是不是发现贼丑？</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26183.png" alt="贼丑"></p>
+<p>别急，我们来改一下，右下角有一行字，我们将“纯文本”改为c++，制表符宽度按个人喜欢设置，里面还可以设置自动缩进，后面一个框里可以选择显示行号，高亮当前行，右上方的菜单键（三个点）里面可以设置侧边栏，还有搜索、跳转行的功能。</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26184.png" alt="美化后"></p>
+<p>是不是好看多了？退出之前别忘了点右上方的“保存”。</p>
+<p>(2)emacs（业界有这样一句话：“emacs是神的编辑器，vim是编辑器的神。”）</p>
+<p>①我们要用windows中右击选择打开方式的方法，使用emacs打开文件（你也可以设置默认打开方式），我们选择GUI版本，如果选传统版本的话，你还不如用vim。</p>
+<p>②没什么想讲的了，直接放张图吧，与gedit相比，emacs支持代码补全，据说有许多强大的功能，但是我是vim选手，不是emacs选手，所以关于emacs的骚操作，请自行百度吧。</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26187.png" alt="emacs"></p>
+<p>(3)vim，我用的就是vim，但是vim的教程都能写十篇文章，这里我并不想写啊，而且当初我听信采取他人的蛊惑建议，学vim用了一个多星期…直接扔一个链接吧：<a href="https://www.jianshu.com/p/385cb0fdc3a0" target="_blank" rel="noopener">vim教程</a>。需要注意的是，NOIP不提供vim的插件，所以不能过度依赖vim的插件，但是可以改.vimrc，NOIP发题之前给你的时间已经足够你写.vimrc了。下面fa♂一张我的vim：</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26190.png" alt="myvim"></p>
+<p>(4)sublime等编辑器，这些NOI Linux不自带，还是不讲。</p>
+<p>等一等，我们写完代码了，该怎么编译？</p>
+<p>①先打开终端，在终端里打开你的源代码所在的目录。</p>
+<p>②接着在终端里输：g++ 你的代码文件名.cpp -o 随便填（如果你用了cmath，那么你需要-lm，开优化你需要-O0，-O1，-O2，-O3，想用gdb调试要开-g0 -g1 -g2 -g3，建议使用-g2）。</p>
+<p>③然后我们在终端里输入：./“随便填”（就是编译的时候你自己填的）。这样就亦可赛艇辣！</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26195.png" alt="编译运行"></p>
+<h3 id="终端里使用gdb调试"><a href="#终端里使用gdb调试" class="headerlink" title="终端里使用gdb调试"></a>终端里使用gdb调试</h3><p>(1)首先用终端在存放编译好的文件的目录下运行：gdb ./你的可执行文件名（编译时必须加了-g选项）</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26247.png" alt="gdb"></p>
+<p>(2)gdb命令小全</p>
+<p>①设置断点：break（或b） 行号</p>
+<p>②查看变量的值：p 变量名</p>
+<p>③下一步（跳过函数）：next（或n）</p>
+<p>④下一步（不会跳过函数）：step</p>
+<p>⑤跳出当前函数：finish</p>
+<p>⑥查看断点信息：info b</p>
+<p>⑦继续运行：c</p>
+<p>⑧开始运行：run</p>
+<p>⑨删除某个断点：delete（或d） break 断点号（如果没有则删除所有的断点）</p>
+<p>⑩删除某行断点：clear 行号</p>
+<p>(3)退出gdb</p>
+<p>输入quit，回车之后再输入y，这样就退出了。</p>
+<p>(4)一点建议</p>
+<p>不要过度依赖gdb，养成静态查错的习惯，NOIP考场上也有过gdb出锅的先例：<a href="http://tieba.baidu.com/p/4866797834" target="_blank" rel="noopener">gdb出锅</a>。</p>
+<p>(5)<a href="https://www.cnblogs.com/xsln/p/gdb_instructions1.html" target="_blank" rel="noopener">gdb详细教程</a></p>
+<h3 id="对拍"><a href="#对拍" class="headerlink" title="对拍"></a>对拍</h3><p>1.除了待测程序，你还需要自己写一个数据生成器和暴力程序，如果要得到一个小于n的数，可以用rand()%n得到。</p>
+<p>2.你要写一个shell脚本，我们将其命名为judge.sh（其他的名字也可以，但是拓展名必须是.sh），将它与那三个程序放在同一个目录下，它的模板是下面这个样子的（#在shell里表示注释）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash #相当于c++的头文件，背下来就对了</span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span></span><br><span class="line">./makedata&gt;in.txt #数据生成器输出数据重定向到in.txt</span><br><span class="line">./wait_judge&lt;in.txt&gt;out.txt #待测程序重定向输入输出</span><br><span class="line">./check&lt;in.txt&gt;right.txt #正确（暴力）程序</span><br><span class="line"><span class="keyword">if</span> diff out.txt right.txt; then #比较两个文件</span><br><span class="line"><span class="built_in">printf</span> AC #正确输出AC</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="built_in">printf</span> WA #错误输出WA</span><br><span class="line">#cat out.txt right.txt #显示两个文件</span><br><span class="line"><span class="built_in">exit</span> <span class="number">0</span> #退出</span><br><span class="line">fi #结束<span class="keyword">if</span></span><br><span class="line">done #结束<span class="keyword">while</span></span><br></pre></td></tr></table></figure>
+
+<p>3.我们打开终端，进入到保存对拍程序的目录，输入：sh ./judge.sh，然后回车即可。</p>
+<p><img src="https://cdn.luogu.org/upload/pic/26204.png" alt="judge"></p>
+<p>4.需要注意的是，这三个程序的源代码里面都不需要重定向输入输出（加freopen之类的），但是拍完了别忘记加上。还有，如果对拍发现结果不一样，先检查你的暴力程序，防止是暴力程序写错了。</p>
+<h3 id="赠品——我该如何在Linux下颓废？"><a href="#赠品——我该如何在Linux下颓废？" class="headerlink" title="赠品——我该如何在Linux下颓废？"></a>赠品——我该如何在Linux下颓废？</h3><p>1.slay.one</p>
+<p>2.linux版的网易云音乐了解一下，steam for linux了解一下。</p>
+<p>3.上ab站使人身心愉悦。</p>
+<p>4.wine下的TIM、QQ了解一下（强势安利一波deepin、完美wine模拟）。</p>
+<h3 id="完结撒花！★-°-☆-￣▽￣-°★-。"><a href="#完结撒花！★-°-☆-￣▽￣-°★-。" class="headerlink" title="完结撒花！★,°:.☆(￣▽￣)/$:.°★ 。"></a>完结撒花！★,°:.☆(￣▽￣)/$:.°★ 。</h3></section>
+    
+    <span id="/blog/lgrb-Linux/" class="leancloud_visitors" data-flag-title="【转载】OI中可以用到的Linux基础教程">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#洛谷日报" >
+    <span class="tag-code">洛谷日报</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/lgrb-gcc-hei-ke-ji-zhi-builtin-ji-lie-han-shuo/">
+        <span class="nav-arrow">← </span>
+        
+          【转载】GCC自带位运算系列函数
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/lgrb-cpp-iterator/">
+        
+          【转载】C++ 迭代器，了解一下？
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#OI中可以用到的Linux基础教程"><span class="toc-nav-text">OI中可以用到的Linux基础教程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Linux基础教程"><span class="toc-nav-text">Linux基础教程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引言"><span class="toc-nav-text">引言</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linux基本操作"><span class="toc-nav-text">Linux基本操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用Linux编写c-程序"><span class="toc-nav-text">使用Linux编写c++程序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#终端里使用gdb调试"><span class="toc-nav-text">终端里使用gdb调试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#对拍"><span class="toc-nav-text">对拍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#赠品——我该如何在Linux下颓废？"><span class="toc-nav-text">赠品——我该如何在Linux下颓废？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#完结撒花！★-°-☆-￣▽￣-°★-。"><span class="toc-nav-text">完结撒花！★,°:.☆(￣▽￣)/$:.°★ 。</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/lgrb-Linux/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "【转载】OI中可以用到的Linux基础教程",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/lgrb-Linux/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

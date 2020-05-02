@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      【转载】GCC自带位运算系列函数 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>【转载】GCC自带位运算系列函数</h2>
+  <p class="post-date">2018-08-12</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><hr>
+<h1 id="GCC自带位运算系列函数"><a href="#GCC自带位运算系列函数" class="headerlink" title="GCC自带位运算系列函数"></a>GCC自带位运算系列函数</h1><hr>
+<blockquote>
+<p>声明：本文为转载文章，转载自<a href="https://www.luogu.org/blog/Ilovehimforever/gcc-hei-ke-ji-zhi-builtin-ji-lie-han-shuo" target="_blank" rel="noopener">洛谷日报#26</a>，原作者为I_love_him52。</p>
+</blockquote>
+<hr>
+<p>谈到GCC的黑科技，大家想到的一定是这句：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize (3)<span class="comment">//吸氧</span></span></span><br></pre></td></tr></table></figure>
+
+<p>抑或是这句：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC diagnostic <span class="meta-keyword">error</span> <span class="meta-string">"-std=c++11"</span><span class="comment">//C++11</span></span></span><br></pre></td></tr></table></figure>
+
+<p>然而又有多少人知道<code>__builtin_xxx()</code>这群神奇的存在？</p>
+<p>举个栗子：树状数组的核心思想就是一个叫做<code>lowbit()</code>的函数，它是这样写的：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>什么，你说长？你嫌慢？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) ((x) &amp; -(x))</span></span><br></pre></td></tr></table></figure>
+
+<p>什么，你还是不想自己写？非得用内置函数？</p>
+<p>那么恭喜你，这是你新的出路：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lowbit(x) == (<span class="number">1</span> &lt;&lt; __builtin_ctz(x))</span><br></pre></td></tr></table></figure>
+
+<p>当然，对于<code>lowbit()</code>函数，大家看不到什么好处（喜欢这样用的才有问题吧(-_-)）</p>
+<p>再举一个栗子：<a href="https://www.luogu.org/problemnew/show/P2704" target="_blank" rel="noopener">P2704</a>， 一道状压DP入门题目，它要求输出：</p>
+<p>仅一行，包含一个整数K，表示最多能摆放的炮兵部队的数量。</p>
+<p>那么，DP的时候，对于每一行的状态，若它在二进制下的第<code>i</code>位以<code>0</code>表示不放，以<code>1</code>表示放的话，我们就得统计它二进制下<code>1</code>的个数，于是考虑用一个<code>inline</code>的函数<code>count()</code>来统计：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//摘自本人AC代码</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x)</span><br><span class="line">    &#123;</span><br><span class="line">        ret += x &amp; <span class="number">1</span>;</span><br><span class="line">        x &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>统计一下，这里一共有<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用它的代码长这样：`sum[tot] = count(i);`，改一下，变成这样：`sum[tot] = __builtin_popcount(i);`</span><br><span class="line"></span><br><span class="line">有人又要钻牛角尖：就算你把函数定义的码量给省了，但是你每次调用函数都会增加`strlen(&quot;__builtin_pop&quot;) == 13`字节的码量啊？</span><br><span class="line"></span><br><span class="line">那还不简单`define`下就好了</span><br><span class="line"></span><br><span class="line">除了上述函数，本人另外还整理了一部分用得到的`__builtin_`系列函数：</span><br><span class="line"></span><br><span class="line">`__builtin_ffs(x)` 返回`x`的二进制下第一位`1`的位置（从`1`开始）</span><br><span class="line">`__builtin_clz(x) `返回`x`二进制下最高有效位到最高位的`1`上一位的长度（即最高位开始连续`0`的个数）</span><br><span class="line">`__builtin_ctz(x)` 与上一个函数相反，返回`x`的二进制下最低位开始连续`0`的个数（即第一个函数 - 1）</span><br><span class="line">`__builtin_parity(x) `返回`x`二进制下`1`的个数的奇偶性</span><br><span class="line">`__builtin_popcount(x) `返回`x`二进制下`1`的个数</span><br><span class="line">另外以上函数的唯一参数都为`unsigned int`类型，并且都有`unsigned long long`版本，即在函数名后面加上`ll`，Like` __builtin_popcountll(x)`。</span><br><span class="line"></span><br><span class="line">对于其他的`__builtin_`系列函数，可以自行查阅`GNU C`所提供的文档</span><br><span class="line"></span><br><span class="line">又双叒叕及：感谢[@ComeIntoPower](https://www.luogu.org/space/show?uid=11751) 管理员大大普及：可以在程序开头加入这样一行：</span><br><span class="line">```cpp</span><br><span class="line">#pragma GCC target (&quot;popcnt&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>根据大大的说法，这条<code>GCC</code>指令可以让<code>__builtin_popcount</code>被编译器识别为一条指令。</p>
+<p>什么用呢？就是加速！时 间 减 半！它本身就够快了，还可以加速%%%，鄙人真是孤陋寡闻。</p>
+<p>注意：有些计算机可能不支持<code>popcnt</code>指令，然后<code>GCC</code>就会<code>GG</code>。（大部分计算机都有）</p>
+<p>还有一点注意，有一种说法是NOI系列赛事中禁止使用以下划线开头的函数，因此在NOI系列比赛中使用有风险，这只是给平时做题提供一些便利</p>
+<p>此外，既然是<code>黑科技</code>自然有地方不给用，我已经测试了各大<code>OJ</code>对于该系列函数的支持情况：（务必选用<code>G++/GCC</code>作为编译器）</p>
+<p>洛谷: OJBK</p>
+<p>Poj: OJBK</p>
+<p>Lydsy: OJBK</p>
+<p>Hdu: A+B 莫名WA，但是编译应该OJBK</p>
+<p>CodeVS: OJBK</p>
+<p>Vijos: OJBK</p>
+<p>Uoj: OJBK</p>
+<p>Codeforces: OJBK</p>
+<p>JoyOI: 评测机炸了，待更新</p>
+<p>ContestHunter: OJBK</p>
+<p>Zoj: 编译过了，也是莫名WA</p>
+<p>SPOJ: OJBK</p>
+<p>UVa: OJBK</p>
+<p>AtCoder: OJBK</p>
+<p>LibreOJ: OJBK</p>
+<p>比赛: 这个请问官方</p>
+<p>…待补充</p>
+</section>
+    
+    <span id="/blog/lgrb-gcc-hei-ke-ji-zhi-builtin-ji-lie-han-shuo/" class="leancloud_visitors" data-flag-title="【转载】GCC自带位运算系列函数">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#洛谷日报" >
+    <span class="tag-code">洛谷日报</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/lgrb-ni-fou-zhi-dao-di-c-yu-fa/">
+        <span class="nav-arrow">← </span>
+        
+          【转载】你不知道的C++11新语法
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/lgrb-Linux/">
+        
+          【转载】OI中可以用到的Linux基础教程
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#GCC自带位运算系列函数"><span class="toc-nav-text">GCC自带位运算系列函数</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/lgrb-gcc-hei-ke-ji-zhi-builtin-ji-lie-han-shuo/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "【转载】GCC自带位运算系列函数",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/lgrb-gcc-hei-ke-ji-zhi-builtin-ji-lie-han-shuo/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

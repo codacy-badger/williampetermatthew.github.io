@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      【转载】你不知道的C++11新语法 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>【转载】你不知道的C++11新语法</h2>
+  <p class="post-date">2018-08-12</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><hr>
+<h1 id="你不知道的C-11新语法"><a href="#你不知道的C-11新语法" class="headerlink" title="你不知道的C++11新语法"></a>你不知道的C++11新语法</h1><hr>
+<blockquote>
+<p>声明：本文为转载文章，转载自<a href="https://www.luogu.org/blog/64456/ni-fou-zhi-dao-di-c-yu-fa" target="_blank" rel="noopener">洛谷日报#21</a>，原作者为colazcy。</p>
+</blockquote>
+<hr>
+<p>随着C++11的发布，C++这门语言有了本质上的提升。C++14,C++17的相继推出，更是让C++这门语言达到了一个新高度。新的标准库设施，新的语法，让我们得以书写更加安全、便捷、高效的程序。</p>
+<p>2018年6月编程语言排行榜：<br><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3957929647,686454819&fm=173&app=25&f=JPEG?w=640&h=561&s=4CA23472990FD54F0EFDE1DA0000F0B2" alt="2018年6月编程语言排行榜"></p>
+<p>那么这些新的语法究竟是什么？它们如何使用？能为我们编程带来哪些便利？这便是本文所探讨的。</p>
+<p>本文参考部分资料，文末已给出原文章地址。</p>
+<h2 id="新的空指针类型——nullptr"><a href="#新的空指针类型——nullptr" class="headerlink" title="新的空指针类型——nullptr"></a>新的空指针类型——nullptr</h2><p>适用度:★★★★★</p>
+<p>nullptr是一种特殊的字面值，它可以转化为任意一种指针类型。 原来我们初始化一个空指针都是直接将他赋值为NULL，但NULL实际上是一个宏,其值相当于0。</p>
+<p>编译器是这么定义NULL的:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus <span class="comment">//如果定义__cplusplus宏，说明正在编译C++语言</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NUll 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL ((void *)0)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>也许你会想“我们用NULL还不是照样<del>吊打集训队</del>”，nullptr好像并没有什么用。</p>
+<p>考虑这样一段代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> *x)</span></span>&#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    f(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>很显然，编译失败，对f的调用有二义性。因为NULL相当于0，既可转化为指针，也可转化为整形。将NULL换做nullptr即可，nullptr便是为了解决这种二义性的问题而诞生的。</p>
+<p>条件允许的前提下，尽量使用nullptr，它比NULL更加安全， 原来这样写:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">int</span> *b = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p>现在应该这样写:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">int</span> *b = <span class="literal">nullptr</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="避免奇葩错误——constexpr变量"><a href="#避免奇葩错误——constexpr变量" class="headerlink" title="避免奇葩错误——constexpr变量"></a>避免奇葩错误——constexpr变量</h2><p>适用度:★★★★☆</p>
+<p>在编程中，我们经常遇到需要定义常量的情况，但有些常量却并不是你所想的“常量”。因而会引发一些意想不到的错误。</p>
+<p>例如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> b = a + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> c[b];<span class="comment">//错误，b不是一个常量表达式，它的值每次运行都有可能不一样。</span></span><br></pre></td></tr></table></figure>
+
+<p>b的确是一个常量——它的值在程序的执行期间不会被修改，但是它并不是常量表达式——每次执行程序时都为同一个值，且程序执行期间无法被修改。</p>
+<p>使用constexpr而非const来声明常量，让编译器来帮你检查常量是不是每次程序执行都为同一个值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">constexpr</span> b = a + <span class="number">10</span>;<span class="comment">//错误！a不是常量表达式!</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> b = a + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> c = b + <span class="number">10</span>;<span class="comment">//错误，b为常量，但不是常量表达式！</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> b = a + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> c = b + <span class="number">10</span>;<span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="省事好帮手——auto类型指示符"><a href="#省事好帮手——auto类型指示符" class="headerlink" title="省事好帮手——auto类型指示符"></a>省事好帮手——auto类型指示符</h2><p>适用度:★★★★★</p>
+<p>有些类型名字太长，难以拼写，浪费时间。怎么办？</p>
+<p>知道函数的作用，却无法拼写其返回类型，无法保存其返回值。怎么办？</p>
+<p>这个时候auto类型指示符就能够助我们一臂之力了。</p>
+<p>原来我们这么写:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = vec.begin();it != vec.end();it++)<span class="comment">//Do something</span></span><br></pre></td></tr></table></figure>
+
+<p>现在可以简单的这么写:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it = vec.begin();it != vec.end();it++)<span class="comment">//Do something</span></span><br></pre></td></tr></table></figure>
+
+<p>怎么样？程序瞬间清爽了许多有木有。而且还可以节约大量宝贵的时间</p>
+<p>因为编译器是依靠初始值来推断auto变量的类型的，所以auto变量必须要有初始值。</p>
+<p>即使是这样也不行:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> a;</span><br><span class="line">a = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>当然，也不能用auto来定义数组</p>
+<p>auto和引用一起会产生一些奇怪的问题:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>,&amp;r = i;<span class="comment">//定义变量i,r为i的引用</span></span><br><span class="line"><span class="keyword">auto</span> p = r;<span class="comment">//没错,p的值为int，其值为1</span></span><br></pre></td></tr></table></figure>
+
+<p>为什么？因为引用即别名。正如我们熟知的，使用引用其实是使用引用的对象，特别当引用被用作初始值的时候，真正参与初始化的其实是引用对象的值。此时编译器以引用对象的类型作为auto的类型。</p>
+<h2 id="自动类型推断——decltype类型指示符"><a href="#自动类型推断——decltype类型指示符" class="headerlink" title="自动类型推断——decltype类型指示符"></a>自动类型推断——decltype类型指示符</h2><p>适用度:★★★★☆</p>
+<p>上文提到了auto的用法，有时候我们想要用表达式的类型初始化一个变量，却并不想用表达式的值初始化这个变量。这个时候decltype类型指示符就可以派上用场了。</p>
+<p>剧透：下文位置返回类型配合decltype类型指示符有惊喜</p>
+<p>我们可以这样用decltype类型指示符来定义变量:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">decltype</span>(a) b;</span><br><span class="line">b = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<p>但是要注意，decltype只会用表达式的返回值进行推断，并不会执行表达式。例如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello decltype!"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">decltype</span>(f()) i = <span class="number">123</span>;<span class="comment">//i的值为123</span></span><br><span class="line"><span class="comment">//程序运行并不会有任何输出，因为f函数并没有实际执行。</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">decltype</span>(i = <span class="number">123</span>) b = i;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;<span class="comment">//输出1，因为i = 42表达式并未实际执行</span></span><br></pre></td></tr></table></figure>
+
+<p>decltype和auto都可以完成类型推断的任务，那么它们有什么不同呢？<br>1.处理引用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>,&amp;r = i;<span class="comment">//定义int型变量i,r为i的引用。</span></span><br><span class="line"><span class="keyword">auto</span> a = r;<span class="comment">//此时a的类型为int</span></span><br><span class="line"><span class="keyword">decltype</span>(r) b = r;<span class="comment">//此时b的类型为int&amp;,即为int的引用。</span></span><br></pre></td></tr></table></figure>
+
+<p>2.处理顶层const</p>
+<p>这里引入一个概念：</p>
+<p>1.底层const，对象所指向的对象是const的。 2.顶层const，对象本身是const的。</p>
+<p>auto会忽略掉顶层const和引用，但是会保留底层const。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ci = i,&amp;cr = ci;</span><br><span class="line"><span class="keyword">auto</span> a = ci;<span class="comment">//a为int，顶层const被忽略</span></span><br><span class="line"><span class="keyword">auto</span> b = cr;<span class="comment">//b为int，顶层const和引用均被忽略</span></span><br><span class="line"><span class="keyword">auto</span> c = &amp;ci;<span class="comment">//c为指向常量int的指针，保留底层const</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要使auto类型为顶层const:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> a = i;<span class="comment">//a为const int 类型</span></span><br></pre></td></tr></table></figure>
+
+<p>如果decltype使用的表达式是一个变量，decltype会返回该变量的类型（包括引用和顶层const)。</p>
+<h2 id="循环宏的优秀替代品——范围for语句"><a href="#循环宏的优秀替代品——范围for语句" class="headerlink" title="循环宏的优秀替代品——范围for语句"></a>循环宏的优秀替代品——范围for语句</h2><p>适用度:★★★★★</p>
+<p>什么？就算有了auto类型指示符，遍历容器/数组每一个元素你还是嫌麻烦？没事，让范围for语句来帮你。</p>
+<p>原来这么遍历容器/数组每一个元素</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it = vec.begin();it != vec.end();it++)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</span><br></pre></td></tr></table></figure>
+
+<p>现在这么写:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it : vec)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; it &lt;&lt; <span class="string">" "</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意，范围for语句只能遍历每一个元素，所以像遍历1到10这种操作还是得自己乖乖写for循环:)。</p>
+<h2 id="复杂返回值必备——尾置返回类型"><a href="#复杂返回值必备——尾置返回类型" class="headerlink" title="复杂返回值必备——尾置返回类型"></a>复杂返回值必备——尾置返回类型</h2><p>适用度:★★★★☆</p>
+<p>普通函数完全不必要尾置返回类型，但是当函数返回类型复杂起来时，尾置返回类型就很有用了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (*func(<span class="keyword">int</span> i))[<span class="number">10</span>]&#123;</span><br><span class="line">    <span class="comment">//Do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//func(int i)表示调用函数时，需要一个int类型的参数；</span></span><br><span class="line"><span class="comment">//(*func(int i))表示对调用func的结果执行解引用的操作；</span></span><br><span class="line"><span class="comment">//(*func(int i))[10]表示解引用之后得到一个维度为10的数组；</span></span><br><span class="line"><span class="comment">//int (*func(int i))[10]表示数组的数据类型为int；</span></span><br></pre></td></tr></table></figure>
+
+<p>很复杂，对吧？（<del>当然对于dalao来说小菜一碟</del>）当返回类型更加复杂时，常规写法将会成为Debug噩梦。（话说Markdown好像识别不了尾置返回类型诶）。</p>
+<p>//返回一维数组</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto func(int i) -&gt; int(*)[10]&#123;</span><br><span class="line">    <span class="comment">//Do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有更复杂的（<del>我太蒻了给不出常规写法了</del>）</p>
+<p>二维数组:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto func(int i) -&gt; int(*)[10][10]&#123;</span><br><span class="line">    <span class="comment">//Do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>二重指针:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto func(int i) -&gt; int **&#123;</span><br><span class="line">    <span class="comment">//Do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除了数组特殊一些以外，平时定义变量怎么写，尾置返回类型就怎么写。程序瞬间清爽了许多有木有。</p>
+<p>如果返回值更加复杂，连尾置返回类型的作用都显得微乎其微了怎么办？这时候——</p>
+<p>配合decltype食用效果更佳</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">auto func(int a,int b) -&gt; decltype(a+b)&#123;</span><br><span class="line">    <span class="comment">//Do something</span></span><br><span class="line">    <span class="keyword">return</span> a+b;<span class="comment">//函数的返回类型即为int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>什么？你连尾置返回类型都嫌麻烦？C++14可以满足你的需求。没错，连尾置返回类型都可以省了，直接返回类型auto就可以了Orz。</p>
+<h2 id="命名困难户-装逼者的宠儿——Lambda表达式"><a href="#命名困难户-装逼者的宠儿——Lambda表达式" class="headerlink" title="命名困难户/装逼者的宠儿——Lambda表达式"></a>命名困难户/<del>装逼者的宠儿</del>——Lambda表达式</h2><p>适用度:★★★☆☆</p>
+<p>假如遇到一道<del>毒瘤</del>题，既需要从小到大排序，也需要从大到小排序，甚至还要给自己定义的结构体排序。难道排序函数依次叫做cmp1,cmp2,cmp3?<del>太没有逼格了吧</del></p>
+<p>一个完整的Lambda表达式由以下几个部分构成：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[capture <span class="built_in">list</span>] (params <span class="built_in">list</span>) <span class="keyword">mutable</span> exception-&gt; <span class="keyword">return</span> type &#123; function body &#125;</span><br></pre></td></tr></table></figure>
+
+<p>各项具体含义如下</p>
+<ol>
+<li>capture list：捕获外部变量列表 可以为空，但是不可以省略</li>
+<li>params list：形参列表 可以为空，但是不可以省略</li>
+<li>mutable指示符：用来说用是否可以修改捕获的变量 可以省略</li>
+<li>exception：异常设定 可以省略</li>
+<li>return type：返回类型 可以省略</li>
+<li>function body：函数体 可以为空，但是不可以省略</li>
+</ol>
+<p>太复杂了，对吧？实际上，OI中我们使用Lambda表达式主要是用于STL的谓词（比如排序），因而我们可以省略很多不必要的部分。</p>
+<p>该省略的省略后就十分简单了: 比如从大到小排序:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line">sort(vec.begin(),vec.end(),[](<span class="keyword">int</span> a,<span class="keyword">int</span> b)&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Lambda表达式看似复杂，却能在许多时候为我们提供不小便利。它也是函数式编程的基石。</p>
+<p>因考虑篇幅，Lambda表达式并未详细介绍。想要知道更多关于Lambda表达式的内容，可以看看我的另一篇文章。<a href="https://www.luogu.org/blog/zcy/bian-cheng-li-qi-lambda-biao-da-shi" target="_blank" rel="noopener">传送门</a></p>
+<p>鸣谢:</p>
+<p>本文参考了以下资料，感谢作者的辛劳付出：</p>
+<p><a href="https://www.jianshu.com/p/2d44dae53910" target="_blank" rel="noopener">https://www.jianshu.com/p/2d44dae53910</a></p>
+<p><a href="https://blog.csdn.net/zdy0_2004/article/details/69934828" target="_blank" rel="noopener">https://blog.csdn.net/zdy0_2004/article/details/69934828</a></p>
+<p><a href="https://www.cnblogs.com/DswCnblog/p/5629165.html" target="_blank" rel="noopener">https://www.cnblogs.com/DswCnblog/p/5629165.html</a></p>
+<p><a href="https://blog.csdn.net/y1196645376/article/details/51441503" target="_blank" rel="noopener">https://blog.csdn.net/y1196645376/article/details/51441503</a></p>
+<p>注:因C++11语法繁杂，有些高级特性只为大型工程而设计，对OI并无太大帮助，因而未能出现在文章中（如继承，多态，泛型编程）等等。本人水平有限，文章难免有错误，望读者多多海涵，可以评论指出错误，一定尽力修正。</p>
+</section>
+    
+    <span id="/blog/lgrb-ni-fou-zhi-dao-di-c-yu-fa/" class="leancloud_visitors" data-flag-title="【转载】你不知道的C++11新语法">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#洛谷日报" >
+    <span class="tag-code">洛谷日报</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/friend-links/">
+        <span class="nav-arrow">← </span>
+        
+          【置顶】友链了解一下
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/lgrb-gcc-hei-ke-ji-zhi-builtin-ji-lie-han-shuo/">
+        
+          【转载】GCC自带位运算系列函数
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#你不知道的C-11新语法"><span class="toc-nav-text">你不知道的C++11新语法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#新的空指针类型——nullptr"><span class="toc-nav-text">新的空指针类型——nullptr</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#避免奇葩错误——constexpr变量"><span class="toc-nav-text">避免奇葩错误——constexpr变量</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#省事好帮手——auto类型指示符"><span class="toc-nav-text">省事好帮手——auto类型指示符</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#自动类型推断——decltype类型指示符"><span class="toc-nav-text">自动类型推断——decltype类型指示符</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#循环宏的优秀替代品——范围for语句"><span class="toc-nav-text">循环宏的优秀替代品——范围for语句</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#复杂返回值必备——尾置返回类型"><span class="toc-nav-text">复杂返回值必备——尾置返回类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#命名困难户-装逼者的宠儿——Lambda表达式"><span class="toc-nav-text">命名困难户/装逼者的宠儿——Lambda表达式</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/lgrb-ni-fou-zhi-dao-di-c-yu-fa/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "【转载】你不知道的C++11新语法",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/lgrb-ni-fou-zhi-dao-di-c-yu-fa/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

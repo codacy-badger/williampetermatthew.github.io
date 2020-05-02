@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      【转载】真正的全真虚拟机：VmWare Workstation | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>【转载】真正的全真虚拟机：VmWare Workstation</h2>
+  <p class="post-date">2018-10-04</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><hr>
+<h1 id="真正的全真虚拟机：VmWare-Workstation"><a href="#真正的全真虚拟机：VmWare-Workstation" class="headerlink" title="真正的全真虚拟机：VmWare Workstation"></a>真正的全真虚拟机：VmWare Workstation</h1><hr>
+<blockquote>
+<p>声明：本文为转载文章，转载自<a href="https://www.luogu.org/blog/ztz11/zhen-zheng-di-quan-zhen-xu-ni-ji-vmware-workstation" target="_blank" rel="noopener">洛谷日报#64</a>，原作者为木木小胖。</p>
+</blockquote>
+<hr>
+<p>记得以前有大佬曾教过我们用win10的自带双系统运行Ubuntu，但这玩意儿好像玩起来并不简单（反正本人试了一上午也没成功），而且这个系统是和windows交互的，我们也很难调整性能参数。今天，我来教大家玩一玩真正的虚拟机——VmWare Workstation</p>
+<h2 id="①-安装"><a href="#①-安装" class="headerlink" title="①.安装"></a>①.安装</h2><p>VmWare是个昂贵的软件，但还是请大家多多支持正版，如果家里没矿的话，可以点<a href="https://pan.baidu.com/s/11s2FzeMYvQpUOkNcepfqgg" target="_blank" rel="noopener">这里</a>下载破解版（仅供学习，严禁用于商业）</p>
+<p>首先，解压后双击启动安装</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34462.png" alt=""></p>
+<p>进入如下页面时点选我接受，下一步</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34463.png" alt=""></p>
+<p>我们一般安装典型，如果大佬想自定义也可以，但会相对麻烦</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34464.png" alt=""></p>
+<p>选择要安装的位置，单击下一步</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34465.png" alt=""></p>
+<p>静候安装完成（大概得4~5分钟）</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34466.png" alt=""></p>
+<p>输入许可证号(支持正版，如果实在不想买的话我的压缩包里有密码机vm10keygen.exe)</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34468.png" alt=""></p>
+<p>单击完成</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34467.png" alt=""></p>
+<h2 id="②-安装系统与配置虚拟机-系统以NOILinux为例"><a href="#②-安装系统与配置虚拟机-系统以NOILinux为例" class="headerlink" title="②.安装系统与配置虚拟机(系统以NOILinux为例)"></a>②.安装系统与配置虚拟机(系统以NOILinux为例)</h2><p>vmware的虚拟机最大的优点就是可以方便的修改虚拟机的配置，让电脑以你想要的性能运行（<del>当然，让虚拟机性能超过你运行虚拟机的物理机是不可能的，这辈子也不可能的</del>）</p>
+<p>启动虚拟机，你会看到这样一个界面,我们点击创建新的虚拟机</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34470.png" alt=""></p>
+<p>他会弹出一个窗口，一般我们点选“典型”</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34471.png" alt=""></p>
+<p>我们选择稍后安装操作系统</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34472.png" alt=""></p>
+<p>因为NOILinux是基于Ubuntu的操作系统，我们选择linux-&gt;Ubuntu</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34473.png" alt=""></p>
+<p>选择你要安装的位置，并命名虚拟机</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34474.png" alt=""></p>
+<p>这个就看你的爱好了，但记住，虚拟机磁盘不能大于你装虚拟机的磁盘</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34477.png" alt=""></p>
+<p>这一步非常重要，像不像CCF老爷机就看这个了。我们单击自定义硬件</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34478.png" alt=""></p>
+<p>我们看CCF老爷机的配置，处理器是2009年的AMD+Athlon(tm)+II+x2+240，2.8GHz\times×2，内存4G.</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34479.png" alt=""></p>
+<p>处理器的话如果你开到双核每个核心单线程就好。因为主系统方面也会占用一些性能。但如果你是I7的话最好还是开成单核双线程，压缩一下性能，这样更像老爷机</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34480.png" alt=""></p>
+<p>内存的话开到1G即可，这样就可以评测512M的程序，4G一般用不完，我就不去开他</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34481.png" alt=""></p>
+<p>单击完成，我们发现已经创建好一个空白虚拟机了。下面我们来装系统</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34483.png" alt=""></p>
+<p>首先，我们双击CD/DVD，选择使用iso映像文件，路径是NOILinux安装包的位置</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34485.png" alt=""></p>
+<p>单击完成返回上一页面，单击“开启此虚拟机”，静待载入</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34486.png" alt=""></p>
+<p>进入安装界面后，我们选择简体中文-&gt;安装Ubuntu</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34487.png" alt=""></p>
+<p>选择清除整个磁盘并安装，然后单击现在安装</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34488.png" alt=""></p>
+<p>中间会让你选择时区和语言，选择中国-上海和中文简体即可</p>
+<p>然后静候安装完成（大概需要20min）</p>
+<p>他会让你重启，按指令重启即可</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34489.png" alt=""></p>
+<p>安装完成！就可以进入使用了（初始密码为123456）</p>
+<h3 id="PS：A-我没看出vm有什么优点啊？"><a href="#PS：A-我没看出vm有什么优点啊？" class="headerlink" title="PS：A:我没看出vm有什么优点啊？"></a>PS：A:我没看出vm有什么优点啊？</h3><h3 id="我：别急，下面就让你涨涨见识"><a href="#我：别急，下面就让你涨涨见识" class="headerlink" title="我：别急，下面就让你涨涨见识"></a>我：别急，下面就让你涨涨见识</h3><h2 id="1-方便的系统间文件传输"><a href="#1-方便的系统间文件传输" class="headerlink" title="1.方便的系统间文件传输"></a>1.方便的系统间文件传输</h2><p>vm系列的文件传输才不需要什么高端操作呢！动动鼠标就行。</p>
+<p>首先，我们启动虚拟机，让他和主系统并列的放置</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34678.png" alt=""></p>
+<p>然后，我们选中要移动的文件，拖放到虚拟机的范围</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34625.png" alt=""></p>
+<p>松开鼠标，文件便会自动复制到虚拟机中</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34631.png" alt=""></p>
+<h2 id="2-虚拟机的移动"><a href="#2-虚拟机的移动" class="headerlink" title="2.虚拟机的移动"></a>2.虚拟机的移动</h2><p>很良心的功能啊</p>
+<p>不管走到哪里，只要有电脑，你都可以随心所欲地使用原来的虚拟机</p>
+<h3 id="①-虚拟机的打包"><a href="#①-虚拟机的打包" class="headerlink" title="①.虚拟机的打包"></a>①.虚拟机的打包</h3><p>其实说打包是不完全正确的，因为其实方便到无需打包</p>
+<p>首先，我们找到虚拟机的安装目录</p>
+<p>你会发现这么一堆东西</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34632.png" alt=""></p>
+<p>这些东西就是虚拟机的配置文件和虚拟磁盘。我们把他们装在一个文件夹里，复制到U盘里就好了。这些文件会保留你当前虚拟机的一切状态</p>
+<h3 id="②-虚拟机的载入"><a href="#②-虚拟机的载入" class="headerlink" title="②.虚拟机的载入"></a>②.虚拟机的载入</h3><p>上面我们说了如何打包虚拟机，这里我们来说说如何载入打包好的虚拟机</p>
+<p>第一步，打开VmWare</p>
+<p>看好，这里是没有任何虚拟机的</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34634.png" alt=""></p>
+<p>我们选择：文件-&gt;打开</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34637.png" alt=""></p>
+<p>在弹出的窗口中选择你的虚拟机所在的位置,选中后点击即可</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34641.png" alt=""></p>
+<p>OK</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34646.png" alt=""></p>
+<p><del>妈妈再也不用担心我出门要背着笔电了</del>，只要有一个U盘，你就可以走遍天下，在任何装了VmWare的地方使用虚拟机</p>
+<h3 id="③-虚拟机的外部硬件连接"><a href="#③-虚拟机的外部硬件连接" class="headerlink" title="③.虚拟机的外部硬件连接"></a>③.虚拟机的外部硬件连接</h3><p>如果你想让U盘直接连接到虚拟机上，请看这里</p>
+<p>首先，我们把U盘插到物理机上，同时开启虚拟机</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34650.png" alt=""></p>
+<p>我们会发现虚拟机的右下角有一排小图标，那里就是虚拟机可以连接或已经连接的硬件</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34654.png" alt=""></p>
+<p>我们要安装的是一个U盘（图标框右面第二个，我们单击图标）</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34657.png" alt=""></p>
+<p>在弹窗中点击连接即可</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34660.png" alt=""></p>
+<p>这时候图标会变亮，表示已经连接</p>
+<p>退出连接也很简单，再点击一下即可（这时图标会变暗）</p>
+<h3 id="④-挂起虚拟机"><a href="#④-挂起虚拟机" class="headerlink" title="④.挂起虚拟机"></a>④.挂起虚拟机</h3><p>有时候，我们可能有事，要关闭物理机，但是，我们又不想关掉虚拟机，怎么办呢？</p>
+<p>这时候，我们就可以用挂起解决问题</p>
+<p>首先，我们在虚拟机的界面找虚拟机-&gt;电源-&gt;挂起虚拟机，然后单击</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34670.png" alt=""></p>
+<p>这时系统会弹出一个加载页面，静候完成，之后界面会变成这个样子,表示挂起完成</p>
+<p><img src="https://cdn.luogu.org/upload/pic/34672.png" alt=""></p>
+<p>你可以干别的去了qwq，回来的时候单击“继续运行此虚拟机”即可</p>
+<h2 id="VmWare的介绍到此结束，祝大家玩的愉快"><a href="#VmWare的介绍到此结束，祝大家玩的愉快" class="headerlink" title="VmWare的介绍到此结束，祝大家玩的愉快"></a>VmWare的介绍到此结束，祝大家玩的愉快</h2></section>
+    
+    <span id="/blog/lgrb-zhen-zheng-di-quan-zhen-xu-ni-ji-vmware-workstation/" class="leancloud_visitors" data-flag-title="【转载】真正的全真虚拟机：VmWare Workstation">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#洛谷日报" >
+    <span class="tag-code">洛谷日报</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/high-precision-no/">
+        <span class="nav-arrow">← </span>
+        
+          高精度无符号整数算法
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/high-precision-yes/">
+        
+          高精度带符号整数算法
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#真正的全真虚拟机：VmWare-Workstation"><span class="toc-nav-text">真正的全真虚拟机：VmWare Workstation</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#①-安装"><span class="toc-nav-text">①.安装</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#②-安装系统与配置虚拟机-系统以NOILinux为例"><span class="toc-nav-text">②.安装系统与配置虚拟机(系统以NOILinux为例)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PS：A-我没看出vm有什么优点啊？"><span class="toc-nav-text">PS：A:我没看出vm有什么优点啊？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#我：别急，下面就让你涨涨见识"><span class="toc-nav-text">我：别急，下面就让你涨涨见识</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-方便的系统间文件传输"><span class="toc-nav-text">1.方便的系统间文件传输</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-虚拟机的移动"><span class="toc-nav-text">2.虚拟机的移动</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#①-虚拟机的打包"><span class="toc-nav-text">①.虚拟机的打包</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#②-虚拟机的载入"><span class="toc-nav-text">②.虚拟机的载入</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#③-虚拟机的外部硬件连接"><span class="toc-nav-text">③.虚拟机的外部硬件连接</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#④-挂起虚拟机"><span class="toc-nav-text">④.挂起虚拟机</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#VmWare的介绍到此结束，祝大家玩的愉快"><span class="toc-nav-text">VmWare的介绍到此结束，祝大家玩的愉快</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/lgrb-zhen-zheng-di-quan-zhen-xu-ni-ji-vmware-workstation/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "【转载】真正的全真虚拟机：VmWare Workstation",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/lgrb-zhen-zheng-di-quan-zhen-xu-ni-ji-vmware-workstation/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

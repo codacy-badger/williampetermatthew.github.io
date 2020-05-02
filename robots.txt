@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: 
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /js/
+Disallow: /404.html
+Sitemap: https://www.zhangkai.xin/sitemap.xml
+Sitemap: https://www.zhangkai.xin/baidusitemap.xml
+Sitemap: https://www.zhangkai.xin/atom.xml

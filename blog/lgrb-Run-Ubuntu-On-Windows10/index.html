@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      【转载】练习Linux？其实你的Win10自带一个Ubuntu | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>【转载】练习Linux？其实你的Win10自带一个Ubuntu</h2>
+  <p class="post-date">2018-07-17</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><hr>
+<p><img src="http://cdn1.ihcr.top/1810144213.png-yuantu" alt="头图"></p>
+<hr>
+<blockquote>
+<p>声明：本文为转载文章，转载自<a href="https://www.luogu.org/blog/asfr/Run-Ubuntu-On-Windows10" target="_blank" rel="noopener">洛谷日报#6</a>，原作者为韩程瑞。</p>
+</blockquote>
+<hr>
+<h2 id="0x01-引言"><a href="#0x01-引言" class="headerlink" title="0x01 引言"></a>0x01 引言</h2><p>众所周知，尽管现在大部分学校的竞赛练习环境都是构建XP等Windows系操作系统，但是在CCF组织的一系列竞赛（如NOI）中，早已用上了NOI Linux这个Ubuntu操作系统的阉割版。<br><img src="http://cdn1.ihcr.top/1810135503.png-yuantu" alt="NOI竞赛的环境要求"><br>NOI竞赛的环境要求</p>
+<p>或许大家对自己Windows环境下的Dev-C++、VSCode等都已熟识，但是当场景突然切换到Linux的时候，你会不会不知所措？</p>
+<p>“想用Ctrl+C复制，结果退出了程序” “平时AC的程序模板到了Linux上就WA”……<br><img src="http://cdn1.ihcr.top/1810141552.png-yuantu" alt="平台差异（转自百度文库”NOIP标准评测系统及相关问题“）"><br>平台差异（转自百度文库”NOIP标准评测系统及相关问题“）</p>
+<p>为了防止考场上出现此类尴尬情况，我们必须要提前熟悉下Linux系统的使用。</p>
+<p>虽然官网已经放出了NOI Linux的ISO镜像，但是配置却相当麻烦，包括激活Vmware，用Vmware装系统开虚拟机等步骤，且NOI Linux默认自带图形界面，两个系统一起运行是低配党的噩梦。</p>
+<p>Windows10作为微软的新一代操作系统，紧跟时代潮流，在一周年更新时推出了Linux子系统（WSL），可以供装不起Vmware等虚拟机的同学食用。</p>
+<p>唯一的缺点就是不带离线评测系统，但是在强大的洛谷评测支撑下谁在乎呢……</p>
+<p><strong>补充资料：何为Linux子系统（WSL）？(via 百度百科)</strong></p>
+<p>Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。它是由微软与Canonical公司合作开发，目标是使纯正的Ubuntu 14.04 “Trusty Tahr”映像能下载和解压到用户的本地计算机，并且映像内的工具和实用工具能在此子系统上原生运行。</p>
+<p>WSL提供了一个微软开发的Linux兼容内核接口（不包含Linux代码），来自Ubuntu的用户模式二进制文件在其上运行。<br>此子系统起源于命运多舛的Astoria项目，其目的是允许Android应用运行在Windows 10 Mobile上。此功能组件从Windows 10 Insider Preview build 14316开始可用。</p>
+<hr>
+<h2 id="0x02-准备"><a href="#0x02-准备" class="headerlink" title="0x02 准备"></a>0x02 准备</h2><p>首先，你需要一个最新的Windows10操作系统，这点不必多说。</p>
+<p>其次，你需要配置一下开发人员模式环境。<br>1.设置-&gt;更新与安全-&gt;开发人员模式框选-&gt;是<br><img src="http://cdn1.ihcr.top/1810142140.png-yuantu" alt="来，跟着箭头走"><br>来，跟着箭头走</p>
+<p>2.控制面板-&gt;程序-&gt;启用和关闭Windows功能-&gt;框选“适用于Linux的Windows子系统”-&gt;确定-&gt;重启<br><img src="http://cdn1.ihcr.top/1810135346.png-yuantu" alt="自行忽略乱码"><br>给系统盘留下足够的空间，毕竟装好的Linux没法迁移。</p>
+<p>这次演示我们会安装Ubuntu，因为NOI Linux正是Ubuntu的修改版。</p>
+<p>只要学会了方法，你也可照葫芦画瓢，安装Windows应用商店中的其他子系统。</p>
+<hr>
+<h2 id="0x03-开搞"><a href="#0x03-开搞" class="headerlink" title="0x03 开搞"></a>0x03 开搞</h2><p>去Windows自带的应用商店，搜索“Ubuntu”，然后选第一个安装。 亦可打开<a href="https://www.microsoft.com/zh-cn/p/ubuntu/9nblggh4msv6" target="_blank" rel="noopener">https://www.microsoft.com/zh-cn/p/ubuntu/9nblggh4msv6</a></p>
+<p>安装完后，打开Ubuntu，等待一段时间，让其自己配置，不久就会提示你设置用户名和密码。（这里看你喜好，推荐设置短点，毕竟本地环境不怕攻击） <strong>Linux区分大小写</strong><br><img src="http://cdn1.ihcr.top/1810145205.png-yuantu" alt="照图片来"><br>照图片来</p>
+<p>一个纯净的Ubuntu系统安装完成了！</p>
+<hr>
+<h2 id="0x04-基础配置"><a href="#0x04-基础配置" class="headerlink" title="0x04 基础配置"></a>0x04 基础配置</h2><p>以下命令均可直接右键复制粘贴进窗口哦！<br><img src="http://cdn1.ihcr.top/1810145742.png-yuantu" alt=""><br>正如图片所示，这个系统纯净到连个编译器都没有，所以这一节来看看基础的环境配置。</p>
+<p><strong>解锁root账户</strong></p>
+<p>Ubuntu默认是把root账户锁住的，给刚刚的账户开放sudo权限。</p>
+<p>在Linux的权限系统中，“sudo”正如“以管理员身份运行”，不声明就没法使用管理员权限。而“root”则是”Administrator“，直接解锁全部权限。</p>
+<p>命令三连：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">sudo passwd --unlock root</span><br><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn1.ihcr.top/1810151229.png-yuantu" alt=""><br><strong>Warning：如果跳过这一节，请在接下来每个命令前带上sudo！</strong></p>
+<p><strong>更换为国内软件源</strong></p>
+<p>Ubuntu默认的软件源在国外，我们可以换为国内的加快速度，如<a href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener">清华TUNA的软件源</a>。 <del>（如果你在国外的话当我没说）</del></p>
+<p>TUNA的源（这个Ubuntu是16.04LTS长期支持版的）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+
+<p>使用的命令<strong>（需按上节指示进入root环境，否则请在每个命令前带上sudo）</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/apt/sources.list /etc/apt/sources.list.bak</span><br><span class="line">echo &apos;&apos; &gt; /etc/apt/sources.list</span><br><span class="line">nano /etc/apt/sources.list</span><br><span class="line">（将上文的源右键粘贴进去，编辑完后按Ctrl+X，再按Y和回车）</span><br><span class="line">apt update &amp;&amp; apt upgrade -y</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn1.ihcr.top/1810153131.png-yuantu" alt=""><br><strong>安装中文环境</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apt install  language-pack-zh-han* -y</span><br><span class="line">locale-gen zh_CN.GB18030 &amp;&amp; locale-gen zh_CN.GB2312 %% locale-gen zh_CN.UTF8</span><br><span class="line">#中文字体，别忘了同意eula</span><br><span class="line">apt install fontconfig -y</span><br><span class="line">sudo apt install ttf-mscorefonts-installer -y</span><br><span class="line">#下面的再执行一遍以防万一</span><br><span class="line">sudo apt install -y --force-yes --no-install-recommends fonts-wqy-microhei</span><br><span class="line">sudo apt install -y --force-yes --no-install-recommends ttf-wqy-zenhei</span><br><span class="line">sudo dpkg-reconfigure locales</span><br></pre></td></tr></table></figure>
+
+<p>使用<strong>sudo dpkg-reconfigure locales</strong>进入菜单，选择<strong>zh_CN.UTF8</strong>回车，下一个菜单中也是选它打回车。<br><img src="http://cdn1.ihcr.top/1810154358.png-yuantu" alt=""></p>
+<p><img src="http://cdn1.ihcr.top/1810154428.png-yuantu" alt=""><br>之后关上Ubuntu重开一遍登录，是不是变中文了？</p>
+<p>再用下列命令，把man帮助页替换为中文：<a href="https://blog.csdn.net/qq_14989227/article/details/72954523" target="_blank" rel="noopener">via</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt install manpages-zh</span><br><span class="line">vi /etc/manpath.config</span><br><span class="line">:1,$s#/usr/share/man#/usr/share/man/zh_CN#g</span><br><span class="line">:wq</span><br></pre></td></tr></table></figure>
+
+<p>可以用<strong>man help</strong>测试下。</p>
+<p><strong>安装编译环境</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt install build-essential vim ddd gdb fpc emacs gedit anjuta lazarus -y</span><br><span class="line">wget http://download.noi.cn/T/noi/GUIDE-1.0.2-ubuntu.tar</span><br><span class="line">tar -xvf GUIDE-1.0.2-ubuntu.tar</span><br><span class="line">cd GUIDE-1.0.2-ubuntu</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+<p>这是基础的+NOI官方要求环境，如有需要可以用<strong>apt install 程序名</strong>来安装别的。 若想安装其他版本可以参考下<a href="https://www.cnblogs.com/EasonJim/p/7144017.html" target="_blank" rel="noopener">这个</a></p>
+<p>来个程序玩玩：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@DESKTOP-3FQ0AR5:/home/hanlin# nano cpuid.cpp</span><br><span class="line">root@DESKTOP-3FQ0AR5:/home/hanlin# g++ -Wall cpuid.cpp -o cpuid</span><br><span class="line">root@DESKTOP-3FQ0AR5:/home/hanlin# ./cpuid</span><br><span class="line">AMD Ryzen 5 1400 Quad-Core Processor</span><br></pre></td></tr></table></figure>
+
+<p><strong>Tips：Linux环境下可执行文件可不带扩展名，实现方式看上方命令行</strong></p>
+<p><strong>Update：在正式测试编译环境下，命令行可能有所不同，具体请看 0x06 附言 部分</strong></p>
+<hr>
+<h2 id="0x05-进阶操作"><a href="#0x05-进阶操作" class="headerlink" title="0x05 进阶操作"></a>0x05 进阶操作</h2><p><strong>安装图形环境，并使用远程桌面连接</strong><br>推荐图形环境用xfce4，不臃肿。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install xfce4 -y</span><br><span class="line">#或使用 apt install xubuntu-desktop -y</span><br><span class="line">#xubuntu安装的软件多，基础环境可用第一种</span><br></pre></td></tr></table></figure>
+
+<p>图形环境是个大头，因此要多等会，静静等待下载解包。</p>
+<p>下面配置xrdp：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install xrdp -y</span><br><span class="line">echo &quot;xfce4-session&quot; &gt;~/.xsession</span><br><span class="line">service xrdp restart</span><br></pre></td></tr></table></figure>
+
+<p>为了防止和你计算机本来带的远程桌面冲突，最好换一下端口。<br><img src="http://cdn1.ihcr.top/1810164401.png-yuantu" alt=""><br>不换端口的结果</p>
+<p>运行命令<strong>nano /etc/xrdp/xrdp.ini</strong>，把<strong>port=3389</strong>改为别的（如<strong>port=3390</strong>），然后保存即可。<br><img src="http://cdn1.ihcr.top/1810164730.png-yuantu" alt=""><br>运行<strong>service xrdp restart</strong>，然后去开始菜单，用_localhost:你配置的端口_来访问。<br><img src="http://cdn1.ihcr.top/1810165033.png-yuantu" alt=""></p>
+<p><img src="http://cdn1.ihcr.top/1810170141.png-yuantu" alt=""></p>
+<p><strong>补充：使用Xming连接</strong></p>
+<p>有网友说，这个可以用Xming连接，那我们就来研究一下。</p>
+<p><strong>客户端：安装Xterm</strong></p>
+<p>我们进入Ubuntu环境，安装xterm：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install xterm -y</span><br></pre></td></tr></table></figure>
+
+<p><strong>服务端：下载Xming Server</strong><br>去<a href="https://sourceforge.net/projects/xming/下载最新的Xming" target="_blank" rel="noopener">https://sourceforge.net/projects/xming/下载最新的Xming</a> Server，然后一路安装：<br><img src="http://cdn1.ihcr.top/1816113446.png-yuantu" alt=""></p>
+<p>如果你把Launch Xming框点掉了，记得去开始菜单再打开：<br><img src="http://cdn1.ihcr.top/1816113804.png-yuantu" alt=""></p>
+<p>别忘了！</p>
+<p>之后再回到Ubuntu，键入如下指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DISPLAY=:0 xterm</span><br></pre></td></tr></table></figure>
+
+<p><strong>Duang！</strong><br><img src="http://cdn1.ihcr.top/1816113957.png-yuantu" alt=""></p>
+<p><del>不过貌似只支持命令行……这时上一种方法的优势就显而易见了</del></p>
+<p>如果你和我一样使用了xfce4，在弹出的窗口中使用如下命令激活xfce4：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xfce4-session</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://cdn1.ihcr.top/1816114502.png-yuantu" alt=""><br>不过这是什么效果……（<strong>在Xming中使用 Ctrl + C 就可以退出这个鬼畜界面）</strong><br><img src="http://cdn1.ihcr.top/1816120406.png-yuantu" alt=""></p>
+<p>达成成就：Windows+Linux二合一</p>
+<p>感受一下两个版本融合的感觉：<br><img src="http://cdn1.ihcr.top/1816125110.png-yuantu" alt=""></p>
+<p><strong>与Windows内原硬盘分区交互</strong></p>
+<p>硬盘分区作为文件夹在_ /mnt/ _里放着，因此可以直接交互，比如说直接编译个二进制文件，或者往Ubuntu里传文件什么的……</p>
+<p>具体演示：<br><img src="http://cdn1.ihcr.top/1816115716.png-yuantu" alt=""><br>*<em>这里也可以建立一些Windows建不了的文件，如带点文件夹 *</em><br><img src="http://cdn1.ihcr.top/1816115945.png-yuantu" alt=""></p>
+<p><strong>Enjoy It!</strong></p>
+<hr>
+<h2 id="0x06-附言-补充材料"><a href="#0x06-附言-补充材料" class="headerlink" title="0x06 附言-补充材料"></a>0x06 附言-补充材料</h2><p>以下的内容均为进入备选区后更新。</p>
+<p>洛谷的编译参数 <a href="https://www.luogu.org/wiki/show?name=%E5%B8%AE%E5%8A%A9" target="_blank" rel="noopener">via</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- C：gcc -DONLINE_JUDGE -Wall -fno-asm -std=c99 -lm</span><br><span class="line">- C++：g++ -DONLINE_JUDGE -Wall -fno-asm -std=c++98 </span><br><span class="line">- C++11：g++ -DONLINE_JUDGE -Wall -fno-asm -std=c++11</span><br><span class="line">- Pascal：ppcx64 -dONLINE_JUDGE</span><br></pre></td></tr></table></figure>
+
+<p>常见“我在本地/xxOJ AC了、洛谷却不过”的原因 <a href="https://www.luogu.org/wiki/show?name=%E5%B8%AE%E5%8A%A9" target="_blank" rel="noopener">via</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Linux中换行符是&apos;\n&apos;而Windows中是&apos;\r\n&apos;（多一个字符），有些数据在Windows中生成，而在洛谷评测机Linux环境下评测。这种情况在字符串输入中非常常见。</span><br><span class="line"></span><br><span class="line">评测系统建立在Linux下，可能由于使用了Linux的保留字而出现CE，但在Windows下正常。</span><br><span class="line"></span><br><span class="line">Linux对内存的访问控制更为严格，因此在Windows上可能正常运行的无效指针或数组下标访问越界，在评测系统上无法运行。</span><br><span class="line"></span><br><span class="line">严重的内存泄露的问题很可能会引起系统的保护模块杀死你的进程。因此，凡是使用malloc(或calloc,realloc,new)分配而得的内存空间，请使用free(或delete)完全释放。</span><br><span class="line"></span><br><span class="line">数据可能真的有问题。但是如果不止一个人通过了这道题，那最好不要怀疑是数据的锅。</span><br></pre></td></tr></table></figure>
+
+<p>如有写得不好的地方，还请dalao多多指正！ <strong>乱码是因为我用的预览体验系统……不过用正式版也可以了！</strong></p>
+<hr>
+<h2 id="0x07-FAQ"><a href="#0x07-FAQ" class="headerlink" title="0x07 FAQ"></a>0x07 FAQ</h2><p>如何在子系统下进行……？</p>
+<p>该怎么用怎么用，可以用自带命令行，实在不行参考教程唤醒图形界面。 比如说vim，在命令行中键入<strong>man vim</strong>，会给出一份详尽的使用方法。 亦可使用<strong>vim –help</strong>。</p>
+<p>本文仅是对WSL的一个普及，如有疑问的话……不会百度吗？</p>
+<p>占用量大？ Sorry，这个系统和Windows10共用Host，所以理论上是比虚拟机占用小的。 而且只要别装太多应用，应该还是可以带动的。</p>
+<hr>
+<h2 id="0x08-参考资料"><a href="#0x08-参考资料" class="headerlink" title="0x08 参考资料"></a>0x08 参考资料</h2><p>这里列举了所有文中提到的链接，以便查阅。</p>
+<p>1.<a href="https://wenku.baidu.com/view/8246d96cdd36a32d72758143.html" target="_blank" rel="noopener">NOIP标准评测系统及相关问题 ,smart0326,2014-05-19,百度文库</a></p>
+<p>2.<a href="https://baike.baidu.com/item/wsl/20359185" target="_blank" rel="noopener">WSL,百度百科</a></p>
+<p>3.<a href="https://blogs.windows.com/buildingapps/2016/03/30/run-bash-on-ubuntu-on-windows/#cie8WdR3uSjgR5Ru.97" target="_blank" rel="noopener">Run Bash on Ubuntu on Windows,Mike Harsh,2016-05-30,Windows Blog</a></p>
+<p>4.<a href="https://docs.microsoft.com/zh-cn/windows/wsl/about" target="_blank" rel="noopener">Windows Subsystem for Linux Documentation,MSDN</a></p>
+<p>5.<a href="http://www.noi.cn/2016-11-08-03-42-01" target="_blank" rel="noopener">NOI系列活动标准竞赛环境,2016-11-08,NOI官网</a></p>
+<p>6.<a href="https://www.microsoft.com/zh-cn/p/ubuntu/9nblggh4msv6" target="_blank" rel="noopener">购买Ubuntu,Microsoft Store</a></p>
+<p>7.<a href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/" target="_blank" rel="noopener">Ubuntu 镜像使用帮助,清华TUNA</a></p>
+<p>8.<a href="https://blog.csdn.net/qq_14989227/article/details/72954523" target="_blank" rel="noopener">ubuntu的man命令帮助如何设置中文版,Frank看庐山,2017-06-09</a></p>
+<p>9.<a href="https://www.luogu.org/wiki/show?name=%E5%B8%AE%E5%8A%A9" target="_blank" rel="noopener">帮助,lin_toto,2017-04-08,洛谷百科</a></p>
+<p>10.<a href="https://sourceforge.net/projects/xming/" target="_blank" rel="noopener">Xming X Server for Windows,SourceForge</a></p>
+<hr>
+</section>
+    
+    <span id="/blog/lgrb-Run-Ubuntu-On-Windows10/" class="leancloud_visitors" data-flag-title="【转载】练习Linux？其实你的Win10自带一个Ubuntu">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#洛谷日报" >
+    <span class="tag-code">洛谷日报</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/solution-t27533/">
+        <span class="nav-arrow">← </span>
+        
+          题解 T27533 【[开昕生日愚人题#6]无规律数列】
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/solution-u30211/">
+        
+          题解 U30211 【BZ游戏#6 纸壳箱游戏（ZKX Game）】
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0x01-引言"><span class="toc-nav-text">0x01 引言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0x02-准备"><span class="toc-nav-text">0x02 准备</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0x03-开搞"><span class="toc-nav-text">0x03 开搞</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0x04-基础配置"><span class="toc-nav-text">0x04 基础配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0x05-进阶操作"><span class="toc-nav-text">0x05 进阶操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0x06-附言-补充材料"><span class="toc-nav-text">0x06 附言-补充材料</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0x07-FAQ"><span class="toc-nav-text">0x07 FAQ</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0x08-参考资料"><span class="toc-nav-text">0x08 参考资料</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/lgrb-Run-Ubuntu-On-Windows10/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "【转载】练习Linux？其实你的Win10自带一个Ubuntu",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/lgrb-Run-Ubuntu-On-Windows10/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

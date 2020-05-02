@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      float类型、double类型和long double类型的二进制存储 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>float类型、double类型和long double类型的二进制存储</h2>
+  <p class="post-date">2018-10-11</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>在32位环境下， float占用32位，double占用64位，long double占用80位</p>
+<p>目前C/C++编译器标准都遵照IEEE制定的浮点数表示法来进行float,double,long double运算。这种结构是一种科学计数法，用符号、指数和尾数来表示，底数定为2——即把一个浮点数表示为尾数乘以2的指数次方再添上符号。</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">符号位阶码</th>
+<th align="right">阶码</th>
+<th align="right">整数</th>
+<th align="right">尾数</th>
+<th align="right">长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">float</td>
+<td align="right">1</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">23</td>
+<td align="right">32</td>
+</tr>
+<tr>
+<td align="right">double</td>
+<td align="right">1</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">52</td>
+<td align="right">64</td>
+</tr>
+<tr>
+<td align="right">long double</td>
+<td align="right">1</td>
+<td align="right">15</td>
+<td align="right">1</td>
+<td align="right">63</td>
+<td align="right">80</td>
+</tr>
+</tbody></table>
+<p><img src="https://res.zhangkai.xin/pic/590px-Float_example.svg.png" alt=""></p>
+<p><img src="https://res.zhangkai.xin/pic/618px-IEEE_754_Double_Floating_Point_Format.svg.png" alt=""></p>
+<p><img src="https://res.zhangkai.xin/pic/762px-X86_Extended_Floating_Point_Format.svg.png" alt=""></p>
+<h1 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h1><p>将100分别转化为float型,double型和long double型的二进制表达。</p>
+<p>$100=(1+\frac{1}{2}+\frac{1}{16})\times2^6$</p>
+<h2 id="float"><a href="#float" class="headerlink" title="float"></a>float</h2><p>转为float型为</p>
+<p>100为正数，符号位为0，</p>
+<p>阶码，一共8位，因为指数可以为负，为了便于计算，规定都先加上127，在这里6+127=133转为二进制为10000101</p>
+<p>尾数转为1.1001，因为最高位的1 <strong>不写入内存</strong>，则尾数转为23位二进制为10010000000000000000000</p>
+<p>合在一起就是01000010110010000000000000000000</p>
+<h2 id="double"><a href="#double" class="headerlink" title="double"></a>double</h2><p>转为double型为</p>
+<p>100为正数，符号位为0，</p>
+<p>阶码，一共11位，因为指数可以为负，为了便于计算，规定都先加上1023，在这里6+1023=1029转为二进制为10000000101</p>
+<p>尾数转为1.1001，因为最高位的1 <strong>不写入内存</strong>，则尾数转为52位二进制为1001000000000000000000000000000000000000000000000000</p>
+<p>合在一起就是0100000001011001000000000000000000000000000000000000000000000000</p>
+<h2 id="long-double"><a href="#long-double" class="headerlink" title="long double"></a>long double</h2><p>转为long double型为</p>
+<p>100为正数，符号位为0，</p>
+<p>阶码，一共15位，因为指数可以为负，为了便于计算，规定都先加上16383，在这里6+16383=16389转为二进制为100000000000101</p>
+<p>尾数转为1.1001，将最高位的1 <strong>写入内存</strong>，则尾数转为64位二进制为1100100000000000000000000000000000000000000000000000000000000000</p>
+<p>合在一起就是01000000000001011100100000000000000000000000000000000000000000000000000000000000</p>
+<h1 id="转换到二进制"><a href="#转换到二进制" class="headerlink" title="转换到二进制"></a>转换到二进制</h1><h2 id="float-1"><a href="#float-1" class="headerlink" title="float"></a>float</h2><p>将float转为二进制字符串</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//str should have at least 32 byte.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">floattostr</span><span class="params">(<span class="keyword">float</span>* a,<span class="keyword">char</span>* str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> c;</span><br><span class="line">	c=((<span class="keyword">unsigned</span> <span class="keyword">int</span>*)a)[<span class="number">0</span>]; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">		str[<span class="number">31</span>-i]=(<span class="keyword">char</span>)(c&amp;<span class="number">1</span>)+<span class="string">'0'</span>;</span><br><span class="line">		c&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	str[<span class="number">32</span>]=<span class="string">'\0'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="double-1"><a href="#double-1" class="headerlink" title="double"></a>double</h2><p>将double转为二进制字符串</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//str should have at least 64 byte.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doubletostr</span><span class="params">(<span class="keyword">double</span>* a,<span class="keyword">char</span>* str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> c;</span><br><span class="line">	c=((<span class="keyword">long</span> <span class="keyword">long</span>*)a)[<span class="number">0</span>]; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">64</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">		str[<span class="number">63</span>-i]=(<span class="keyword">char</span>)(c&amp;<span class="number">1</span>)+<span class="string">'0'</span>;</span><br><span class="line">		c&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	str[<span class="number">64</span>]=<span class="string">'\0'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="long-double-1"><a href="#long-double-1" class="headerlink" title="long double"></a>long double</h2><p>将long double转为二进制字符串</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//str should have at least 80 byte.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doubletostr</span><span class="params">(<span class="keyword">double</span>* a,<span class="keyword">char</span>* str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	__int128 c;</span><br><span class="line">	c=((__int128*)a)[<span class="number">0</span>]; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">80</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">		str[<span class="number">79</span>-i]=(<span class="keyword">char</span>)(c&amp;<span class="number">1</span>)+<span class="string">'0'</span>;</span><br><span class="line">		c&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	str[<span class="number">80</span>]=<span class="string">'\0'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="从二进制转换"><a href="#从二进制转换" class="headerlink" title="从二进制转换"></a>从二进制转换</h1><h2 id="float-2"><a href="#float-2" class="headerlink" title="float"></a>float</h2><p>将32位二进制字符串转为float</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">strtofloat</span><span class="params">(<span class="keyword">char</span>* str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> flt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">31</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">		flt+=(str[i]-<span class="string">'0'</span>);</span><br><span class="line">		flt&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	dbl+=(str[<span class="number">31</span>]-<span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">float</span>* ret=(<span class="keyword">float</span>*)&amp;flt;</span><br><span class="line">	<span class="keyword">return</span> *ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="double-2"><a href="#double-2" class="headerlink" title="double"></a>double</h2><p>将64位二进制字符串转为double</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">strtodbl</span><span class="params">(<span class="keyword">char</span>* str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> dbl=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">63</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">		dbl+=(str[i]-<span class="string">'0'</span>);</span><br><span class="line">		dbl&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	dbl+=(str[<span class="number">63</span>]-<span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">double</span>* db=(<span class="keyword">double</span>*)&amp;dbl;</span><br><span class="line">	<span class="keyword">return</span> *db;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="long-double-2"><a href="#long-double-2" class="headerlink" title="long double"></a>long double</h2><p>将80位二进制字符串转为long double</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">double</span> <span class="title">strtolongdbl</span><span class="params">(<span class="keyword">char</span>* str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	__int128 ldb=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">79</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">		ldb+=(str[i]-<span class="string">'0'</span>);</span><br><span class="line">		ldb&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ldb+=(str[<span class="number">79</span>]-<span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">double</span>* ld=(<span class="keyword">long</span> <span class="keyword">double</span>*)&amp;ldb;</span><br><span class="line">	<span class="keyword">return</span> *ld;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ol>
+<li><p>在内存中占有的字节数不同</p>
+<p> 单精度浮点数在机内存占4个字节</p>
+<p> 双精度浮点数在机内存占8个字节</p>
+<p> 长双精度浮点数在机内存占10个字节</p>
+</li>
+<li><p>有效数字位数不同</p>
+<p> 单精度浮点数有效数字8位</p>
+<p> 双精度浮点数有效数字16位</p>
+<p> 长双精度浮点数有效数字19位</p>
+</li>
+<li><p>数值取值范围</p>
+<p> 单精度浮点数的表示范围：-3.40E+38~3.40E+38</p>
+<p> 双精度浮点数的表示范围：-1.79E+308~1.79E+308</p>
+<p> 长双精度浮点数的表示范围：-1.2E+4932~1.2E+4932 </p>
+</li>
+<li><p>在程序中处理速度不同</p>
+<p> 一般来说，CPU处理单精度浮点数的速度比处理双精度浮点数快</p>
+<p> 如果不声明，默认小数为double类型，所以如果要用float的话，必须进行强转</p>
+<p> 例如：float  a=1.3; 会编译报错，正确的写法 float a = (float)1.3;或者float a = 1.3f;（f或F都可以不区分大小写）</p>
+</li>
+</ol>
+<p>注意：float是8位有效数字，第7位数字将会四舍五入</p>
+<hr>
+<blockquote>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_80x15.png" alt="知识共享许可协议"></a></p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_88x31.png" alt="知识共享许可协议"></a></p>
+<p>本作品采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>
+</blockquote>
+</section>
+    
+    <span id="/blog/float-double-and-long-double/" class="leancloud_visitors" data-flag-title="float类型、double类型和long double类型的二进制存储">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#科技" >
+    <span class="tag-code">科技</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/compositor-sequence/">
+        <span class="nav-arrow">← </span>
+        
+          排序
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/lgrb-x-window-system/">
+        
+          【转载】X Window系统简明介绍
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#环境"><span class="toc-nav-text">环境</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#举例说明"><span class="toc-nav-text">举例说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#float"><span class="toc-nav-text">float</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#double"><span class="toc-nav-text">double</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#long-double"><span class="toc-nav-text">long double</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#转换到二进制"><span class="toc-nav-text">转换到二进制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#float-1"><span class="toc-nav-text">float</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#double-1"><span class="toc-nav-text">double</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#long-double-1"><span class="toc-nav-text">long double</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#从二进制转换"><span class="toc-nav-text">从二进制转换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#float-2"><span class="toc-nav-text">float</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#double-2"><span class="toc-nav-text">double</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#long-double-2"><span class="toc-nav-text">long double</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#其他"><span class="toc-nav-text">其他</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/float-double-and-long-double/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "float类型、double类型和long double类型的二进制存储",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/float-double-and-long-double/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

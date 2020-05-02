@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      可持久化数据结构 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>可持久化数据结构</h2>
+  <p class="post-date">2019-01-07</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><h1 id="主席树（可持久化线段树）"><a href="#主席树（可持久化线段树）" class="headerlink" title="主席树（可持久化线段树）"></a>主席树（可持久化线段树）</h1><h2 id="权值线段树"><a href="#权值线段树" class="headerlink" title="权值线段树"></a>权值线段树</h2><p>普通的线段树维护的是单点的值，比方说一个数组是{1,1,2,4,2,4,3,4}，开成普通线段树长这样</p>
+<p><img src="https://res.zhangkai.xin/pic/2019-01-09_07-51-59-621000.png" alt=""></p>
+<p>而权值线段树维护的是这个数出现了几次，就比方说上面的数组维护成了这样</p>
+<p><img src="https://res.zhangkai.xin/pic/2019-01-09_07-55-44-679000.png" alt=""></p>
+<h2 id="主席树"><a href="#主席树" class="headerlink" title="主席树"></a>主席树</h2><p>现在我们在树中插入一个数2</p>
+<p><img src="https://res.zhangkai.xin/pic/2019-01-09_08-10-02-152000.png" alt=""></p>
+<p>观察修改过后的权值线段树，发现只有红色的链有更改，所以我们有一个大胆的想法：可不可以每次只建一个链，由于根节点肯定不一样所以我们保存根节点的信息的数组就是保存版本信息的数组，这样就可以回到之前的版本，就十分的方便了。</p>
+<p><img src="https://res.zhangkai.xin/pic/2019-01-09_08-12-58-370000.png" alt=""></p>
+<p>这就是所谓的主席树即可持久化线段树。</p>
+<p>板子如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpos&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scan</span><span class="params">(tpos &amp;x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tpos f=<span class="number">1</span>;x=<span class="number">0</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(s==<span class="string">'-'</span>)f=<span class="number">-1</span>;s=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;x=x*<span class="number">10</span>+s-<span class="string">'0'</span>;s=getchar();&#125;</span><br><span class="line">	x*=f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpos,<span class="keyword">typename</span>... Tpos&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scan</span><span class="params">(tpos &amp;x,Tpos &amp;...X)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	scan(x),scan(X...);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpop&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(tpop x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">'-'</span>),x=-x;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">9</span>)print(x/<span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpop,<span class="keyword">typename</span>... Tpop&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(tpop x,Tpop ...X)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	print(x),<span class="built_in">putchar</span>(<span class="string">' '</span>),print(X...);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,q,m,tot=<span class="number">0</span>,rt[<span class="number">200005</span>],a[<span class="number">200005</span>],p[<span class="number">200005</span>];</span><br><span class="line"><span class="comment">//n是原数个数，q是询问数，m是去重个数（即权值线段树叶子节点数），tot是节点总个数，rt是根版本号，a是原数组，p是去重数组 </span></span><br><span class="line"><span class="keyword">int</span> son[<span class="number">200000</span>&lt;&lt;<span class="number">6</span>][<span class="number">2</span>],size[<span class="number">200000</span>&lt;&lt;<span class="number">6</span>];</span><br><span class="line"><span class="comment">//son和size是线段树动态开点保存的信息，左右儿子和子树大小 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> &amp;rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    rt=++tot;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">    build(son[rt][<span class="number">0</span>],l,mid);</span><br><span class="line">	build(son[rt][<span class="number">1</span>],mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;<span class="comment">//建立原树 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">newpoint</span><span class="params">(<span class="keyword">int</span> &amp;rt,<span class="keyword">int</span> old,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	rt=++tot;</span><br><span class="line">    son[rt][<span class="number">0</span>]=son[old][<span class="number">0</span>];</span><br><span class="line">    son[rt][<span class="number">1</span>]=son[old][<span class="number">1</span>];</span><br><span class="line">    size[rt]=size[old]+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(val&lt;=mid)newpoint(son[rt][<span class="number">0</span>],son[old][<span class="number">0</span>],l,mid,val);</span><br><span class="line">    <span class="keyword">else</span> newpoint(son[rt][<span class="number">1</span>],son[old][<span class="number">1</span>],mid+<span class="number">1</span>,r,val);</span><br><span class="line">&#125;<span class="comment">//建立新版本 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt1,<span class="keyword">int</span> rt2,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span> l;</span><br><span class="line">    <span class="keyword">if</span>(size[son[rt2][<span class="number">0</span>]]-size[son[rt1][<span class="number">0</span>]]&gt;=k)<span class="keyword">return</span> query(son[rt1][<span class="number">0</span>],son[rt2][<span class="number">0</span>],l,mid,k);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> query(son[rt1][<span class="number">1</span>],son[rt2][<span class="number">1</span>],mid+<span class="number">1</span>,r,k-size[son[rt2][<span class="number">0</span>]]+size[son[rt1][<span class="number">0</span>]]);</span><br><span class="line">&#125;<span class="comment">//询问</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	scan(n,q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		scan(a[i]),p[i]=a[i];</span><br><span class="line">	sort(p+<span class="number">1</span>,p+n+<span class="number">1</span>);</span><br><span class="line">	m=unique(p+<span class="number">1</span>,p+n+<span class="number">1</span>)-p<span class="number">-1</span>;</span><br><span class="line">	build(rt[<span class="number">0</span>],<span class="number">1</span>,m);</span><br><span class="line">	<span class="comment">//去重建权值线段树 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,pos;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		pos=lower_bound(p+<span class="number">1</span>,p+m+<span class="number">1</span>,a[i])-p;</span><br><span class="line">		newpoint(rt[i],rt[i<span class="number">-1</span>],<span class="number">1</span>,m,pos);</span><br><span class="line">	&#125;<span class="comment">//主席树的每一个版本都是一个权值线段树 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y,k;i&lt;=q;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	scan(x,y,k);</span><br><span class="line">        print(p[query(rt[x<span class="number">-1</span>],rt[y],<span class="number">1</span>,m,k)]),<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    &#125;<span class="comment">//类似前缀和思想，求y-(x-1)==k排名的数即在[x,y]上排名第k的数 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="可持久化数组"><a href="#可持久化数组" class="headerlink" title="可持久化数组"></a>可持久化数组</h1><p>可持久化数组其实就是记录数组的历史版本，随时调用，随时修改。<br>所以我们可以利用主席树来维护，只不过主席树这次维护的不是第k名而是单点的值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpos&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scan</span><span class="params">(tpos &amp;x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tpos f=<span class="number">1</span>;x=<span class="number">0</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(s==<span class="string">'-'</span>)f=<span class="number">-1</span>;s=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;x=x*<span class="number">10</span>+s-<span class="string">'0'</span>;s=getchar();&#125;</span><br><span class="line">	x*=f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpos,<span class="keyword">typename</span>... Tpos&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scan</span><span class="params">(tpos &amp;x,Tpos &amp;...X)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	scan(x),scan(X...);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpop&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(tpop x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">'-'</span>),x=-x;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">9</span>)print(x/<span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpop,<span class="keyword">typename</span>... Tpop&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(tpop x,Tpop ...X)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	print(x),<span class="built_in">putchar</span>(<span class="string">' '</span>),print(X...);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,q,tot=<span class="number">0</span>,rt[<span class="number">1000005</span>],a[<span class="number">1000005</span>];</span><br><span class="line"><span class="comment">//n是原数个数，q是操作数，tot是节点总个数，rt是根版本号，a是原数组</span></span><br><span class="line"><span class="keyword">int</span> son[<span class="number">1000005</span>*<span class="number">20</span>][<span class="number">2</span>],val[<span class="number">1000005</span>*<span class="number">20</span>];</span><br><span class="line"><span class="comment">//son和val是线段树动态开点保存的信息，左右儿子和单点的值 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> &amp;rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    rt=++tot;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		val[rt]=a[l];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    build(son[rt][<span class="number">0</span>],l,mid);</span><br><span class="line">	build(son[rt][<span class="number">1</span>],mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;<span class="comment">//建立原树 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">newpoint</span><span class="params">(<span class="keyword">int</span> &amp;rt,<span class="keyword">int</span> old,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	rt=++tot;</span><br><span class="line">	son[rt][<span class="number">0</span>]=son[old][<span class="number">0</span>];</span><br><span class="line">	son[rt][<span class="number">1</span>]=son[old][<span class="number">1</span>];</span><br><span class="line">	val[rt]=val[old];</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		val[rt]=w;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;=mid)newpoint(son[rt][<span class="number">0</span>],son[old][<span class="number">0</span>],l,mid,x,w);</span><br><span class="line">    <span class="keyword">else</span> newpoint(son[rt][<span class="number">1</span>],son[old][<span class="number">1</span>],mid+<span class="number">1</span>,r,x,w);</span><br><span class="line">&#125;<span class="comment">//建立新版本 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)<span class="keyword">return</span> val[rt];</span><br><span class="line">    <span class="keyword">if</span>(x&lt;=mid)<span class="keyword">return</span> query(son[rt][<span class="number">0</span>],l,mid,x);</span><br><span class="line"> 	<span class="keyword">else</span> <span class="keyword">return</span> query(son[rt][<span class="number">1</span>],mid+<span class="number">1</span>,r,x);</span><br><span class="line">&#125;<span class="comment">//询问</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	scan(n,q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		scan(a[i]);</span><br><span class="line">	build(rt[<span class="number">0</span>],<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,v,op,x,w;i&lt;=q;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scan(v,op,x);</span><br><span class="line">  		<span class="keyword">if</span>(op==<span class="number">1</span>)scan(w),newpoint(rt[i],rt[v],<span class="number">1</span>,n,x,w);</span><br><span class="line">  		<span class="keyword">if</span>(op==<span class="number">2</span>)print(query(rt[i]=rt[v],<span class="number">1</span>,n,x)),<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="可持久化并查集"><a href="#可持久化并查集" class="headerlink" title="可持久化并查集"></a>可持久化并查集</h1><p>可持久化并查集建立与可持久化数组的基础上，但是由于我们要建立可持久化，所以不能路径压缩。</p>
+<p>所以我们考虑基本不常用的按秩合并，我们利用可持久化数组（基于主席树），维护并查集信息</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpos&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scan</span><span class="params">(tpos &amp;x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tpos f=<span class="number">1</span>;x=<span class="number">0</span>;<span class="keyword">char</span> s=getchar();</span><br><span class="line">	<span class="keyword">while</span>(s&lt;<span class="string">'0'</span>||s&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(s==<span class="string">'-'</span>)f=<span class="number">-1</span>;s=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(s&gt;=<span class="string">'0'</span>&amp;&amp;s&lt;=<span class="string">'9'</span>)&#123;x=x*<span class="number">10</span>+s-<span class="string">'0'</span>;s=getchar();&#125;</span><br><span class="line">	x*=f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpos,<span class="keyword">typename</span>... Tpos&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scan</span><span class="params">(tpos &amp;x,Tpos &amp;...X)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	scan(x),scan(X...);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpop&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(tpop x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">'-'</span>),x=-x;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">9</span>)print(x/<span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> tpop,<span class="keyword">typename</span>... Tpop&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(tpop x,Tpop ...X)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	print(x),<span class="built_in">putchar</span>(<span class="string">' '</span>),print(X...);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,q,tot=<span class="number">0</span>,rt[<span class="number">200005</span>],a[<span class="number">200005</span>];</span><br><span class="line"><span class="comment">//n是原数个数，q是操作数，tot是节点总个数，rt是根版本号，a是原数组</span></span><br><span class="line"><span class="keyword">int</span> son[<span class="number">200000</span>*<span class="number">20</span>][<span class="number">2</span>],fa[<span class="number">200000</span>*<span class="number">20</span>],level[<span class="number">200000</span>*<span class="number">20</span>];</span><br><span class="line"><span class="comment">//son、fa、level是按秩合并的 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> &amp;rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	rt=++tot;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		fa[rt]=l;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	build(son[rt][<span class="number">0</span>],l,mid);</span><br><span class="line">	build(son[rt][<span class="number">1</span>],mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;<span class="comment">//建立原树 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">newpoint</span><span class="params">(<span class="keyword">int</span> &amp;rt,<span class="keyword">int</span> old,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> father)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	rt=++tot;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		fa[rt]=father;</span><br><span class="line">		level[rt]=level[old];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	son[rt][<span class="number">0</span>]=son[old][<span class="number">0</span>];</span><br><span class="line">	son[rt][<span class="number">1</span>]=son[old][<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid)newpoint(son[rt][<span class="number">0</span>],son[old][<span class="number">0</span>],l,mid,x,father);</span><br><span class="line">	<span class="keyword">else</span> newpoint(son[rt][<span class="number">1</span>],son[old][<span class="number">1</span>],mid+<span class="number">1</span>,r,x,father);</span><br><span class="line">&#125;<span class="comment">//建立新版本 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addlevel</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		++level[rt];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid)addlevel(son[rt][<span class="number">0</span>],l,mid,x);</span><br><span class="line">	<span class="keyword">else</span> addlevel(son[rt][<span class="number">1</span>],mid+<span class="number">1</span>,r,x);</span><br><span class="line">&#125;<span class="comment">//增加优先级 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r)<span class="keyword">return</span> rt;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid)<span class="keyword">return</span> query(son[rt][<span class="number">0</span>],l,mid,x);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> query(son[rt][<span class="number">1</span>],mid+<span class="number">1</span>,r,x);</span><br><span class="line">&#125;<span class="comment">//询问节点在版本上的位置 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getfa</span><span class="params">(<span class="keyword">int</span> rt,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> father=query(rt,<span class="number">1</span>,n,x);</span><br><span class="line">	<span class="keyword">return</span> fa[father]==x?father:getfa(rt,fa[father]);</span><br><span class="line">&#125;<span class="comment">//询问节点在版本上的祖先 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx=getfa(rt[v],x),fy=getfa(rt[v],y);</span><br><span class="line">	<span class="keyword">if</span>(fx==fy)<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(level[fx]&lt;level[fy])swap(fx,fy);</span><br><span class="line">	newpoint(rt[v],rt[v<span class="number">-1</span>],<span class="number">1</span>,n,fa[fy],fa[fx]);</span><br><span class="line">	<span class="keyword">if</span>(level[fx]==level[fy])</span><br><span class="line">		addlevel(rt[v],<span class="number">1</span>,n,fa[fx]);</span><br><span class="line">&#125;<span class="comment">//在版本上连接连个集合 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    scan(n,q);</span><br><span class="line">    build(rt[<span class="number">0</span>],<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,op,x,y;i&lt;=q;i++)</span><br><span class="line">    &#123;</span><br><span class="line">    	scan(op);</span><br><span class="line">    	<span class="keyword">switch</span>(op)</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">case</span> <span class="number">1</span>:scan(x,y);rt[i]=rt[i<span class="number">-1</span>];connect(i,x,y);<span class="keyword">break</span>;</span><br><span class="line">    		<span class="keyword">case</span> <span class="number">2</span>:scan(x);rt[i]=rt[x];<span class="keyword">break</span>;</span><br><span class="line">    		<span class="keyword">case</span> <span class="number">3</span>:scan(x,y);rt[i]=rt[i<span class="number">-1</span>];print(getfa(rt[i],x)==getfa(rt[i],y)),<span class="built_in">putchar</span>(<span class="string">'\n'</span>);<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="可持久化Trie树"><a href="#可持久化Trie树" class="headerlink" title="可持久化Trie树"></a>可持久化Trie树</h1><h1 id="可持久化平衡树"><a href="#可持久化平衡树" class="headerlink" title="可持久化平衡树"></a>可持久化平衡树</h1><h2 id="可持久化平衡树-1"><a href="#可持久化平衡树-1" class="headerlink" title="可持久化平衡树"></a>可持久化平衡树</h2><h2 id="可持久化文艺平衡树"><a href="#可持久化文艺平衡树" class="headerlink" title="可持久化文艺平衡树"></a>可持久化文艺平衡树</h2><h1 id="可持久化状链表"><a href="#可持久化状链表" class="headerlink" title="可持久化状链表"></a>可持久化状链表</h1><hr>
+<blockquote>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_80x15.png" alt="知识共享许可协议"></a></p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_88x31.png" alt="知识共享许可协议"></a></p>
+<p>本作品采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>
+</blockquote>
+</section>
+    
+    <span id="/blog/data-Persistent/" class="leancloud_visitors" data-flag-title="可持久化数据结构">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#数据结构" >
+    <span class="tag-code">数据结构</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/About-Ubuntu/">
+        <span class="nav-arrow">← </span>
+        
+          Ubuntu使用心得
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/Bisection/">
+        
+          二分
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#主席树（可持久化线段树）"><span class="toc-nav-text">主席树（可持久化线段树）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#权值线段树"><span class="toc-nav-text">权值线段树</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#主席树"><span class="toc-nav-text">主席树</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#可持久化数组"><span class="toc-nav-text">可持久化数组</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#可持久化并查集"><span class="toc-nav-text">可持久化并查集</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#可持久化Trie树"><span class="toc-nav-text">可持久化Trie树</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#可持久化平衡树"><span class="toc-nav-text">可持久化平衡树</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#可持久化平衡树-1"><span class="toc-nav-text">可持久化平衡树</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#可持久化文艺平衡树"><span class="toc-nav-text">可持久化文艺平衡树</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#可持久化状链表"><span class="toc-nav-text">可持久化状链表</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/data-Persistent/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "可持久化数据结构",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/data-Persistent/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      NOI Linux使用心得 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>NOI Linux使用心得</h2>
+  <p class="post-date">2019-01-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><p>我使用的版本是NOI Linux 1.4.1</p>
+<p>$\huge\color{red}{Warning}$ 请不要尝试在上个世纪的电脑上执行以下操作，这可能会导致严重的“Kernel panic - not syncing: Attempted to kill init!”错误<br>$\huge\color{blue}{Attention}$ 请在执行下述操作时确认自己为根目录管理员（root）或拥有根目录管理权限</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装过程比较苟，给出<a href="https://sys-code.oss-cn-beijing.aliyuncs.com/NOI/noilinux%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.docx" target="_blank" rel="noopener">官方说明文档</a>和几个可参考的博客地址：</p>
+<ul>
+<li><a href="https://www.luogu.org/blog/Peter-Matthew/Run-Ubuntu-On-Windows10" target="_blank" rel="noopener">【转载】练习Linux？其实你的Win10自带一个Ubuntu</a></li>
+<li><a href="https://www.luogu.org/blog/Peter-Matthew/zhen-zheng-di-quan-zhen-xu-ni-ji-vmware-workstation" target="_blank" rel="noopener">【转载】真正的全真虚拟机：VmWare Workstation</a></li>
+<li><a href="https://www.luogu.org/blog/Peter-Matthew/play-linux-on-your-android-phone" target="_blank" rel="noopener">【转载】在你的Android手机上运行Linux</a></li>
+<li><a href="https://www.luogu.org/blog/Peter-Matthew/multi-os-install-ubuntu" target="_blank" rel="noopener">【转载】运行linux的第四种方式：双系统</a></li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>个人比较喜欢一些小配置，为了方便我很快地完成所有设置，在这里罗列。。。</p>
+<h2 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h2><p>NOI Linux的默认密码是123456，我们修改密码却要求要有一定的强度，所以我们打开终端，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br></pre></td></tr></table></figure>
+
+<p>得到了root权限。<br>然后输入123456（即原密码）。<br>现在我们输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd noilinux</span><br></pre></td></tr></table></figure>
+
+<p>输入新密码就好了，就比如我的密码就是六位纯数字，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">******（我又不傻）</span><br></pre></td></tr></table></figure>
+
+<p>若修改成功，则会返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password updated successfully</span><br></pre></td></tr></table></figure>
+
+<h2 id="外观"><a href="#外观" class="headerlink" title="外观"></a>外观</h2><p>桌面主题选的是Radiance，壁纸选的是Foggy Forest (2560 x 1709)<br>应用程序-&gt;系统工具-&gt;首选项-&gt;主菜单，把所有勾点上</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>我主要安装的字体是 YaHei Consolas Hybrid</p>
+<p>如何安装字体？<br>请在执行以下操作时确定自己为根目录管理员（root），也可以通过终端完成操作。</p>
+<ol>
+<li>在/usr/share/fonts/内创建一个文件夹</li>
+<li>在文件夹内放入字体文件（最好是.ttf格式的文件，其他格式的我还没测试）</li>
+<li>在终端执行下面两行命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkfontscale</span><br><span class="line">mkfontdir</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>如何检验字体是否安装？  </p>
+<p>请在终端执行：  </p>
+<p>查看系统中的字体  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-list</span><br></pre></td></tr></table></figure>
+
+<p>查看系统中的中文字体  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-list :lang=zh</span><br></pre></td></tr></table></figure>
+
+<h2 id="FireFox"><a href="#FireFox" class="headerlink" title="FireFox"></a>FireFox</h2><p>事实上NOI Linux 1.4.1自带的FireFox已经登不上现在的洛谷<del>3.5</del>了，所以我们需要手动更新它。<br>请在终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install firefox</span><br></pre></td></tr></table></figure>
+
+<p>然后我们就可以愉快地上洛谷<del>3.5</del>了<br>还有字体也可以在浏览器的首选项里更改了。</p>
+<h2 id="Gedit"><a href="#Gedit" class="headerlink" title="Gedit"></a>Gedit</h2><p>Gedit又称文本编辑器<del>，类似于Windows的记事本</del>。<br>这是我认为比较好用的编辑器，其主要原因是配置好后与Dev C++比较相似。<del>根本原因是Vim上手太难。</del><br>让我们开始配置ing  </p>
+<p>编辑-&gt;首选项  </p>
+<ul>
+<li>查看：行号和高亮的两个打开</li>
+<li>编辑器：制表符宽度4、启动自动缩进</li>
+<li>字体和颜色：配色方案选择Oblivion，取消使用系统等宽字体而使用YCH的Bold 21号</li>
+<li>插件：重点，点开外部工具和片段两个插件</li>
+</ul>
+<p>在外部工具点开后，在 工具-&gt;Manage External Tools里，新建几个工具，命名和右侧选择的快捷键和代码内容如下：<br>Compile(Alt+F9)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">fullname=$GEDIT_CURRENT_DOCUMENT_NAME</span><br><span class="line">name=`echo $fullname | cut -d. -f1`</span><br><span class="line">    g++ $fullname -o $name -g</span><br></pre></td></tr></table></figure>
+
+<p>Run(Alt+F10)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">fullname=$GEDIT_CURRENT_DOCUMENT_NAME</span><br><span class="line">dir=$GEDIT_CURRENT_DOCUMENT_DIR</span><br><span class="line">name=`echo $fullname | cut -d. -f1`</span><br><span class="line">    gnome-terminal -x bash -c &quot;time &apos;$dir/$name&apos;;echo;echo &apos;Press ENTER to continue&apos;;read&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Compile And Run(Alt+F11)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">fullname=$GEDIT_CURRENT_DOCUMENT_NAME</span><br><span class="line">dir=$GEDIT_CURRENT_DOCUMENT_DIR</span><br><span class="line">name=`echo $fullname | cut -d. -f1`</span><br><span class="line">    g++ $fullname -o $name -g</span><br><span class="line">    gnome-terminal -x bash -c &quot;time &apos;$dir/$name&apos;;echo;echo &apos;Press ENTER to continue&apos;;read&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Debug(Alt+F5)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">fullname=$GEDIT_CURRENT_DOCUMENT_NAME</span><br><span class="line">dir=$GEDIT_CURRENT_DOCUMENT_DIR</span><br><span class="line">name=`echo $fullname | cut -d. -f1`</span><br><span class="line">    gnome-terminal -x gdb &quot;$dir/$name&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这四条的代码都从All Languages改为C++，然后将Compile和Compile And Run的工具里将保存从 无 改为 当前文档。</p>
+<p>大功告成，我们可以写一份代码保存到桌面（注意Gedit不会自动添加扩展名），然后执行快捷键体验了。</p>
+<p>额，没有括号补全？<br>首先我们来安装所有的插件，在终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gedit-plugins</span><br></pre></td></tr></table></figure>
+
+<p>然后我们在插件里找到括号补全，点开就好了。还有个Code Comment也可以启用，它可以在编辑菜单里看到。</p>
+<h2 id="Arbiter"><a href="#Arbiter" class="headerlink" title="Arbiter"></a>Arbiter</h2><p>又称为考试评测系统Primer，是北航联合CCF推出的一款官方评测系统，其系统bug极多，效果极差，稍有操作不慎将从头来过，被我机房所独骂。</p>
+<p>虽说官方已经发了<a href="http://www.noi.cn/RequireFile.do?fid=6tj9d3hF" target="_blank" rel="noopener">介绍</a>不过我们确实需要说一说这个。</p>
+<p>我们NOI Linux上安装的一般都是单机版<del>（我也没有网络版）</del></p>
+<p><strong>请注意下面的每一步最好都保存以免意外重来。</strong></p>
+<p>新建一个文件夹，然后在Arbiter里新建比赛，目录选择那个文件夹。目录里就会出现这些东西。<br><img src="https://res.zhangkai.xin/pic/NLA1.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">└Exam				&lt;-评测根目录</span><br><span class="line"> ├data				&lt;-数据目录</span><br><span class="line"> │└[无文件]</span><br><span class="line"> ├evaldata			&lt;-整合数据目录（数据格式必须为XXxx.in/.ans，XX为字母，xx为数字）</span><br><span class="line"> │└[无文件]</span><br><span class="line"> ├filter			&lt;-评测比较器</span><br><span class="line"> │├fulltext</span><br><span class="line"> │├fulltext_e</span><br><span class="line"> │├fulltext_e.c</span><br><span class="line"> │└...</span><br><span class="line"> ├final				&lt;-提供存储最终成绩的目录</span><br><span class="line"> │└[无文件]</span><br><span class="line"> ├players			&lt;-选手程序目录</span><br><span class="line"> │└[无文件]</span><br><span class="line"> ├result			&lt;-成绩目录</span><br><span class="line"> │└[无文件]</span><br><span class="line"> ├tmp				&lt;-评测临时目录</span><br><span class="line"> │└[无文件]</span><br><span class="line"> └setup.cfg			&lt;-评测设置文件</span><br></pre></td></tr></table></figure>
+
+<p>下面我们开始配置<br>我们有两种配置方式：一种是多场次共文件夹的（情况A）、一种是单场次单文件夹的（情况B）。<br>我们假设Day1有三道题A、B、C，Day2有三道题D、E、F。</p>
+<h3 id="多场次共文件夹"><a href="#多场次共文件夹" class="headerlink" title="多场次共文件夹"></a>多场次共文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">└Exam				&lt;-评测根目录</span><br><span class="line"> ├data				&lt;-数据目录</span><br><span class="line"> │├A</span><br><span class="line"> ││├A1.in</span><br><span class="line"> ││├A1.ans</span><br><span class="line"> ││├A2.in</span><br><span class="line"> ││├A2.ans</span><br><span class="line"> ││└...</span><br><span class="line"> │├B</span><br><span class="line"> ││├B1.in</span><br><span class="line"> ││├B1.ans</span><br><span class="line"> ││├B2.in</span><br><span class="line"> ││├B2.ans</span><br><span class="line"> ││└...</span><br><span class="line"> │├C</span><br><span class="line"> ││├C1.in</span><br><span class="line"> ││├C1.ans</span><br><span class="line"> ││├C2.in</span><br><span class="line"> ││├C2.ans</span><br><span class="line"> ││└...</span><br><span class="line"> │├D</span><br><span class="line"> ││├D1.in</span><br><span class="line"> ││├D1.ans</span><br><span class="line"> ││├D2.in</span><br><span class="line"> ││├D2.ans</span><br><span class="line"> ││└...</span><br><span class="line"> │├E</span><br><span class="line"> ││├E1.in</span><br><span class="line"> ││├E1.ans</span><br><span class="line"> ││├E2.in</span><br><span class="line"> ││├E2.ans</span><br><span class="line"> ││└...</span><br><span class="line"> │└F</span><br><span class="line"> │ ├F1.in</span><br><span class="line"> │ ├F1.ans</span><br><span class="line"> │ ├F2.in</span><br><span class="line"> │ ├F2.ans</span><br><span class="line"> │ └...</span><br><span class="line"> ├evaldata			&lt;-整合数据目录（数据格式必须为XXxx.in/.ans，XX为字母，xx为数字）</span><br><span class="line"> │├A1.in</span><br><span class="line"> │├A1.ans</span><br><span class="line"> │├A2.in</span><br><span class="line"> │├A2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├B1.in</span><br><span class="line"> │├B1.ans</span><br><span class="line"> │├B2.in</span><br><span class="line"> │├B2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├C1.in</span><br><span class="line"> │├C1.ans</span><br><span class="line"> │├C2.in</span><br><span class="line"> │├C2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├D1.in</span><br><span class="line"> │├D1.ans</span><br><span class="line"> │├D2.in</span><br><span class="line"> │├D2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├E1.in</span><br><span class="line"> │├E1.ans</span><br><span class="line"> │├E2.in</span><br><span class="line"> │├E2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├F1.in</span><br><span class="line"> │├F1.ans</span><br><span class="line"> │├F2.in</span><br><span class="line"> │├F2.ans</span><br><span class="line"> │└...</span><br><span class="line"> ├filter			&lt;-评测比较器</span><br><span class="line"> │├fulltext</span><br><span class="line"> │├fulltext_e</span><br><span class="line"> │├fulltext_e.c</span><br><span class="line"> │└...</span><br><span class="line"> ├final				&lt;-提供存储最终成绩的目录</span><br><span class="line"> │└[自己放的东西]</span><br><span class="line"> ├players			&lt;-选手程序目录</span><br><span class="line"> │├HA-0001</span><br><span class="line"> ││├A</span><br><span class="line"> │││└A.cpp</span><br><span class="line"> ││├B</span><br><span class="line"> │││└B.cpp</span><br><span class="line"> ││├C</span><br><span class="line"> │││└C.cpp</span><br><span class="line"> ││├D</span><br><span class="line"> │││└D.cpp</span><br><span class="line"> ││├E</span><br><span class="line"> │││└E.cpp</span><br><span class="line"> ││└F</span><br><span class="line"> ││ └F.cpp</span><br><span class="line"> │├HA-0002</span><br><span class="line"> ││├A</span><br><span class="line"> │││└A.cpp</span><br><span class="line"> ││├B</span><br><span class="line"> │││└B.cpp</span><br><span class="line"> ││├C</span><br><span class="line"> │││└C.cpp</span><br><span class="line"> ││├D</span><br><span class="line"> │││└D.cpp</span><br><span class="line"> ││├E</span><br><span class="line"> │││└E.cpp</span><br><span class="line"> ││└F</span><br><span class="line"> ││ └F.cpp</span><br><span class="line"> │└...</span><br><span class="line"> ├ps				&lt;-成绩打印表</span><br><span class="line"> │├day1</span><br><span class="line"> ││├HA-0001</span><br><span class="line"> │││└HA-0001.ps</span><br><span class="line"> ││├HA-0002</span><br><span class="line"> │││└HA-0002.ps</span><br><span class="line"> ││└...</span><br><span class="line"> │└day2</span><br><span class="line"> │ ├HA-0001</span><br><span class="line"> │ │└HA-0001.ps</span><br><span class="line"> │ ├HA-0002</span><br><span class="line"> │ │└HA-0002.ps</span><br><span class="line"> │ └...</span><br><span class="line"> ├result			&lt;-成绩目录</span><br><span class="line"> │├day1</span><br><span class="line"> ││├HA-0001</span><br><span class="line"> │││└HA-0001.result</span><br><span class="line"> ││├HA-0002</span><br><span class="line"> │││└HA-0002.result</span><br><span class="line"> ││└...</span><br><span class="line"> │└day2</span><br><span class="line"> │ ├HA-0001</span><br><span class="line"> │ │└HA-0001.result</span><br><span class="line"> │ ├HA-0002</span><br><span class="line"> │ │└HA-0002.result</span><br><span class="line"> │ └...</span><br><span class="line"> ├tmp				&lt;-评测临时目录</span><br><span class="line"> │└[系统产生的文件]</span><br><span class="line"> ├day1.info</span><br><span class="line"> ├day2.info</span><br><span class="line"> ├player.info</span><br><span class="line"> ├setup.cfg			&lt;-评测设置文件</span><br><span class="line"> ├task1_1.info</span><br><span class="line"> ├task1_2.info</span><br><span class="line"> ├task1_3.info</span><br><span class="line"> ├task2_1.info</span><br><span class="line"> ├task2_2.info</span><br><span class="line"> ├task2_3.info</span><br><span class="line"> └team.info</span><br></pre></td></tr></table></figure>
+
+<p>我们在data文件夹下放数据，怎么放都行，貌似这个文件夹不会影响测评<br><img src="https://res.zhangkai.xin/pic/NLA4.png" alt=""></p>
+<p>evaldata下要放所有数据，必须在文件夹下放.in/.ans，不能缺少，而且输出文件只能为.ans，否则<strong>Arbiter评测时就会闪退</strong></p>
+<p>接着在players里放下选手的文件夹，在每个选手的文件夹里题应该独立建子文件夹，并将程序放在子文件夹下，如上树形图所示</p>
+<p>我们返回Arbiter，在试题管理选项卡中右键-添加考试，在第一场上添加三个试题，更改试题名称、（试题分值）、测试点数量、时间限制、内存限制和比较方式（我不知道spj怎么设置），如果有需要还可以设置编译选项。</p>
+<p><img src="https://res.zhangkai.xin/pic/NLA5.png" alt=""></p>
+<p>接着我们转到试题评测选项卡，点击右侧添加选手，添加完所有选手。然后导出名单，可以保存成任意格式，北航官方说保存成.txt<del>其实明眼人一看就是.csv的文件</del>，但是无所谓。这个名单方便下次测评可以直接导入名单而不用一一添加选手名字。</p>
+<p>添加好后，更改左上角的场次，勾选要测评的选手然后点击评测选定选手，等待评<br>测。</p>
+<p><img src="https://res.zhangkai.xin/pic/NLA6.png" alt=""></p>
+<p>双击选手可查看其程序，若提示<strong>“找不到答案文件”</strong>，说明放置的选手程序有误或是没有，反正系统找不到源程序。  </p>
+<p><img src="https://res.zhangkai.xin/pic/NLA7.png" alt=""></p>
+<p>评测完后，可以查看相应的成绩，在result文件夹下对应场次中找到选手，打开.result文件即可查看对应的单测试点时间、成绩及信息。</p>
+<p><img src="https://res.zhangkai.xin/pic/NLA8.png" alt=""></p>
+<p>最后还有成绩统计选项卡，这个就随意了，你也可以导出成绩到文件，如果打印到文件会多出一个ps文件夹用于存储打印表。</p>
+<p><img src="https://res.zhangkai.xin/pic/NLA9.png" alt=""></p>
+<h3 id="单场次单文件夹"><a href="#单场次单文件夹" class="headerlink" title="单场次单文件夹"></a>单场次单文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line">└Exam				&lt;-评测根目录</span><br><span class="line"> ├data				&lt;-数据目录</span><br><span class="line"> │├day1</span><br><span class="line"> ││├A</span><br><span class="line"> │││├A1.in</span><br><span class="line"> │││├A1.ans</span><br><span class="line"> │││├A2.in</span><br><span class="line"> │││├A2.ans</span><br><span class="line"> │││└...</span><br><span class="line"> ││├B</span><br><span class="line"> │││├B1.in</span><br><span class="line"> │││├B1.ans</span><br><span class="line"> │││├B2.in</span><br><span class="line"> │││├B2.ans</span><br><span class="line"> │││└...</span><br><span class="line"> ││└C</span><br><span class="line"> ││ ├C1.in</span><br><span class="line"> ││ ├C1.ans</span><br><span class="line"> ││ ├C2.in</span><br><span class="line"> ││ ├C2.ans</span><br><span class="line"> ││ └...</span><br><span class="line"> │└day2</span><br><span class="line"> │ ├D</span><br><span class="line"> │ │├D1.in</span><br><span class="line"> │ │├D1.ans</span><br><span class="line"> │ │├D2.in</span><br><span class="line"> │ │├D2.ans</span><br><span class="line"> │ │└...</span><br><span class="line"> │ ├E</span><br><span class="line"> │ │├E1.in</span><br><span class="line"> │ │├E1.ans</span><br><span class="line"> │ │├E2.in</span><br><span class="line"> │ │├E2.ans</span><br><span class="line"> │ │└...</span><br><span class="line"> │ └F</span><br><span class="line"> │  ├F1.in</span><br><span class="line"> │  ├F1.ans</span><br><span class="line"> │  ├F2.in</span><br><span class="line"> │  ├F2.ans</span><br><span class="line"> │  └...</span><br><span class="line"> ├evaldata			&lt;-整合数据目录（数据格式必须为XXxx.in/.ans，XX为字母，xx为数字）</span><br><span class="line"> │├A1.in</span><br><span class="line"> │├A1.ans</span><br><span class="line"> │├A2.in</span><br><span class="line"> │├A2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├B1.in</span><br><span class="line"> │├B1.ans</span><br><span class="line"> │├B2.in</span><br><span class="line"> │├B2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├C1.in</span><br><span class="line"> │├C1.ans</span><br><span class="line"> │├C2.in</span><br><span class="line"> │├C2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├D1.in</span><br><span class="line"> │├D1.ans</span><br><span class="line"> │├D2.in</span><br><span class="line"> │├D2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├E1.in</span><br><span class="line"> │├E1.ans</span><br><span class="line"> │├E2.in</span><br><span class="line"> │├E2.ans</span><br><span class="line"> │├...</span><br><span class="line"> │├F1.in</span><br><span class="line"> │├F1.ans</span><br><span class="line"> │├F2.in</span><br><span class="line"> │├F2.ans</span><br><span class="line"> │└...</span><br><span class="line"> ├filter			&lt;-评测比较器</span><br><span class="line"> │├fulltext</span><br><span class="line"> │├fulltext_e</span><br><span class="line"> │├fulltext_e.c</span><br><span class="line"> │└...</span><br><span class="line"> ├final				&lt;-提供存储最终成绩的目录</span><br><span class="line"> │└[自己放的东西]</span><br><span class="line"> ├players			&lt;-选手程序目录 *请注意：有时候由于Arbiter的bug，无法识别某个场次的文件夹里的选手程序，此时请将此场次里的文件复制到别的场次里</span><br><span class="line"> │├day1</span><br><span class="line"> ││├HA-0001</span><br><span class="line"> │││├A</span><br><span class="line"> ││││└A.cpp</span><br><span class="line"> │││├B</span><br><span class="line"> ││││└B.cpp</span><br><span class="line"> │││└C</span><br><span class="line"> │││ └C.cpp</span><br><span class="line"> ││├HA-0002</span><br><span class="line"> │││├A</span><br><span class="line"> ││││└A.cpp</span><br><span class="line"> │││├B</span><br><span class="line"> ││││└B.cpp</span><br><span class="line"> │││└C</span><br><span class="line"> │││ └C.cpp</span><br><span class="line"> ││└...</span><br><span class="line"> │└day2</span><br><span class="line"> │ ├HA-0001</span><br><span class="line"> │ │├D</span><br><span class="line"> │ ││└D.cpp</span><br><span class="line"> │ │├E</span><br><span class="line"> │ ││└E.cpp</span><br><span class="line"> │ │└F</span><br><span class="line"> │ │ └F.cpp</span><br><span class="line"> │ ├HA-0002</span><br><span class="line"> │ │├D</span><br><span class="line"> │ ││└D.cpp</span><br><span class="line"> │ │├E</span><br><span class="line"> │ ││└E.cpp</span><br><span class="line"> │ │└F</span><br><span class="line"> │ │ └F.cpp</span><br><span class="line"> │ └...</span><br><span class="line"> ├ps				&lt;-成绩打印表</span><br><span class="line"> │├day1</span><br><span class="line"> ││├HA-0001</span><br><span class="line"> │││└HA-0001.ps</span><br><span class="line"> ││├HA-0002</span><br><span class="line"> │││└HA-0002.ps</span><br><span class="line"> ││└...</span><br><span class="line"> │└day2</span><br><span class="line"> │ ├HA-0001</span><br><span class="line"> │ │└HA-0001.ps</span><br><span class="line"> │ ├HA-0002</span><br><span class="line"> │ │└HA-0002.ps</span><br><span class="line"> │ └...</span><br><span class="line"> ├result			&lt;-成绩目录</span><br><span class="line"> │├day1</span><br><span class="line"> ││├HA-0001</span><br><span class="line"> │││└HA-0001.result</span><br><span class="line"> ││├HA-0002</span><br><span class="line"> │││└HA-0002.result</span><br><span class="line"> ││└...</span><br><span class="line"> │└day2</span><br><span class="line"> │ ├HA-0001</span><br><span class="line"> │ │└HA-0001.result</span><br><span class="line"> │ ├HA-0002</span><br><span class="line"> │ │└HA-0002.result</span><br><span class="line"> │ └...</span><br><span class="line"> ├tmp				&lt;-评测临时目录</span><br><span class="line"> │└[系统产生的文件]</span><br><span class="line"> ├day1.info</span><br><span class="line"> ├day2.info</span><br><span class="line"> ├player.info</span><br><span class="line"> ├setup.cfg			&lt;-评测设置文件</span><br><span class="line"> ├task1_1.info</span><br><span class="line"> ├task1_2.info</span><br><span class="line"> ├task1_3.info</span><br><span class="line"> ├task2_1.info</span><br><span class="line"> ├task2_2.info</span><br><span class="line"> ├task2_3.info</span><br><span class="line"> └team.info</span><br></pre></td></tr></table></figure>
+
+<p>还是老话，data文件夹下怎么放都行，所以这里唯一变化的是players文件夹。<br>为什么推荐情况A的设置方法，原因很简单，Arbiter有个巨大的bug，就是按情况B这样设置Arbiter极容易找不到个别场次的程序，为了方便起见，我们用情况A的方法配置，但是这样也是可以配置的。</p>
+<h3 id="目录文件转换"><a href="#目录文件转换" class="headerlink" title="目录文件转换"></a>目录文件转换</h3><p>考虑到有学校使用Windows下Lemon或Cena评测<br>在这里提供几组bat文件方便老师使用。</p>
+<p>data.bat<br>用于提取evaldata文件夹下的数据并自动放在data文件夹里形成Lemon或Cena可用的data文件夹<br>适用于情况B，需手动设置题目名称和场次。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">set a=A		::&lt;-第一题</span><br><span class="line">set b=B		::&lt;-第二题</span><br><span class="line">set c=C		::&lt;-第三题</span><br><span class="line">set d=day1	::&lt;-场次</span><br><span class="line">md data</span><br><span class="line">cd data</span><br><span class="line">md %d%</span><br><span class="line">cd %d%</span><br><span class="line">for /d %%i in (%a% %b% %c%) do (</span><br><span class="line">   md %%i</span><br><span class="line">   copy ..\..\evaldata\%%i*.* .\%%i</span><br><span class="line">)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>data-noday.bat<br>用于提取evaldata文件夹下的数据并自动放在data文件夹里形成Lemon或Cena可用的data文件夹<br>适用于情况A，需手动设置题目名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">set a=A		::&lt;-第一题</span><br><span class="line">set b=B		::&lt;-第二题</span><br><span class="line">set c=C		::&lt;-第三题</span><br><span class="line">md data</span><br><span class="line">cd data</span><br><span class="line">for /d %%i in (%a% %b% %c%) do (</span><br><span class="line">   md %%i</span><br><span class="line">   copy ..\evaldata\%%i*.* .\%%i</span><br><span class="line">)</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>evaldata.bat<br>用于提取data文件夹下的数据并自动放在evaldata文件夹里形成Arbiter可用的evaldata文件夹<br>适用于情况B，需手动设置场次。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">md evaldata</span><br><span class="line">cd data</span><br><span class="line">cd day1		::&lt;-场次</span><br><span class="line">for /d %%i in (*) do copy .\%%i\*.* ..\..\evaldata</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>evaldata-noday.bat<br>用于提取data文件夹下的数据并自动放在evaldata文件夹里形成Arbiter可用的evaldata文件夹<br>适用于情况A，无需设置任何内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">md evaldata</span><br><span class="line">cd data</span><br><span class="line">for /d %%i in (*) do copy .\%%i\*.* ..\evaldata</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>players.bat<br>用于提取source文件夹下的数据并自动放在players文件夹里形成Arbiter可用的players文件夹<br>适用于情况B，需手动设置题目名称、场次和选手名称对应代号（也可直接让选手以代号提交）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">set a=A		::&lt;-第一题</span><br><span class="line">set b=B		::&lt;-第二题</span><br><span class="line">set c=C		::&lt;-第三题</span><br><span class="line">set d=day1	::&lt;-场次</span><br><span class="line">md players</span><br><span class="line">cd players</span><br><span class="line">md %d%</span><br><span class="line">cd..</span><br><span class="line">xcopy source\* players\%d% /y /e /i /q</span><br><span class="line">cd players</span><br><span class="line">cd %d%</span><br><span class="line">for /d %%i in (*) do (</span><br><span class="line">   @echo %%i</span><br><span class="line">   cd %%i</span><br><span class="line">   for /d %%j in (%a% %b% %c%) do (</span><br><span class="line">      @echo %%j</span><br><span class="line">      md %%j</span><br><span class="line">      copy .\%%j.cpp .\%%j\%%j.cpp</span><br><span class="line">   )</span><br><span class="line">   del /f /q .\*.*</span><br><span class="line">   cd..</span><br><span class="line">)</span><br><span class="line">ren std HA-0001		::&lt;-选手名称对应代号，若让选手以代号提交请删除</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>players-noday.bat<br>用于提取source文件夹下的数据并自动放在players文件夹里形成Arbiter可用的players文件夹<br>适用于情况A，需手动设置题目名称和选手名称对应代号（也可直接让选手以代号提交）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">set a=A		::&lt;-第一题</span><br><span class="line">set b=B		::&lt;-第二题</span><br><span class="line">set c=C		::&lt;-第三题</span><br><span class="line">md players</span><br><span class="line">xcopy source\* players /y /e /i /q</span><br><span class="line">cd players</span><br><span class="line">for /d %%i in (*) do (</span><br><span class="line">   @echo %%i</span><br><span class="line">   cd %%i</span><br><span class="line">   for /d %%j in (%a% %b% %c%) do (</span><br><span class="line">      @echo %%j</span><br><span class="line">      md %%j</span><br><span class="line">      copy .\%%j.cpp .\%%j\%%j.cpp</span><br><span class="line">   )</span><br><span class="line">   del /f /q .\*.*</span><br><span class="line">   cd..</span><br><span class="line">)</span><br><span class="line">ren std HA-0001		::&lt;-选手名称对应代号，若让选手以代号提交请删除</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>source.bat<br>用于提取players文件夹下的数据并自动放在source文件夹里形成Lemon或Cena可用的source文件夹<br>适用于情况B，需手动设置场次和选手名称对应代号（也可直接以选手代号评测）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">md source</span><br><span class="line">xcopy players\day1\* source /y /e /i /q		::&lt;-day1即为场次</span><br><span class="line">cd source</span><br><span class="line">for /d %%i in (*) do (</span><br><span class="line">   @echo %%i</span><br><span class="line">   cd %%i</span><br><span class="line">   for /d %%j in (*) do (</span><br><span class="line">      @echo %%j</span><br><span class="line">      copy .\%%j\%%j.cpp .\%%j.cpp</span><br><span class="line">	  del /f /s /q .\%%j\*.*</span><br><span class="line">      rd /q /s .\%%j\</span><br><span class="line">   )</span><br><span class="line">   cd..</span><br><span class="line">)</span><br><span class="line">ren HA-0001 std		::&lt;-选手名称对应代号，若直接以选手代号评测请删除</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>source-noday.bat<br>用于提取players文件夹下的数据并自动放在source文件夹里形成Lemon或Cena可用的source文件夹<br>适用于情况A，需手动设置选手名称对应代号（也可直接以选手代号评测）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">md source</span><br><span class="line">xcopy players\* source /y /e /i /q</span><br><span class="line">cd source</span><br><span class="line">for /d %%i in (*) do (</span><br><span class="line">   @echo %%i</span><br><span class="line">   cd %%i</span><br><span class="line">   for /d %%j in (*) do (</span><br><span class="line">      @echo %%j</span><br><span class="line">      copy .\%%j\%%j.cpp .\%%j.cpp</span><br><span class="line">	  del /f /s /q .\%%j\*.*</span><br><span class="line">      rd /q /s .\%%j\</span><br><span class="line">   )</span><br><span class="line">   cd..</span><br><span class="line">)</span><br><span class="line">ren HA-0001 std		::&lt;-选手名称对应代号，若直接以选手代号评测请删除</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>使用方法是放在目录文件夹，然后更改bat内容并运行。</p>
+<p><img src="https://res.zhangkai.xin/pic/NLA2.png" alt=""><br><img src="https://res.zhangkai.xin/pic/NLA3.png" alt="">  </p>
+<p>如果提示“存在一个重名文件，或是找不到文件”，这是因为</p>
+<ol>
+<li>bat的内容设置写法有误<del>（肯定是你们写错了）</del>，请检查你填写的内容是否多空格少空格，如果目录名有空格，请加英文半角的双引号<code>&quot;</code></li>
+<li>已经有文件夹，例如我执行source-noday.bat之前文件夹里已经有std文件夹，那么就会这么提示，解决方法是手动替换或提前删除。。。</li>
+</ol>
+<h2 id="GNU-Emacs-24"><a href="#GNU-Emacs-24" class="headerlink" title="GNU Emacs 24"></a>GNU Emacs 24</h2><p>其实并不会用这个软件，这个软件是用来学（tui）习（fei）用的，你可以看到菜单栏里的Tools-&gt;Games里有很多东西，(#^.^#)，可以自己试着体验体验这些东西。</p>
+<hr>
+<blockquote>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_80x15.png" alt="知识共享许可协议"></a></p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_88x31.png" alt="知识共享许可协议"></a></p>
+<p>本作品采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>
+</blockquote>
+</section>
+    
+    <span id="/blog/About-NOI-Linux/" class="leancloud_visitors" data-flag-title="NOI Linux使用心得">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#科技" >
+    <span class="tag-code">科技</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/data-LinkCutTree/">
+        <span class="nav-arrow">← </span>
+        
+          动态树
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/lgrb-ghj1222-likes-npp/">
+        
+          【转载】轻量级编辑器透彻指南--Notepad++
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装"><span class="toc-nav-text">安装</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#使用"><span class="toc-nav-text">使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#密码"><span class="toc-nav-text">密码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#外观"><span class="toc-nav-text">外观</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#字体"><span class="toc-nav-text">字体</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#FireFox"><span class="toc-nav-text">FireFox</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Gedit"><span class="toc-nav-text">Gedit</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Arbiter"><span class="toc-nav-text">Arbiter</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#多场次共文件夹"><span class="toc-nav-text">多场次共文件夹</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#单场次单文件夹"><span class="toc-nav-text">单场次单文件夹</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#目录文件转换"><span class="toc-nav-text">目录文件转换</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#GNU-Emacs-24"><span class="toc-nav-text">GNU Emacs 24</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/About-NOI-Linux/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "NOI Linux使用心得",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/About-NOI-Linux/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

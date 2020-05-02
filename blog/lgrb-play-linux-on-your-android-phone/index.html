@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      【转载】在你的Android手机上运行Linux | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>【转载】在你的Android手机上运行Linux</h2>
+  <p class="post-date">2019-01-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><hr>
+<h1 id="在你的Android手机上运行Linux"><a href="#在你的Android手机上运行Linux" class="headerlink" title="在你的Android手机上运行Linux"></a>在你的Android手机上运行Linux</h1><hr>
+<blockquote>
+<p>声明：本文为转载文章，转载自<a href="https://www.luogu.org/blog/wendster/play-linux-on-your-android-phone" target="_blank" rel="noopener">洛谷日报#94</a>，原作者为wendster。</p>
+</blockquote>
+<hr>
+<p>既然日报里已经有两种“非正常”跑Linux的方法了，我再放一个貌似也不要紧……（吐槽一波为何日报上的VMware还是10的版本，太旧了吧）</p>
+<p>之前试过许多方法（也就几种），像什么Complete Linux Installer，Debian noroot，利用已有的Linux构造Bootstrap之类，要么就是复杂得要命（比如Debian上的Bootstrap，调了半天没有调出来），要么就是鸡肋，直到发现了一款叫做Linux Deploy的软件。</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2973309071.jpg" alt="1.jpg"></p>
+<p>这款软件是需要root才能运行的（作者的劝告：没有root的童鞋虽然可以使用Termux，但是Termux没有Linux Deploy好。Termux不同于Linux Deploy。Termux采用proot，无需root便可运行，但相比使用chroot的Linux Deploy，Termux运行速度慢，功能少，可定制度低，只有一种系统，所以还是root一下，使用Linux Deploy吧。），而且你需要安装好busybox。（官方是这么说的，不过没安装好像也没事，不过还是建议安装一下，反正容易得很）</p>
+<p>看来这款软件的先置需求还是<del>不多的</del>，随随便便就能处理好是不是？</p>
+<p>好吧，现在步入正题，开始安装Linux Deploy（欢迎花样作死）。</p>
+<hr>
+<h2 id="1-安装Linux-Deploy"><a href="#1-安装Linux-Deploy" class="headerlink" title="1.安装Linux Deploy"></a>1.安装Linux Deploy</h2><p>虽然有些应用商店里有Linux Deploy，网上也可以下得到，但是版本估计都很旧，所以推荐到Google Play商店里下载。 为了顾及那些没有梯子的童鞋，作者<strong>贴心</strong>地提供了目前最新的Linux Deploy：<a href="https://wendster.win/pan/index.php?share/file&amp;user=1&amp;sid=Cd3ThYKg" target="_blank" rel="noopener">https://wendster.win/pan/index.php?share/file&amp;user=1&amp;sid=Cd3ThYKg</a></p>
+<p>就像安装微信一样安装好它就行了。</p>
+<p>然后打开……是这个样子的：</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/899796367.jpg" alt="28.jpg"></p>
+<p>你看，上面都教你怎么安装了！（笑）</p>
+<h2 id="2-配置Linux-Deploy"><a href="#2-配置Linux-Deploy" class="headerlink" title="2.配置Linux Deploy"></a>2.配置Linux Deploy</h2><p>如果你想要安装多个系统，建议更改一下配置文件的名称。（哎呀，强迫症又犯了，你们忽略我吧）</p>
+<p>先点击左上的“恒等于号”</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3853134255.jpg" alt="29.jpg"></p>
+<p>点击配置文件</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1755335854.jpg" alt="30.jpg"></p>
+<p>点一下那支笔</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/462216913.jpg" alt="31.jpg"></p>
+<p>既然这次我们要安装的是Ubuntu，那就写上Ubuntu好了……</p>
+<p>更改好后点击确定</p>
+<p>如果不想你的Linux运行时CPU休眠导致卡成龟，最好让其保持唤醒</p>
+<p>先返回到这儿</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3853134255.jpg" alt="29.jpg"></p>
+<p>点击设置</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3173883859.jpg" alt="32.jpg"></p>
+<p>勾选“保持CPU唤醒”，顺便把“锁定Wi-Fi”也勾上吧，嘿嘿！</p>
+<h2 id="3-设置安装选项"><a href="#3-设置安装选项" class="headerlink" title="3.设置安装选项"></a>3.设置安装选项</h2><p>在设置安装选项之前，需要看看手机的CPU架构和/data分区剩余空间</p>
+<p>回到主页面，点击右上方的三个点</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/508697094.jpg" alt="58.jpg"></p>
+<p>点击状态</p>
+<p>然后就会滚出来很多行字</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2964048571.jpg" alt="37.jpg"></p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2780299096.jpg" alt="38.jpg"></p>
+<p>比如，我的手机CPU是armv8l的，/data分区还剩15.9GB，这些信息都要记住，后面要用到</p>
+<p>现在可以正式开始设置安装选项了，点击右下方的一个鬼畜的按钮</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1946116582.jpg" alt="33.jpg"></p>
+<p>容器类型不用管，直接从发行版开始</p>
+<p>由于这回我们要安装Ubuntu，那就选Ubuntu好了<del>（废话）</del></p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2132807448.jpg" alt="34.jpg"></p>
+<p>接下来就是架构了，根据我们之前在状态里看到的CPU架构选择合适的架构</p>
+<blockquote>
+<p>一般有armv8字样的CPU是64位的，选择arm64或aarch64（看哪个有选哪个，这里是arm64,那就选arm64），其他的选armhf即可（除非你的手机老到炸裂，不过太老的手机是装不上Linux Deploy的），如果有些神机是i386或者x86_64（amd64）的，直接照着选就可以了（表示膜拜）</p>
+</blockquote>
+<p>比如我的手机是armv8l，就选arm64好了</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3557802290.jpg" alt="35.jpg"></p>
+<p>至于发行版版本嘛，你自己选好了。由于我是更新狂，所以我选了最新的bionic（Ubuntu 18.04）（唉，强迫症又犯了，你们无视我吧 ^_^）</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2584764460.jpg" alt="39.jpg"></p>
+<p>这四个版本代号分别对应着Ubuntu12.04，Ubuntu14.04，Ubuntu16.04和Ubuntu18.04（应该没人会去用Ubuntu12.04了吧）</p>
+<p>现在到了设置源地址的时候了。由于官方的源在国外，所以你若不想调两天还调不好的话，还是不要用官方源吧。这里提供一个基本上是国内最快最全的源（中科大镜像站）：<a href="http://mirrors.ustc.edu.cn/ubuntu-ports" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/ubuntu-ports</a></p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/843037677.jpg" alt="40.jpg"></p>
+<p>嗯，现在可以选择安装类型了。如果你之前看到的/data分区大于等于4G，建议选择目录，这样大概是选择镜像文件的运行速度的两至六倍。假如你的手机/data分区真的没空间了，但是你有一张存储卡，可以选择镜像文件，或者分区。</p>
+<p>不过需要注意的是，由于你的存储卡一般是fat32格式的，所以<strong>无法存储大于4G</strong>的文件，所以镜像文件的大小<strong>不能超过4G</strong>。若选择分区的话，就不会出现这种问题，但是选择分区的最大问题就是你的卡里的文件会<strong>被清空</strong>，且<strong>无法在Windows上访问你的卡</strong>，因为它需要被格式化成ext3或ext4格式（具体选ext3还是ext4，取决于你的手机是否支持ext4，可以通过状态查看，看那个Supported FS有没有ext4即可，若连ext3都没有，那就只能选ext2了，不过这种手机实在太古老了，我保证连Linux Deploy都装不上……）。</p>
+<p>还有，如果你选择了分区，一定要弄清你要安装到哪个分区，在状态最底部有一个Available partitions，会显示你的存储卡的位置，一般是/dev/block/mmcblkXpY（X和Y根据情况填写），<strong>注意核对分区大小和你的存储卡大小是否匹配</strong>，若你选错了分区，你就杯具了……</p>
+<p>至于RAM选项，这是安装到内存里，虽然速度快，但是没有3到6个G内存不要选，而且一重启就没了（所以别选RAM了吧），还有，请忽视Custom那个选项，因为那个一点用都没有๑乛◡乛๑</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1327497990.jpg" alt="41.jpg"></p>
+<p>由于我们选的发行版是Ubuntu，所以强迫症再次发作，手动分类改名设置安装路径QwQ</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1500434476.jpg" alt="42.jpg"></p>
+<p>为了不出现因忘记其默认生成的超难记密码而连不上ssh的尴尬局面，强烈建议修改用户密码（用户名改不改随意）</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3568052358.jpg" alt="43.jpg"></p>
+<p>你看，这个密码多好记？！</p>
+<p>特权用户和DNS一般不用改，不过本地化是要改的（除非你喜欢全英文）</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/402408999.jpg" alt="47.jpg"></p>
+<p>改成zh_CN.UTF-8即可</p>
+<p>初始化和挂载都跳过，把SSH启用打上勾，否则连不上这个Ubuntu就尬了！</p>
+<p>下面那个VNC先不要管（虽然我知道你很可能需要它），直接点左上角那个小箭头回到主页面</p>
+<p>这个设置安装选项貌似很复杂，但是实际上还是很简单的，大约半分钟就可以配置好</p>
+<h2 id="4-开始安装系统"><a href="#4-开始安装系统" class="headerlink" title="4.开始安装系统"></a>4.开始安装系统</h2><p>还是点击右上方的三个小点点</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/508697094.jpg" alt="58.jpg"></p>
+<p>点击安装（废话）</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/446052666.jpg" alt="59.jpg"></p>
+<p>肯定选择确定啦</p>
+<p>然后就开始安装了……</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3090501869.jpg" alt="61.jpg"></p>
+<p>根据手机性能的高低和网速的大小，安装时间4至30分钟不等</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2481069389.jpg" alt="62.jpg"></p>
+<p>嘿嘿，我六分半就装完了(<del>˘▾˘)</del></p>
+<p>哦，对了，出现下面这种情况（就是那个W：Couldn‘t什么的）赶紧按停止键重新安装，以免浪费时间（反正过了一段时间后快要安装完时它会报错让你重装）</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2481069389.jpg" alt="60.jpg"></p>
+<p>建议安装完后重启一波再食用</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/601565979.jpg" alt="65.jpg"></p>
+<p>请忽视时间的问题（逃）</p>
+<h2 id="5-使用SSH连接容器"><a href="#5-使用SSH连接容器" class="headerlink" title="5.使用SSH连接容器"></a>5.使用SSH连接容器</h2><p>在Android上使用人数最多的SSH软件恐怕就是JuiceSSH了……</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3496878951.jpg" alt="2.jpg"></p>
+<p><del>我在想这个软件的图标为什么那么像Lemon</del></p>
+<p>像Linux Deploy一样，作者依然“贴心”地把下载链接给贴了出来：<a href="https://wendster.win/pan/index.php?share/file&amp;user=1&amp;sid=AsZ2y4uU" target="_blank" rel="noopener">https://wendster.win/pan/index.php?share/file&amp;user=1&amp;sid=AsZ2y4uU</a></p>
+<p>这个软件打开之后是这个样子的：（请忽视一切诡异的东西吧）</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3470278250.jpg" alt="4.jpg"></p>
+<p>先点击“连接”（保持忽视状态）</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/4204916576.jpg" alt="5.jpg"></p>
+<p>点击那个有趣的加号（因为你点开JuiceSSH时是什么连接记录都没有滴，需要手动添加）</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/671712810.jpg" alt="6.jpg"></p>
+<p>昵称随便填，比如我填了个Linux<del>（为什么不填个NOILinux呢）</del></p>
+<p>地址填127.0.0.1或localhost（反正都是代表本机）</p>
+<p>然后点击认证那个倒三角——新建认证</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/217025013.jpg" alt="7.jpg"></p>
+<p>昵称随便填，比如我填了个Linux……</p>
+<p>用户名是之前配置时那个用户名，我没有改，所以是android</p>
+<p>密码就是那个好记的xxxxxx</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/456290526.jpg" alt="8.jpg"></p>
+<p>填好之后是这个样子</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1739419340.jpg" alt="9.jpg"></p>
+<p>私钥不用管，千万别点左上那个返回键，而是应该点右上的那个勾（否则就重来一遍吧）</p>
+<p>然后就会返回到填写“新建连接”的页面，再点一下右上那个勾，回到主页面，在连接那儿点击刚刚保存的连接</p>
+<p>然后是类似这个样子</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/668516204.jpg" alt="11.jpg"></p>
+<p>不要管，点确定，然后是这个样子</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2010271511.jpg" alt="12.jpg"></p>
+<p>点接受即可</p>
+<p>接着就连接上啦，可以愉快地打命令啦啦啦</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2113815591.jpg" alt="13.jpg"></p>
+<p>按音量-可以缩小字体</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/195869916.jpg" alt="14.jpg"></p>
+<p>按音量+可以放大字体</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3765989965.jpg" alt="15.jpg"></p>
+<p>皮皮真开心！</p>
+<p>来，打个gcc</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2651165218.jpg" alt="18.jpg"></p>
+<p>什么？居然没有gcc？</p>
+<p>那就安装一个吧！</p>
+<p>先sudo su一波</p>
+<p>然后apt install gcc g++</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3361570747.jpg" alt="19.jpg"></p>
+<p>点个y然后回车</p>
+<p>然后就刷刷刷得跑起来了！</p>
+<p>安装好了……</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3462739844.jpg" alt="20.jpg"></p>
+<p>输入一个gcc -v，哈，gcc已经有了！</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3174968019.jpg" alt="21.jpg"></p>
+<p>输入一个g++ -v，哈，g++也已经有了！</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3393068978.jpg" alt="22.jpg"></p>
+<p>这下就可以编译了！</p>
+<p>不过只能编译，不能编辑文件是什么鬼？那就安装一个vim吧！</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2998923706.jpg" alt="23.jpg"></p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2948046666.jpg" alt="24.jpg"></p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/851523187.jpg" alt="25.jpg"></p>
+<p>哈，现在vim也可以用了！</p>
+<h2 id="6-为容器启用图形化界面"><a href="#6-为容器启用图形化界面" class="headerlink" title="6.为容器启用图形化界面"></a>6.为容器启用图形化界面</h2><p>有的童鞋并不满足于终端，还希望像普通的Ubuntu一样有图形化界面。这很简单，只需要将我们之前忽略的VNC打开就可以了！</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1041918722.jpg" alt="50.jpg"></p>
+<p>桌面选择轻量的LXDE，一是安装快，二是运行快，三是丑陋</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3688759713.jpg" alt="51.jpg"></p>
+<p>现在返回到主页面，点击右上方的三个小点点。因为已经安装过基础系统了，所以不用重新安装系统，只需要安装要增加的软件包即可。说了这么多，其实就一句话：点击“配置”……</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/508697094.jpg" alt="58.jpg"></p>
+<p>然后是等待～～～～～</p>
+<p>好了，安装好了！</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/327581814.jpg" alt="63.jpg"></p>
+<p>仍然建议重启一波哦QvQ</p>
+<h2 id="7-配置并使用图形化界面"><a href="#7-配置并使用图形化界面" class="headerlink" title="7.配置并使用图形化界面"></a>7.配置并使用图形化界面</h2><p>要用VNC连接这个毒瘤Ubuntu，需要一款名曰VNCViewer的软件，作者已经贴心地帮忙准备好了QvQ：<a href="https://wendster.win/pan/index.php?share/file&amp;user=1&amp;sid=5BzEJ8FY" target="_blank" rel="noopener">https://wendster.win/pan/index.php?share/file&amp;user=1&amp;sid=5BzEJ8FY</a></p>
+<p>打开之后是这个燕子的……</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/983765399.jpg" alt="69.jpg"></p>
+<p>然后点击右下角那个加号</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3784610216.jpg" alt="70.jpg"></p>
+<p>地址填127.0.0.1或localhost，Name就随便啦</p>
+<p>然后点击CREATE，然后在主页面点击你创建的连接</p>
+<p>会出现下面这个东西</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/4155667844.jpg" alt="72.jpg"></p>
+<p>记得把它的勾去掉，否则每次都会弹出这个拥有着令人做噩梦的颜色的邪恶的提示</p>
+<p>然后就要输密码，可以把Remember passwd勾上，下次就不用输入密码了</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1465911680.jpg" alt="73.jpg"></p>
+<p>emmmm，密码就是那个好记的xxxxxx</p>
+<p>然后，就进去了，这个软件会弹出一个使用教程，可以看也可以跳过，反正是全英文的教程</p>
+<p>真正连上后的样子：</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1866064065.jpg" alt="74.jpg"></p>
+<p>哎呀，下面的任务栏太小了！原来是VNC的分辨率调的太高了，调低一点就好了</p>
+<p>先返回到配置系统界面</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1041918722.jpg" alt="50.jpg"></p>
+<p>点击图形界面设置</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3792390454.jpg" alt="53.jpg"></p>
+<p>哎呀，颜色深度怎么只有16位呢？还是换成24位全彩色以获得更好的视觉体验吧</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2242116312.jpg" alt="54.jpg"></p>
+<p>好啦，回到正题。可以看到，分辨率调的非常高，高达1920x1080，要那么高分辨率干嘛？调低一点多好？就像这个样子，对于我的手机来说调到960x540比较好，那就调这么多呗</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/634576101.jpg" alt="68.jpg"></p>
+<p>现在再次重启容器，连上VNC。嗯，现在好多了！</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3122975015.jpg" alt="75.jpg"></p>
+<p>点一下启动器</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/385674386.jpg" alt="76.jpg"></p>
+<p>谒！怎么中文都乱码了？原来是忘记安装中文字体了……</p>
+<p>赶紧用SSH连上终端，敲上这么一打命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install fonts-wqy-microhei -y</span><br></pre></td></tr></table></figure>
+
+<p>这样中文乱码这种奇异的事件就不会再有了</p>
+<p>为了让界面稍微好看一点，并且修复一下图标的问题，再打一波命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install lubuntu-default-session lubuntu-default-settings lubuntu-extra-sessions lubuntu-icon-theme -y</span><br></pre></td></tr></table></figure>
+
+<p>然后再次重启容器……</p>
+<p>然后再次连上VNC……</p>
+<p>好了，现在没有乱码了（咦，我的图怎么找不着了）</p>
+<p>滑动屏幕操控鼠标点击左下角的飞鸟图案，然后点击首选项——自定义外观和体验</p>
+<p>然后就会出现下面的界面</p>
+<p>左边菜单选择Lubuntu-default，然后点击Apply</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/804647080.jpg" alt="77.jpg"></p>
+<p>点击上方的图标主题，选择Lubuntu，然后点击Apply</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1513580375.jpg" alt="78.jpg"></p>
+<p>点击上方的窗口边框，选择Lubuntu-default，然后点击Apply</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/4117659811.jpg" alt="79.jpg"></p>
+<p>现在回到窗体，点击右下方的字体，左边往下翻，翻到文泉驿微米黑，点击OK</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/164613413.jpg" alt="80.jpg"></p>
+<p>关掉自定义外观和体验，打开终端，顺便把字体也配置一下</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/3388132186.jpg" alt="81.jpg"></p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/1541211119.jpg" alt="82.jpg"></p>
+<p>先sudo su一下来安装一个小软件……</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/2811926769.jpg" alt="83.jpg"></p>
+<p>安装一个Vim用于编辑文件……</p>
+<p><img src="https://wendster.win/blog/usr/uploads/2018/10/421068643.jpg" alt="84.jpg"></p>
+<p>哦，忘了已经安装过Vim了！</p>
+<p>现在就可以愉快地编程啦！如果有蓝牙键盘，码起代码来会更爽呢！</p>
+<hr>
+<p><strong>教程到这里就结束啦！更多高级玩法还期待你们去挖掘（坑）呢！（欢迎花样作死）</strong></p>
+</section>
+    
+    <span id="/blog/lgrb-play-linux-on-your-android-phone/" class="leancloud_visitors" data-flag-title="【转载】在你的Android手机上运行Linux">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#洛谷日报" >
+    <span class="tag-code">洛谷日报</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/lgrb-ghj1222-likes-npp/">
+        <span class="nav-arrow">← </span>
+        
+          【转载】轻量级编辑器透彻指南--Notepad++
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/lgrb-typora-yi-kuan-jian-jie-di-markdown-bian-ji-qi/">
+        
+          【转载】Typora ---一款简洁的Markdown编辑器
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#在你的Android手机上运行Linux"><span class="toc-nav-text">在你的Android手机上运行Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-安装Linux-Deploy"><span class="toc-nav-text">1.安装Linux Deploy</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-配置Linux-Deploy"><span class="toc-nav-text">2.配置Linux Deploy</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-设置安装选项"><span class="toc-nav-text">3.设置安装选项</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-开始安装系统"><span class="toc-nav-text">4.开始安装系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-使用SSH连接容器"><span class="toc-nav-text">5.使用SSH连接容器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-为容器启用图形化界面"><span class="toc-nav-text">6.为容器启用图形化界面</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-配置并使用图形化界面"><span class="toc-nav-text">7.配置并使用图形化界面</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/lgrb-play-linux-on-your-android-phone/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "【转载】在你的Android手机上运行Linux",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/lgrb-play-linux-on-your-android-phone/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

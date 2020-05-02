@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="A Blog About Information and Technology">
+  <meta name="keyword" content="Computer">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Ubuntu使用心得 | Peter_Matthew的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="//code.tidio.co/g6zn0ewvu9ieaw5pfegkodcp6eple7el.js" async></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Peter_Matthew的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">首页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Ubuntu使用心得</h2>
+  <p class="post-date">2019-01-07</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.2.1/css/hint.min.css"><p>由于NOI官网给出的NOI Linux 1.4.1是基于Ubuntu 14.04.5的，因此我特意使用Ubuntu 14.04.5</p>
+<p>$\huge\color{red}{Warning}$ 请不要尝试在上个世纪的电脑上执行以下操作，这可能会导致严重的“Kernel panic - not syncing: Attempted to kill init!”错误<br>$\huge\color{blue}{Attention}$ 请在执行下述操作时确认自己为根目录管理员（root）或拥有根目录管理权限</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装比较类似NOI Linux的安装过程，不再过多阐述。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>个人喜欢一些小设置。。。</p>
+<h2 id="VMware-Tools"><a href="#VMware-Tools" class="headerlink" title="VMware Tools"></a>VMware Tools</h2><p>这个工具是方便虚拟机与Ubuntu之间交互的一个软件，NOI Linux自带了这个工具，但是我们的纯净版不带，所以我们来安装它。</p>
+<p>首先点击VMware的菜单栏里的 虚拟机 ，点击 安装VMware Tools，然后下方会出来一个提示，让我们用文档管理打开VMwareTools-9.6.1-1378637.tar.gz，并执行vmware-install.pl。具体做法是先将那个包复制到桌面，然后双击打开，将文件夹拖到桌面，然后召唤终端，到文件夹下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./vmware-install.pl</span><br></pre></td></tr></table></figure>
+
+<p>然后出来提示就敲回车（无脑安装），最后出现VMware团队的祝福后重启Ubuntu再查看菜单栏，显示出 重新安装VMware Tools 就证明安装成功了。</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><ul>
+<li>点开 全部设置 ，找 语言支持 ，更新</li>
+<li>点 软件和更新 ，除了 提前释放出的更新 都勾上</li>
+<li>点 详细信息 更新</li>
+</ul>
+<p>最后，我不更新到Ubuntu 16.04.1<del>（绝对不是因为更新不到）</del>。</p>
+<h2 id="其他系统"><a href="#其他系统" class="headerlink" title="其他系统"></a>其他系统</h2><p>我之前安装的其他系统去哪儿了？<br>明明已经安装但是仍显示只有Ubuntu，这时候不要急，打开终端，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub2</span><br></pre></td></tr></table></figure>
+
+<p>当屏幕出现 done 即表示完成，重启后就能看到其他系统了。</p>
+<h2 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h2><p>Ubuntu的密码要求要有一定的强度，所以我们打开终端，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br></pre></td></tr></table></figure>
+
+<p>得到了root权限。<br>然后输入原密码。<br>现在我们输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd XXX（你的用户名）</span><br></pre></td></tr></table></figure>
+
+<p>输入新密码就好了，就比如我的密码就是六位纯数字，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">******（我又不傻）</span><br></pre></td></tr></table></figure>
+
+<p>若修改成功，则会返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password updated successfully</span><br></pre></td></tr></table></figure>
+
+<p>如果忘记密码怎么办？<br>额，开机按Shift键，出现如下界面。（手速要快，Shift键要按时间久一点）<br>在开机菜单里选择Ubuntu高级选项（第二项）<br><img src="https://res.zhangkai.xin/pic/20161213175823266.jpg" alt=""><br>按回车键进入如下界面，然后选中有recovery mode的选项（第三项）<br><img src="https://res.zhangkai.xin/pic/20161213175947735.jpg" alt=""><br>按e进入如下界面，并找到图中红色框的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">recovery nomodeset</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://res.zhangkai.xin/pic/20161213180034937.jpg" alt=""><br>删除，并在这一行的后面输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quiet splash rw init=/bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>后，按F10<br><img src="https://res.zhangkai.xin/pic/20161213180105876.jpg" alt=""><br>如果忘记用户名，可以键入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mount -o rw,remount /</span><br><span class="line">ls /home</span><br></pre></td></tr></table></figure>
+
+<p>查询用户名。</p>
+<p>然后，在命令行输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd XXX（XXX是你的用户名）</span><br></pre></td></tr></table></figure>
+
+<p>此时注意小键盘的指示灯是否亮起。。。<br>然后输入两遍123456（即新密码）来修改密码，若修改成功，则会返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password updated successfully</span><br></pre></td></tr></table></figure>
+
+<p>然后关机后正常启动，输入123456（即新密码）就能访问了</p>
+<p><strong>切记不可使用此手段进行违法的密码破解行为</strong></p>
+<h2 id="外观"><a href="#外观" class="headerlink" title="外观"></a>外观</h2><p>桌面主题选的是Radiance，壁纸选的是Foggy Forest (2560 x 1709)<br>应用程序-&gt;系统工具-&gt;首选项-&gt;主菜单，把所有勾点上<br>开启工作区，添加“显示桌面”图标到启动器<br>显示窗口菜单在窗口的标题栏</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>我主要安装的字体是 YaHei Consolas Hybrid</p>
+<p>如何安装字体？<br>请在执行以下操作时确定自己为根目录管理员（root），也可以通过终端完成操作。</p>
+<ol>
+<li>在/usr/share/fonts/内创建一个文件夹</li>
+<li>在文件夹内放入字体文件（最好是.ttf格式的文件，其他格式的我还没测试）</li>
+<li>在终端执行下面两行命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkfontscale</span><br><span class="line">mkfontdir</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>如何检验字体是否安装？  </p>
+<p>请在终端执行：  </p>
+<p>查看系统中的字体  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-list</span><br></pre></td></tr></table></figure>
+
+<p>查看系统中的中文字体  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-list :lang=zh</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gedit"><a href="#Gedit" class="headerlink" title="Gedit"></a>Gedit</h2><p>作为一名OIer，我按NOI Linux使用心得介绍的方法配置完Gedit后，兴高采烈地敲好了hello world，正要编译，突然提示我g++没有安装。。。</p>
+<p>我们点开Ubuntu软件中心，搜索<del>gcc然后发现已经安装，于是重新搜索</del>g++，安装它。重启打开Gedit后就能用了(＾－＾)V。</p>
+<h2 id="FireFox"><a href="#FireFox" class="headerlink" title="FireFox"></a>FireFox</h2><p>正常设置字体，可以正常登陆洛谷<del>3.5</del>。</p>
+<h2 id="LibreOffice"><a href="#LibreOffice" class="headerlink" title="LibreOffice"></a>LibreOffice</h2><p>其实这是一款非常好用的Office软件，因为它免费而且开源，相比WPS的来说快，相比MS的来说……</p>
+<h2 id="Notepadqq"><a href="#Notepadqq" class="headerlink" title="Notepadqq"></a>Notepadqq</h2><p>其实这是Notepad++的非官方Linux版，然后是Notepadqq的官方版。。。<br>我们在终端执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install snapd</span><br><span class="line">sudo snap install --classic notepadqq</span><br></pre></td></tr></table></figure>
+
+<p>即可安装，可惜的是笔者暂未研究出如何使其具有编译能力，所以暂时无法分享OI用的技巧不过这仍是一款优秀的文本编辑器。</p>
+<h2 id="Ubuntu的其他应用"><a href="#Ubuntu的其他应用" class="headerlink" title="Ubuntu的其他应用"></a>Ubuntu的其他应用</h2><p>按Super键（即键盘上的Win键）打开搜索，搜索</p>
+<ul>
+<li>AisleRiot接龙游戏：即Windows自带的纸牌</li>
+<li>Mahjongg对对碰：即Windows自带的麻将消除游戏</li>
+<li>Mines扫雷：即Windows自带的扫雷</li>
+<li>Sudoku数独：即Windows10可以安装的数独</li>
+</ul>
+<hr>
+<blockquote>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_80x15.png" alt="知识共享许可协议"></a></p>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener"><img src="https://res.zhangkai.xin/pic/license/BY-NC-SA_88x31.png" alt="知识共享许可协议"></a></p>
+<p>本作品采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</p>
+</blockquote>
+</section>
+    
+    <span id="/blog/About-Ubuntu/" class="leancloud_visitors" data-flag-title="Ubuntu使用心得">
+    <em class="post-meta-item-text">阅读量 </em>
+    <i class="leancloud-visitors-count">加载中</i>
+    </span>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>标签:</span>
+        
+  <a href="/tags#科技" >
+    <span class="tag-code">科技</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blog/lgrb-multi-os-install-ubuntu/">
+        <span class="nav-arrow">← </span>
+        
+          【转载】运行linux的第四种方式：双系统
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/blog/data-Persistent/">
+        
+          可持久化数据结构
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+        <!-- Valine START -->
+        <div id="vcomments"></div>
+        <!-- Valine END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装"><span class="toc-nav-text">安装</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#使用"><span class="toc-nav-text">使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#VMware-Tools"><span class="toc-nav-text">VMware Tools</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#更新"><span class="toc-nav-text">更新</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#其他系统"><span class="toc-nav-text">其他系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#密码"><span class="toc-nav-text">密码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#外观"><span class="toc-nav-text">外观</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#字体"><span class="toc-nav-text">字体</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Gedit"><span class="toc-nav-text">Gedit</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#FireFox"><span class="toc-nav-text">FireFox</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#LibreOffice"><span class="toc-nav-text">LibreOffice</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Notepadqq"><span class="toc-nav-text">Notepadqq</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Ubuntu的其他应用"><span class="toc-nav-text">Ubuntu的其他应用</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://www.zhangkai.xin/blog/About-Ubuntu/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  })();
+</script>
+
+<script>
+    // valine
+    new Valine({
+        av: AV,
+        el: "#vcomments",
+        appId: "0vALLh7GKtH9dG12UwlGy3kw-MdYXbMMI",
+        appKey: "IQf6OTVzOL16tXuKqoKpSAss",
+        placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+        visitor: "true",
+        recordIP: "true"
+    })
+    
+</script>
+
+<script>
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "Ubuntu使用心得",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+</script>
+
+<script>
+  var disqus_shortname = '';
+  
+  var disqus_url = 'https://www.zhangkai.xin/blog/About-Ubuntu/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 - 2020 WilliamPeterMatthew | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Modified by <a href="https://github.com/WilliamPeterMatthew">WilliamPeterMatthew</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
