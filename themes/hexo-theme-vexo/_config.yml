@@ -1,0 +1,71 @@
+author: WilliamPeterMatthew
+description: Peter_Matthew的博客
+keyword: Computer
+favicon: 
+
+excerpt_link: 查看全文
+
+menu:
+ 首页: /
+ 标签: /tags/
+ 归档: /archives/
+ 项目: /project/
+ 关于: /about/
+
+# highlight
+highlight:
+  tomorrow
+
+# catalog
+catalog: true
+
+# donate
+donate: true
+
+# qrcode
+qrcode: true
+
+# comment
+# you can set gitment, uyan or disqus
+
+comment: gitment
+
+# gitment config
+gitment_owner: WilliamPeterMatthew
+gitment_repo: williampetermatthew.github.io
+gitment_oauth_id: 4900c65807a16d926dbf
+gitment_oauth_secret: fa157783b7761eaf510f464f6de1f263871f4bb2
+
+# uyan config
+# if you want to use uyan as your blog comment, plz remove/comment out gitment config
+baidu_id: 
+
+# disqus config
+disqus_shortname: 
+
+about: 
+  banner: https://acg.toubiec.cn/random.php
+  # banner: /pic/bg/timg-r-g.jpg
+  # banner: https://www.hidove.cn/api/ecy.php
+  # banner: https://api.ixiaowai.cn/api/api.php
+  avatar: /css/images/logo.png
+  # avatar: https://avatars0.githubusercontent.com/u/31546337?v=4&s=460
+  description: "A Konjac in Province H.A.'s Blog"
+  linkedin_username: 开昕-张-37393998
+  twitter_username: Peter_Matthew_
+  facebook_username: 100011837585349
+  youtube_username: UC5bVJtvNLuSZGlULitP5y9Q
+  twitch_username: williampetermatthew
+  github_username: WilliamPeterMatthew
+  weibo_username: WilliamPeterMatthew
+  qq_username: 1145232806
+  weichat_username: EB5lXuIJto8f_6bK4kAoWQ0
+  zhihu_username: WilliamPeterMatthew
+  youku_username: petermatthew
+  douyu_username: none
+
+# MathJax Support
+mathjax:
+  enable: true
+  per_page: false
+  cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML

@@ -1,0 +1,9 @@
+options:
+  imagePath: /pic
+  askImageFilename: true
+  lineNumbers: true
+  spellcheck: true
+editor:
+  lineNumbers: true
+  inputStyle: contenteditable
+  spellcheck: true

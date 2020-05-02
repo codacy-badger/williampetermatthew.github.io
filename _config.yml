@@ -1,0 +1,157 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: Peter_Matthew的博客
+subtitle: A Konjac in Province H.A.'s Blog
+description: A Blog About Information and Technology
+keywords: Information Technology
+author: William Peter Matthew
+language: zh-CN
+timezone: Asia/Shanghai
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: https://www.zhangkai.xin/
+root: /
+permalink: blog/:title/
+permalink_defaults:
+
+#plugins:
+#- hexo-generator-feed
+#- hexo-generator-sitemap
+
+# Post wordcount display settings
+# Dependencies: https://github.com/willin/hexo-wordcount
+post_wordcount:
+  item_text: true
+  wordcount: true
+  min2read: true
+
+# Security
+##
+encrypt:
+    enable: true
+
+# hexo-admin authentification
+admin:
+  username: 
+  password_hash: 
+  secret: 
+
+live2d:
+  enable: false
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-shizuku
+    scale: 1
+    hHeadPos: 0.5
+    vHeadPos: 0.618
+  display:
+    superSample: 2
+    position: left
+    width: 150
+    height: 300
+    hOffset: 0
+    vOffset: -20
+  mobile:
+    show: false
+    scale: 0.5
+  react:
+    opacityDefault: 0.7
+    opacityOnHover: 0.2
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+  - 'README.md'
+  - 'README-zh_CN.md'
+  - 'README-zh_TW.md'
+  - 'README-en_US.md'
+  - 'CODE_OF_CONDUCT.md'
+  - 'CONTRIBUTING.md'
+  - 'ISSUE_TEMPLATE.md'
+  - 'PULL_REQUEST_TEMPLATE.md'
+  - '404.html'
+  - '404.txt'
+  - 'google451e33d93ceaa78e.html'
+  - 'google451e33d93ceaa78e.txt'
+  - 'reset.html'
+  - 'reset.txt'
+  - 'verify.html'
+  - 'verify.txt'
+  
+# Writing
+new_post_name: :title.md 
+default_layout: post
+titlecase: false 
+external_link: true 
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+  
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+  
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: blue-vexo
+
+#设置百度主动推送
+baidu_url_submit:
+  count: 200
+  host: www.zhangkai.xin
+  token: gs86T68yHSE5HuWC
+  path: baidu_urls.txt
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+- type: git
+#  repo: https://github.com/WilliamPeterMatthew/WilliamPeterMatthew.github.io.git
+  repo: git@github.com:WilliamPeterMatthew/williampetermatthew.github.io.git
+  branch: master
+- type: baidu_url_submitter

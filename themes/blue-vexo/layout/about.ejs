@@ -1,0 +1,153 @@
+<div id="about-banner" style="background-image: url(<%- theme.about.banner %>)"></div>
+<div class="author">
+  <div class="head">
+    <img src="<%- theme.about.avatar %>" />
+  </div>
+  <h3><%- config.author %></h3>
+  <% if (typeof(theme.about.description) === 'object') { %>
+    <% for (var i in theme.about.description) { %>
+      <p class="description">
+        <%- theme.about.description[i] %>
+      </p>
+    <% } %>
+  <% } else { %>
+    <p class="description"><%- theme.about.description %></p>
+  <% } %>
+  <section class="share-icons">
+    <% if (theme.about.linkedin_username) { %>
+      <a class="icon-linkedin" href="https://www.linkedin.com/in/<%- theme.about.linkedin_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.twitter_username) { %>
+      <a class="icon-twitter" href="https://twitter.com/<%- theme.about.twitter_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.facebook_username) { %>
+      <a class="icon-facebook" href="https://www.facebook.com/profile.php?id=<%- theme.about.facebook_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.youtube_username) { %>
+      <a class="icon-youtube" href="https://www.youtube.com/channel/<%- theme.about.youtube_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-youtube-play fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.twitch_username) { %>
+      <a class="icon-twitch" href="https://www.twitch.tv/<%- theme.about.twitch_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-twitch fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.github_username) { %>
+      <a class="icon-github" href="https://github.com/<%- theme.about.github_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.weibo_username) { %>
+      <a class="icon-weibo" href="http://weibo.com/<%- theme.about.weibo_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.qq_username) { %>
+      <a class="icon-qq" href="http://wpa.qq.com/msgrd?V=3&Uin=<%- theme.about.qq_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-qq fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.weichat_username) { %>
+      <a class="icon-weichat" href="https://u.wechat.com/<%- theme.about.weichat_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-weixin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.zhihu_username) { %>
+      <a class="icon-zhihu" href="https://www.zhihu.com/people/<%- theme.about.zhihu_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-stack-1x fa-inverse">知</i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.youku_username) { %>
+      <a class="icon-youku" href="http://i.youku.com/<%- theme.about.youku_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-stack-1x fa-inverse">优</i>
+        </span>
+      </a>
+    <% } %>
+    <% if (theme.about.douyu_username) { %>
+      <a class="icon-douyu" href="http://<%- theme.about.douyu_username %>" target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-stack-1x fa-inverse">斗</i>
+        </span>
+      </a>
+    <% } %>
+  </section>
+</div>
+
+
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><%- page.content %></section>
+    <!-- 打赏 START -->
+    <% if (theme.donate) { %>
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    <% } %>
+    <!-- 打赏 END -->
+  </article>
+  <!-- Article END -->
+</main>
+
+
+<script>
+  (function () {
+    $('.header').removeClass('fixed-header')
+    var windowH = $(window).height();
+    var author = $('.author')
+    var bodyH = author.offset().top + author[0].offsetHeight;
+  })();
+</script>
